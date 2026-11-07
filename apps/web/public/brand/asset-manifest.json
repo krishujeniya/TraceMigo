@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "generator": "tools/brand",
+  "assets": {
+    "app-icon-192.png": {
+      "bytes": 1661,
+      "sha256": "790e267a308f61bfbca4fc4e9054cea756cd82b1f6aec59483d39aaf9119ebcc"
+    },
+    "app-icon-512.png": {
+      "bytes": 5301,
+      "sha256": "d1d9a6e3bee2d88ed8b76f416d016a64089614aac8304bde2d7a69599899aa91"
+    },
+    "app-master.svg": {
+      "bytes": 488,
+      "sha256": "f7e4f7d2691f2063ce528184e264e7e4cdd3c6490ec5cf844fcfe0da9aa606de"
+    },
+    "apple-touch-icon.png": {
+      "bytes": 2049,
+      "sha256": "9c0f07bef0ef8574f025d4b072990ee5dfcb90ddfb11771380fd86d588420f85"
+    },
+    "avatar-master.svg": {
+      "bytes": 490,
+      "sha256": "ffdf63bfc5b13b6a997765143c642e454d16477119f29782030c656d6ecc82d3"
+    },
+    "favicon-16.png": {
+      "bytes": 274,
+      "sha256": "983af893196abff5beb4fc07e462d862ea03c23e647b6b8408562bfa62ba54b8"
+    },
+    "favicon-32.png": {
+      "bytes": 387,
+      "sha256": "9af3a966ac4d74d58b379bc04feed701e32860afe2fa32e5538370efc0fa7b62"
+    },
+    "favicon-48.png": {
+      "bytes": 589,
+      "sha256": "46fe91fb95775886186eb407288ce2029ddb521cac8a996ebbbb1d6a55b831fe"
+    },
+    "favicon-96.png": {
+      "bytes": 870,
+      "sha256": "9bf991d4c3dfbb5539f1d37082784d33dfd2bfef31825ec528de9278fb850746"
+    },
+    "favicon-master.svg": {
+      "bytes": 488,
+      "sha256": "4f33503363318d452c5c0973ddba3ce6a75884d8e2a854b8ff04f66baf6b2462"
+    },
+    "favicon.ico": {
+      "bytes": 1304,
+      "sha256": "5f4641286bc6553a98a29d9a62d72bf8f14f59fe21c42ed290e6acf6626f0195"
+    },
+    "fonts/METADATA.pb": {
+      "bytes": 732,
+      "sha256": "fb204147a7c16d009d4fa53248b6075bc941d7adfa450a825bc5d4cef2f9ded9"
+    },
+    "fonts/OFL.txt": {
+      "bytes": 4387,
+      "sha256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b"
+    },
+    "fonts/manrope-variable.ttf": {
+      "bytes": 164700,
+      "sha256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6"
+    },
+    "fonts/source.json": {
+      "bytes": 985,
+      "sha256": "2b375c53abbf7e64a0ea4e7db630e99c1b1ea99c8121c3e8f50fe7f98e94f13f"
+    },
+    "geometry.json": {
+      "bytes": 308,
+      "sha256": "246efde16510bd5fb1a40e3871549c9417c665c422a46b73790433319bfde8b6"
+    },
+    "lockup-ink.svg": {
+      "bytes": 11402,
+      "sha256": "4b5a3bc984f4bbf363c09b324504f96e7ebfbba74df135d33866e7bc12bf8df2"
+    },
+    "lockup-primary.svg": {
+      "bytes": 11402,
+      "sha256": "6b34d7ede75e2fb29810f6cabd6705510375aac40e33e2da0ae363d393228f74"
+    },
+    "lockup-reverse.svg": {
+      "bytes": 11402,
+      "sha256": "0244bcd6e419fc263feef3588a1bacd49dfe198010f4c6fdb8d0e1564b04785e"
+    },
+    "mark-ink.svg": {
+      "bytes": 388,
+      "sha256": "9ca54b413a8eff2ba713921ac708f1f8b7066b4b273e5ce7ee7102e33a877e75"
+    },
+    "mark-mint.svg": {
+      "bytes": 388,
+      "sha256": "8b2379089fe3188e1fa01626473fa531464acea8339cee04fa4c9231189d2d07"
+    },
+    "mark-teal.svg": {
+      "bytes": 388,
+      "sha256": "286ddb0267c49d7d342ef991978de7d0f26407e40b4a541d30fd95eada82c7ae"
+    },
+    "mark-white.svg": {
+      "bytes": 388,
+      "sha256": "966509a36bdc2ff49da9e54645c92a6b41df084f7a67a26b778bb9a3b4c73316"
+    },
+    "maskable-icon-512.png": {
+      "bytes": 5569,
+      "sha256": "7988238c048c9b97f62de8c58aa4d0b902e72baf124678bb1889f9cf56de811c"
+    },
+    "maskable-master.svg": {
+      "bytes": 493,
+      "sha256": "a9cc40ac3fd8f1bd94a55541056c32ba626e92d9399028054627b0be265e42dc"
+    },
+    "social-avatar-512.png": {
+      "bytes": 5384,
+      "sha256": "eba6fef23ebff53295c2da9a35416b4ccd0326e999c86d5c83c8f57bdf0fe668"
+    },
+    "social-preview.png": {
+      "bytes": 31773,
+      "sha256": "cd8afbcea0e2fc4c77b9671cad64f6e3f707f4249ea12d0a9c6637cc2c4f18c4"
+    },
+    "social-preview.svg": {
+      "bytes": 94208,
+      "sha256": "8a810fe0558eb6054b8b1ceb0fe9d1aed60baf95a5235b2106a8995468c87833"
+    },
+    "wordmark-ink.svg": {
+      "bytes": 11177,
+      "sha256": "a07242a42ea93989abb17ef57da7696905338fb891f64e3826a33bb7d1e04ffd"
+    },
+    "wordmark-reverse.svg": {
+      "bytes": 11177,
+      "sha256": "6ebe9ad0a2873b1fcf724bb1febf26af9f3e1475cfa6dbe753aa85bbc17cad25"
+    }
+  }
+}

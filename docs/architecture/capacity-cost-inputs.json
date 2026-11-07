@@ -1,0 +1,298 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-10-30",
+  "currency": "USD",
+  "reference_region": "us-central1",
+  "month_hours": 730,
+  "traffic_days": 30,
+  "sources": [
+    {
+      "id": "GKE",
+      "url": "https://cloud.google.com/kubernetes-engine/pricing",
+      "verified_date": "2026-10-30",
+      "note": "Global cluster fee 0.10 USD/hour; Standard VM nodes billed until deleted; no credit assumed."
+    },
+    {
+      "id": "VM",
+      "url": "https://cloud.google.com/products/compute/pricing/general-purpose",
+      "verified_date": "2026-10-30",
+      "note": "Detailed table repeatedly timed out. Node allowances below are NOT verified SKU quotes."
+    },
+    {
+      "id": "SQL",
+      "url": "https://cloud.google.com/sql/pricing",
+      "verified_date": "2026-10-30",
+      "note": "Iowa Enterprise general purpose: HA vCPU 0.0826/hour, HA GiB 0.014/hour; HA SSD 0.000465753/GiB-hour, backup 0.000109589/GiB-hour."
+    },
+    {
+      "id": "RUN",
+      "url": "https://cloud.google.com/run/pricing",
+      "verified_date": "2026-10-30",
+      "note": "Iowa instance billing: CPU 0.000018/vCPU-second, RAM 0.000002/GiB-second. Free tier excluded."
+    },
+    {
+      "id": "REDIS",
+      "url": "https://cloud.google.com/memorystore/docs/redis/pricing",
+      "verified_date": "2026-10-30",
+      "note": "Iowa M1 Standard 0.064 USD/GiB-hour; Basic 0.049. Model uses Standard."
+    },
+    {
+      "id": "STORAGE",
+      "url": "https://cloud.google.com/storage/pricing",
+      "verified_date": "2026-10-30",
+      "note": "Iowa regional Standard 0.000027397/GiB-hour; request and transfer allowances separate."
+    },
+    {
+      "id": "QUEUE",
+      "url": "https://cloud.google.com/pubsub/pricing",
+      "verified_date": "2026-10-30",
+      "note": "Basic throughput 40 USD/TiB; publish and subscribe bytes both count. Free tier excluded in model."
+    },
+    {
+      "id": "LOG",
+      "url": "https://cloud.google.com/products/observability/pricing",
+      "verified_date": "2026-10-30",
+      "note": "Logging ingestion 0.50 USD/GiB, beyond free allocation; extra retention and metrics not included in that rate."
+    },
+    {
+      "id": "OPENAI",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "verified_date": "2026-10-30",
+      "note": "Standard short-context USD per million tokens: gpt-6-luna input 0.10/output 0.50; gpt-6.1-sol input 2/output 10. gpt-4o-mini-transcribe estimated 0.003/minute. No account access/quality/latency verified."
+    },
+    {
+      "id": "PAYMENT",
+      "url": "https://razorpay.com/pricing/",
+      "verified_date": "2026-10-30",
+      "note": "Standard 2% plus applicable GST; promotion not assumed; merchant contract and payment-method eligibility pending."
+    },
+    {
+      "id": "BUDGET",
+      "url": "https://docs.cloud.google.com/billing/docs/how-to/budgets",
+      "verified_date": "2026-10-30",
+      "note": "Alerts-only budgets do not automatically cap usage/spend."
+    },
+    {
+      "id": "CAP",
+      "url": "https://docs.cloud.google.com/billing/docs/how-to/budgets-spend-caps",
+      "verified_date": "2026-10-30",
+      "note": "Spend caps cover eligible services; persistent compute/storage and in-flight costs continue; verify eligibility and enforcement before relying on them."
+    }
+  ],
+  "rates": {
+    "gke_hour": {
+      "value": 0.1,
+      "source": "GKE",
+      "status": "verified"
+    },
+    "system_node_hour": {
+      "value": 0.08,
+      "source": "VM",
+      "status": "allowance"
+    },
+    "sandbox_node_hour": {
+      "value": 0.16,
+      "source": "VM",
+      "status": "allowance"
+    },
+    "sql_ha_cpu_hour": {
+      "value": 0.0826,
+      "source": "SQL",
+      "status": "verified"
+    },
+    "sql_ha_gib_hour": {
+      "value": 0.014,
+      "source": "SQL",
+      "status": "verified"
+    },
+    "sql_ha_ssd_gib_hour": {
+      "value": 0.000465753,
+      "source": "SQL",
+      "status": "verified"
+    },
+    "sql_backup_gib_hour": {
+      "value": 0.000109589,
+      "source": "SQL",
+      "status": "verified"
+    },
+    "run_cpu_second": {
+      "value": 1.8e-05,
+      "source": "RUN",
+      "status": "verified"
+    },
+    "run_gib_second": {
+      "value": 2e-06,
+      "source": "RUN",
+      "status": "verified"
+    },
+    "redis_gib_hour": {
+      "value": 0.064,
+      "source": "REDIS",
+      "status": "verified"
+    },
+    "object_gib_hour": {
+      "value": 2.7397e-05,
+      "source": "STORAGE",
+      "status": "verified"
+    },
+    "pubsub_tib": {
+      "value": 40,
+      "source": "QUEUE",
+      "status": "verified"
+    },
+    "log_gib": {
+      "value": 0.5,
+      "source": "LOG",
+      "status": "verified"
+    },
+    "peer_input_million": {
+      "value": 0.1,
+      "source": "OPENAI",
+      "status": "verified"
+    },
+    "peer_output_million": {
+      "value": 0.5,
+      "source": "OPENAI",
+      "status": "verified"
+    },
+    "review_input_million": {
+      "value": 2,
+      "source": "OPENAI",
+      "status": "verified"
+    },
+    "review_output_million": {
+      "value": 10,
+      "source": "OPENAI",
+      "status": "verified"
+    },
+    "stt_minute": {
+      "value": 0.003,
+      "source": "OPENAI",
+      "status": "verified_estimate"
+    },
+    "tts_minute": {
+      "value": 0.02,
+      "source": null,
+      "status": "allowance"
+    },
+    "case_reviewer_hour": {
+      "value": 50,
+      "source": null,
+      "status": "allowance"
+    },
+    "security_reviewer_hour": {
+      "value": 125,
+      "source": null,
+      "status": "allowance"
+    }
+  },
+  "workload": {
+    "dau_fraction": 0.2,
+    "sessions_per_dau": 1,
+    "session_minutes": 20,
+    "jobs_per_session": 6,
+    "job_runtime_seconds": 5,
+    "job_startup_seconds": 10,
+    "peak_multiplier": 10,
+    "utilization_target": 0.6,
+    "slot_cpu": 1,
+    "slot_gib": 0.5,
+    "slots_per_sandbox_node": 3,
+    "job_retry_multiplier": 1.1,
+    "durable_events_per_session": 60,
+    "peer_turns": 24,
+    "peer_input_per_turn": 3000,
+    "peer_output_per_turn": 180,
+    "semantic_calls": 1,
+    "semantic_input": 6000,
+    "semantic_output": 600,
+    "provider_usage_multiplier": 1.2,
+    "source_kib_per_session": 128,
+    "trace_mib_per_job": 2,
+    "trace_retention_days": 7,
+    "voice_input_minutes": 6,
+    "voice_output_minutes": 4
+  },
+  "common": {
+    "sql_cpu": 2,
+    "sql_gib": 8,
+    "sql_disk_gib": 50,
+    "sql_backup_gib": 50,
+    "redis_gib": 1,
+    "run_warm_instances": 2,
+    "run_cpu": 1,
+    "run_gib": 0.5,
+    "object_floor_gib": 20,
+    "logs_gib": 20,
+    "pubsub_kib_per_job_per_leg": 2,
+    "pubsub_legs": 2,
+    "contingency_fraction": 0.2,
+    "monthly_ceiling_proposed": 1500,
+    "daily_variable_ceiling_proposed": 10
+  },
+  "allowances_monthly": {
+    "node_disks": 30,
+    "network_egress_lb_nat_dns": 50,
+    "metrics_trace_extra_retention": 20,
+    "identity_secrets_kms_ci_registry": 50,
+    "restore_staging_window": 25
+  },
+  "scenarios": {
+    "limited_beta": {
+      "mau": 100,
+      "peer_fraction": 0.25,
+      "voice_fraction": 0,
+      "system_nodes": 1,
+      "sandbox_nodes_min": 0,
+      "sandbox_nodes_max": 1,
+      "sandbox_extra_node_hours": 120,
+      "gke_topology": "zonal; controller outage pauses new execution"
+    },
+    "controlled_beta": {
+      "mau": 500,
+      "peer_fraction": 1,
+      "voice_fraction": 0,
+      "system_nodes": 1,
+      "sandbox_nodes_min": 1,
+      "sandbox_nodes_max": 2,
+      "sandbox_extra_node_hours": 60,
+      "gke_topology": "zonal; controller outage pauses new execution"
+    },
+    "regional_warm": {
+      "mau": 500,
+      "peer_fraction": 1,
+      "voice_fraction": 0.25,
+      "system_nodes": 3,
+      "sandbox_nodes_min": 3,
+      "sandbox_nodes_max": 4,
+      "sandbox_extra_node_hours": 60,
+      "gke_topology": "regional; node counts are total across zones, not per-zone"
+    },
+    "scale_reference": {
+      "mau": 100000,
+      "peer_fraction": 1,
+      "voice_fraction": 0,
+      "system_nodes": 3,
+      "sandbox_nodes_min": 3,
+      "sandbox_nodes_max": 128,
+      "sandbox_extra_node_hours": 0,
+      "gke_topology": "reference workload only; fixed-service sizing invalid at scale"
+    }
+  },
+  "review_reserve": {
+    "cases": 30,
+    "reviews_per_case": 2,
+    "hours_per_review": 1.5,
+    "security_hours": 24,
+    "retest_hours": 8,
+    "contingency_fraction": 0.2
+  },
+  "approval": {
+    "budget_approved": false,
+    "finance_owner_name": null,
+    "shutdown_owner_name": null,
+    "backup_owner_name": null,
+    "region_approved": false,
+    "node_quote_verified": false
+  }
+}

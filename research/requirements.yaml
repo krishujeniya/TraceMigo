@@ -1,0 +1,150 @@
+# Requirement register: every source top-level heading has a source_heading and
+# a traceable implementation task. Requirements remain proposed until their
+# task acceptance evidence is recorded.
+schema_version: 1
+updated_utc: "2026-10-25T00:00:00Z"
+requirements:
+  - id: REQ-P-01
+    source_heading: "plan.md: Executive Summary"
+    owner_role: PRODUCT
+    tracker_tasks: [P00.01, P00.02, P08.03, P10.01, P12.04]
+    acceptance: "Scope, audience, independent-case count, stated limitations, and release criteria are represented in approved ADRs and tested delivery work."
+    release_scope: "Initial Python release"
+  - id: REQ-P-02
+    source_heading: "plan.md: Research Findings (with sources)"
+    owner_role: PRODUCT
+    tracker_tasks: [P00.01, P08.01, P08.03, P10.02, P10.04, P13.04]
+    acceptance: "Claims have evidence level, source, limitation, review date, and no unsupported efficacy or employer claim."
+    release_scope: "Initial Python release and public claims"
+  - id: REQ-P-03
+    source_heading: "plan.md: Competitor & Gap Analysis (GitHub/HuggingFace findings)"
+    owner_role: CONTENT
+    tracker_tasks: [P00.01, P00.03, P02.03, P10.01, P13.04, P14.01, P14.02, P14.03, P14.04, P14.05, P14.06]
+    acceptance: "Competitor and dataset claims are dated, licensing/provenance is reviewed, and public comparison copy avoids unsupported superiority claims."
+    release_scope: "Initial Python release"
+  - id: REQ-P-04
+    source_heading: "plan.md: Product Specification"
+    owner_role: ENG
+    tracker_tasks: [P00.02, P02.04, P03.01, P03.02, P03.03, P03.04, P04.01, P04.02, P04.03, P04.04, P06.01, P06.02, P06.03, P06.04, P08.01, P14.01]
+    acceptance: "Route, learning-mode, assessment, difficulty, content-count, and canonical-case contracts are implemented and checked."
+    release_scope: "Initial Python release"
+  - id: REQ-P-05
+    source_heading: "plan.md: AI Peer Design Principles"
+    owner_role: AI
+    tracker_tasks: [P07.01, P07.02, P07.03, P07.04, P08.01, P09.01, P09.02, P06.04]
+    acceptance: "Peer policy is versioned; deterministic controls retain scoring/disclosure authority; leakage and failure tests pass."
+    release_scope: "Initial Python release"
+  - id: REQ-P-06
+    source_heading: "plan.md: Engagement Psychology Design"
+    owner_role: PRODUCT
+    tracker_tasks: [P03.02, P03.03, P08.02, P08.03, P10.04, P13.04]
+    acceptance: "Finite, voluntary workflow and experiment instrumentation are implemented without unsupported behavioral claims."
+    release_scope: "Initial Python release"
+  - id: REQ-P-07
+    source_heading: "plan.md: Technical Architecture"
+    owner_role: ENG
+    tracker_tasks: [P00.02, P00.03, P00.04, P00.05, P01.01, P01.02, P01.03, P01.04, P02.01, P02.02, P02.03, P02.04, P03.02, P03.03, P04.01, P04.03, P05.01, P05.02, P05.03, P05.04, P05.05, P06.01, P06.02, P06.03, P07.01, P08.04, P09.01, P09.03, P11.01, P11.02, P11.03, P11.04, P11.05, P11.06, P14.06]
+    acceptance: "Trusted application, relational authority, private-content boundaries, isolated execution, reliability, privacy, and capacity controls have task-level evidence."
+    release_scope: "Initial Python release"
+  - id: REQ-P-08
+    source_heading: "plan.md: Codex Implementation Plan (phases)"
+    owner_role: ENG
+    tracker_tasks: [P01.01, P01.02, P01.03, P01.04, P11.05, P13.01, P13.02, P13.03, P13.04, P14.01, P14.02, P14.03, P14.04, P14.05, P14.06]
+    acceptance: "Repository contracts, reviewable task plans, scripts, migrations, and release protocol exist and are proven by actual checks."
+    release_scope: "Initial Python release"
+  - id: REQ-P-09
+    source_heading: "plan.md: Growth & Launch Strategy"
+    owner_role: PRODUCT
+    tracker_tasks: [P10.02, P10.03, P10.04, P12.01, P12.02, P12.03, P12.04, P13.03, P13.04]
+    acceptance: "Research, launch copy, channels, and commercial metrics use truthful claims and authorized external evidence."
+    release_scope: "Public launch"
+  - id: REQ-P-10
+    source_heading: "plan.md: Risks and Mitigations"
+    owner_role: SECURITY
+    tracker_tasks: [P00.03, P11.01, P11.02, P11.03, P11.04, P11.05, P11.06, P12.04, P13.01, P13.02, P13.03, P13.04]
+    acceptance: "Risk controls, residual-risk acceptance, incidents, and release checks have actual evidence and accountable reviewers."
+    release_scope: "Initial Python release"
+  - id: REQ-B-01
+    source_heading: "TraceMigo_Brand_Research.md: 1. Final recommendation"
+    owner_role: PRODUCT
+    tracker_tasks: [P00.01, P03.01, P03.02, P10.03]
+    acceptance: "Product spelling, tagline, category statement, and provisional identity are approved without claiming ownership before clearance."
+    release_scope: "Public launch"
+  - id: REQ-B-02
+    source_heading: "TraceMigo_Brand_Research.md: 2. Research scope and decision method"
+    owner_role: PRODUCT
+    tracker_tasks: [P00.01, P10.02]
+    acceptance: "Brand conclusions retain their evidence limits; no desk-research observation is presented as user-study evidence."
+    release_scope: "Public launch"
+  - id: REQ-B-03
+    source_heading: "TraceMigo_Brand_Research.md: 3. What naming psychology supports"
+    owner_role: PRODUCT
+    tracker_tasks: [P10.02, P12.03]
+    acceptance: "Public language makes only defensible, testable name claims and avoids neurological or conversion guarantees."
+    release_scope: "Public launch"
+  - id: REQ-B-04
+    source_heading: "TraceMigo_Brand_Research.md: 4. Candidate screening and reasons for the choice"
+    owner_role: PRODUCT
+    tracker_tasks: [P00.01, P10.03]
+    acceptance: "Candidate-selection evidence and dated conflict checks are retained; clearance is not inferred."
+    release_scope: "Public launch"
+  - id: REQ-B-05
+    source_heading: "TraceMigo_Brand_Research.md: 5. Availability: what was actually verified"
+    owner_role: PRODUCT
+    tracker_tasks: [P10.03]
+    acceptance: "Domain, account, recovery, and specialist-clearance evidence is recorded before launch use."
+    release_scope: "Public launch"
+  - id: REQ-B-06
+    source_heading: "TraceMigo_Brand_Research.md: 6. Visual identity specification"
+    owner_role: DESIGN
+    tracker_tasks: [P03.01, P09.05]
+    acceptance: "Reviewed vector masters, exports, font notices, contrast checks, and small-size pixel inspection meet the written brief."
+    release_scope: "Initial Python release"
+  - id: REQ-B-07
+    source_heading: "TraceMigo_Brand_Research.md: 7. Brand language and product naming"
+    owner_role: PRODUCT
+    tracker_tasks: [P03.02, P07.01, P07.02, P07.03, P07.04, P12.03]
+    acceptance: "Copy is calm, evidence-based, accessible, and clear about AI limits and independent status."
+    release_scope: "Initial Python release"
+  - id: REQ-B-08
+    source_heading: "TraceMigo_Brand_Research.md: 8. SEO and AI-search implementation"
+    owner_role: ENG
+    tracker_tasks: [P00.02, P03.02, P12.03]
+    acceptance: "Public metadata and structured data validate while private routes remain protected from indexing."
+    release_scope: "Public launch"
+  - id: REQ-B-09
+    source_heading: "TraceMigo_Brand_Research.md: 9. Pre-launch validation"
+    owner_role: PRODUCT
+    tracker_tasks: [P10.02, P10.03, P03.01, P12.03]
+    acceptance: "Name testing, clearance, ownership, assets, and public links receive real dated evidence."
+    release_scope: "Public launch"
+  - id: REQ-B-10
+    source_heading: "TraceMigo_Brand_Research.md: 10. Evidence ledger"
+    owner_role: PRODUCT
+    tracker_tasks: [P00.01, P10.03, P03.01]
+    acceptance: "Every identity/market source records URL, date, limitation, and review schedule; missing prompt history remains explicitly unavailable."
+    release_scope: "Initial Python release"
+  - id: REQ-A-01
+    source_heading: "planning/audit.md: A01-A04 planning-only and Git-state findings"
+    owner_role: ENG
+    tracker_tasks: [P01.01, P01.04]
+    acceptance: "A real versioned repository and clean bootstrap exist; planning remains private and application materials live outside planning/."
+    release_scope: "Development foundation"
+  - id: REQ-A-02
+    source_heading: "planning/audit.md: A05-A09 source, schema, route, and private-content contradictions"
+    owner_role: ENG
+    tracker_tasks: [P00.01, P00.02, P00.03, P02.01, P02.02, P02.03, P03.02]
+    acceptance: "ADRs resolve citations, vector scope, modes, routes, and privilege boundaries before dependent code."
+    release_scope: "Initial Python release"
+  - id: REQ-A-03
+    source_heading: "planning/audit.md: A10-A11 identity-board and prompt-history findings"
+    owner_role: DESIGN
+    tracker_tasks: [P03.01]
+    acceptance: "Written vector brief governs production assets and unavailable prompt history is not invented."
+    release_scope: "Initial Python release"
+  - id: REQ-A-04
+    source_heading: "planning/audit.md: A12-A16 sandbox, secrecy, budget, measurement, and external-dependency findings"
+    owner_role: SECURITY
+    tracker_tasks: [P00.04, P00.05, P02.04, P08.04, P10.02, P10.03, P11.01]
+    acceptance: "Effective controls, assessment secrecy, spend limits, definitions, and external approvals have dated evidence before gate approval."
+    release_scope: "Initial Python release and public launch"

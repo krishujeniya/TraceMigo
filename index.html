@@ -1,0 +1,3009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TraceMigo · Read code. Find the why.</title>
+  <meta name="description" content="TraceMigo is a code-comprehension practice platform. Read real Python code, commit to predictions, trace variable state line-by-line, and explain evidence.">
+  <meta name="theme-color" content="#142D34">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:title" content="TraceMigo · Read code. Find the why.">
+  <meta property="og:description" content="Python code-comprehension practice. Go beyond guessing the output. Follow state, explain decisions, and build clear mental models.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon using exact TraceMigo mirrored brand mark -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='28' fill='%23142D34'/%3E%3Cg fill='%23B8F2DF'%3E%3Cpath d='M28 100V28H40L56 50V70L40 48V100Z'/%3E%3Ccircle cx='34' cy='100' r='8'/%3E%3Cg transform='translate(128 0) scale(-1 1)'%3E%3Cpath d='M28 100V28H40L56 50V70L40 48V100Z'/%3E%3Ccircle cx='34' cy='100' r='8'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+
+  <script>
+    document.documentElement.classList.add('has-js');
+  </script>
+
+  <style>
+/*
+ * DECISIONS & OVERRULES STAMP (TraceMigo Identity Alignment):
+ * 1. Pinned TraceMigo palette: Ink #142D34 canvas, Teal #087F75, Mint #B8F2DF, Paper #F6F8F5, Coral #C64F34.
+ * 2. Exact TraceMigo geometry: Dual mirrored polygon glyphs with lower circular anchor nodes.
+ * 3. Flow aligned to TraceMigo core: Predict -> Trace -> Explain interactive loop with sessionStorage.
+ * 4. Concentric radii law: R_inner = R_outer - padding on all nested card controls.
+ * 5. Media-free construction: Canvas 2D trace particle field and inline SVGs; zero remote calls.
+ * 6. Accessibility & zero slop: WCAG 2.2 AA compliant with complete keyboard navigation.
+ */
+
+:root {
+  /* TraceMigo Primitives */
+  --brand-ink: #142D34;
+  --brand-teal: #087F75;
+  --brand-mint: #B8F2DF;
+  --brand-paper: #F6F8F5;
+  --brand-coral: #C64F34;
+  --brand-white: #FFFFFF;
+
+  /* Theme Tokens */
+  --bg: #142D34;
+  --surface: #1B3942;
+  --surface-2: #234853;
+  --paper: #F6F8F5;
+  --muted: #A1C4BC;
+  --accent: #B8F2DF;
+  --accent-dim: rgba(184, 242, 223, 0.28);
+  --teal: #087F75;
+  --coral: #C64F34;
+  --line: rgba(184, 242, 223, 0.16);
+  --scrim: rgba(20, 45, 52, 0.78);
+  --atmo-1: #1B3F45;
+  --atmo-2: #164E48;
+
+  /* Light Chapter (Principles Act 7) */
+  --ink-inverse: #142D34;
+  --muted-inverse: #2C515B;
+  --accent-inverse: #087F75;
+
+  /* Typography */
+  --font-ui: "Manrope", system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --font-code: ui-monospace, 'Cascadia Code', 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --text-hero: clamp(56px, 7.2vw, 112px);
+  --text-h2: clamp(40px, 4.8vw, 76px);
+  --text-h3: clamp(20px, 1.8vw, 24px);
+  --text-body: 15px;
+  --text-small: 13px;
+  --text-nav: 12px;
+  --text-label: 10px;
+  --text-legal: 12px;
+
+  /* Spacing & Radii (Concentric R_inner = R_outer - padding) */
+  --space-1: 4px; --space-2: 8px; --space-3: 16px; --space-4: 24px; --space-5: 36px;
+  --space-6: 48px; --space-7: 60px; --space-8: 80px; --space-9: 88px; --space-10: 120px; --space-11: 160px;
+  --r-sm: 4px; --r-md: 8px; --r-lg: 16px; --r-xl: 24px; --r-2xl: 32px; --r-pill: 9999px;
+  --pad: clamp(24px, 5.5vw, 100px);
+  --content-max: 1360px;
+
+  /* Motion */
+  --ease-primary: cubic-bezier(.165, .84, .44, 1);
+  --ease-expo: cubic-bezier(.19, 1, .22, 1);
+  --ease-playful: cubic-bezier(.34, 1.85, .64, 1);
+  --ease-reveal: cubic-bezier(.22, 1, .36, 1);
+  --dur-fast: 150ms; --dur-base: 250ms; --dur-slow: 450ms; --dur-scene: 700ms;
+  --blur-diffuse: 16px; --blur-glass: 16px; --blur-overlay: 24px;
+  --lift-hover: -2px; --lift-card: -4px; --press-scale: .98;
+
+  /* Layers & Focus */
+  --z-header: 50; --z-dropdown: 60; --z-overlay: 80; --z-toast: 90;
+  --focus-ring: 2px solid var(--accent); --focus-offset: 3px;
+}
+
+/* Base reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-ui);
+  background-color: var(--bg);
+  color: var(--paper);
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.65;
+  font-size: var(--text-body);
+  overflow-x: hidden;
+  background-color: var(--bg);
+  color: var(--paper);
+  position: relative;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-2);
+  border-radius: var(--r-sm);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--teal);
+}
+html {
+  scrollbar-color: var(--surface-2) var(--bg);
+  scrollbar-width: thin;
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+/* Skip link */
+.skip-link {
+  position: fixed;
+  top: var(--space-3);
+  left: var(--space-3);
+  background: var(--paper);
+  color: var(--bg);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--r-pill);
+  font-weight: 600;
+  font-size: var(--text-small);
+  z-index: 100;
+  transform: translateY(-200%);
+  transition: transform var(--dur-fast) var(--ease-primary);
+  text-decoration: none;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Scroll progress bar (S10) */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  z-index: calc(var(--z-header) + 10);
+  pointer-events: none;
+}
+
+/* Banner (Act 0, L5) */
+.banner {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  padding: var(--space-2) var(--pad);
+  text-align: center;
+  font-size: var(--text-small);
+  color: var(--muted);
+  position: relative;
+  z-index: var(--z-header);
+}
+.banner a {
+  color: var(--paper);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  transition: color var(--dur-fast), border-color var(--dur-fast);
+}
+.banner a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Site Header (Act 1, S12, L6) */
+.site-header {
+  position: sticky;
+  top: 0;
+  height: 86px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--pad);
+  z-index: var(--z-header);
+  background: transparent;
+  transition: background-color var(--dur-base) var(--ease-primary),
+              backdrop-filter var(--dur-base) var(--ease-primary),
+              border-color var(--dur-base) var(--ease-primary);
+  border-bottom: 1px solid transparent;
+}
+.site-header.scrolled {
+  background: rgba(20, 45, 52, 0.85);
+  backdrop-filter: blur(var(--blur-glass));
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  border-bottom: 1px solid var(--line);
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: var(--paper);
+}
+.brand-mark-svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+  color: var(--accent);
+}
+.brand-wordmark {
+  font-family: var(--font-ui);
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+.brand-tag {
+  font-size: 10px;
+  background: rgba(184, 242, 223, 0.12);
+  color: var(--accent);
+  padding: 2px 6px;
+  border-radius: var(--r-sm);
+  margin-left: var(--space-2);
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  position: relative;
+}
+.nav-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: var(--text-nav);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  padding: var(--space-1) 0;
+  position: relative;
+  transition: color var(--dur-base) var(--ease-primary);
+}
+.nav-link:hover {
+  color: var(--paper);
+}
+.nav-link.active {
+  color: var(--accent);
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-fast) var(--ease-primary);
+}
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Buttons and pills (P5, P6) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  font-size: var(--text-small);
+  font-weight: 600;
+  border-radius: var(--r-pill);
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform var(--dur-fast) var(--ease-primary),
+              background var(--dur-fast) var(--ease-primary),
+              color var(--dur-fast) var(--ease-primary),
+              border-color var(--dur-fast) var(--ease-primary),
+              box-shadow var(--dur-fast) var(--ease-primary);
+  min-height: 44px;
+  min-width: 44px;
+  font-family: inherit;
+  line-height: 1;
+}
+.btn:hover {
+  transform: translateY(var(--lift-hover));
+}
+.btn:active {
+  transform: scale(var(--press-scale));
+}
+.btn-primary {
+  background: var(--accent);
+  color: var(--brand-ink);
+  border-color: var(--accent);
+}
+.btn-primary:hover {
+  background: var(--brand-white);
+  border-color: var(--brand-white);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--paper);
+  border-color: var(--line);
+}
+.btn-secondary:hover {
+  border-color: var(--accent);
+  background: var(--surface);
+}
+.btn-coral {
+  background: var(--coral);
+  color: var(--brand-white);
+  border-color: var(--coral);
+}
+.btn-coral:hover {
+  background: #d65b40;
+}
+.btn-icon {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--paper);
+}
+.btn-icon:hover {
+  border-color: var(--muted);
+  background: var(--surface-2);
+}
+
+/* Mobile drawer (O1) */
+.menu-toggle {
+  display: none;
+}
+.mobile-drawer {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;
+  }
+  .menu-toggle {
+    display: inline-flex;
+  }
+  .mobile-drawer {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(20, 45, 52, 0.97);
+    backdrop-filter: blur(var(--blur-overlay));
+    -webkit-backdrop-filter: blur(var(--blur-overlay));
+    z-index: var(--z-overlay);
+    padding: var(--space-8) var(--pad) var(--space-6);
+    transform: translateY(-100%);
+    transition: transform var(--dur-slow) var(--ease-expo);
+    overflow-y: auto;
+  }
+  .mobile-drawer.open {
+    transform: translateY(0);
+  }
+  .mobile-drawer-close {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--pad);
+  }
+  .mobile-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    margin-top: var(--space-6);
+    list-style: none;
+  }
+  .mobile-nav-link {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--paper);
+    text-decoration: none;
+    transition: color var(--dur-fast);
+  }
+  .mobile-nav-link:hover {
+    color: var(--accent);
+  }
+  .mobile-drawer-cta {
+    margin-top: var(--space-8);
+  }
+}
+
+/* Common Section Layout */
+section {
+  padding: var(--space-10) var(--pad);
+  max-width: var(--content-max);
+  margin: 0 auto;
+  position: relative;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-label);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--space-3);
+  font-weight: 700;
+}
+.eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+}
+
+.headline-h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+  font-weight: normal;
+  color: var(--paper);
+  text-wrap: balance;
+  margin-bottom: var(--space-4);
+}
+
+.subcopy {
+  color: var(--muted);
+  font-size: var(--text-body);
+  max-width: 68ch;
+  line-height: 1.65;
+}
+
+.accent-word {
+  color: var(--accent);
+  font-style: italic;
+}
+
+/* Hero Section (Act 2, S9, L1-L4, L7, S13) */
+.hero-scroll-container {
+  position: relative;
+  height: 200svh;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+@media (max-width: 700px) {
+  .hero-scroll-container {
+    height: 190svh;
+  }
+}
+
+.hero-sticky-frame {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--pad);
+}
+
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: auto;
+}
+
+/* Canvas Fallback Layer */
+.hero-canvas-fallback {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  overflow: hidden;
+}
+.engine-failed .hero-canvas-fallback {
+  display: block;
+}
+.fallback-ellipse {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.32;
+}
+.fallback-ellipse-1 {
+  width: 620px;
+  height: 380px;
+  top: 15%;
+  right: -80px;
+  background: var(--teal);
+  transform: rotate(-25deg);
+}
+.fallback-ellipse-2 {
+  width: 480px;
+  height: 300px;
+  top: 35%;
+  right: 8%;
+  background: var(--accent);
+  opacity: 0.2;
+  transform: rotate(15deg);
+}
+.fallback-ellipse-3 {
+  width: 420px;
+  height: 260px;
+  top: 55%;
+  right: 18%;
+  background: var(--surface-2);
+  transform: rotate(-10deg);
+}
+
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(20,45,52,0.92) 0%, rgba(20,45,52,0.55) 60%, rgba(20,45,52,0.15) 100%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hero-content-wrapper {
+  position: relative;
+  max-width: var(--content-max);
+  width: 100%;
+  margin: 0 auto;
+  pointer-events: none;
+}
+
+.hero-phase {
+  pointer-events: auto;
+  max-width: 720px;
+}
+
+/* Phase 1: Intro */
+.hero-phase-1 {
+  transition: opacity var(--dur-slow) var(--ease-primary),
+              transform var(--dur-slow) var(--ease-primary);
+}
+.hero-h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  line-height: 1.0;
+  letter-spacing: -0.055em;
+  font-weight: normal;
+  margin-bottom: var(--space-4);
+  text-wrap: balance;
+}
+
+.hero-sub {
+  font-size: clamp(16px, 1.8vw, 20px);
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: var(--space-6);
+  max-width: 580px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+/* Phase 2: Journey arrival */
+.hero-phase-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity var(--dur-slow) var(--ease-primary),
+              transform var(--dur-slow) var(--ease-primary);
+}
+.hero-phase-2.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Hero Controls: Pause & Mode (R11, R12, O6) */
+.hero-controls {
+  position: absolute;
+  bottom: var(--space-6);
+  right: var(--pad);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  z-index: 10;
+}
+.hero-control-btn {
+  background: rgba(27, 57, 66, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  border-radius: var(--r-pill);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-nav);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  transition: all var(--dur-fast);
+}
+.hero-control-btn:hover {
+  color: var(--paper);
+  border-color: var(--accent);
+}
+.hero-control-btn[aria-pressed="true"] {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Counter & Journey Progress */
+.hero-progress-counter {
+  position: absolute;
+  bottom: var(--space-6);
+  left: var(--pad);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-nav);
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums;
+  z-index: 10;
+}
+.counter-bar {
+  width: 60px;
+  height: 2px;
+  background: var(--line);
+  position: relative;
+  overflow: hidden;
+}
+.counter-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: var(--accent);
+  transform-origin: 0 50%;
+  transform: scaleX(0.05);
+}
+
+/* Scroll Cue */
+.scroll-cue {
+  position: absolute;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--muted);
+  font-size: var(--text-label);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  z-index: 10;
+  pointer-events: none;
+  animation: cueBounce 1.8s ease-in-out infinite;
+  transition: opacity var(--dur-base);
+}
+@keyframes cueBounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 6px); }
+}
+
+/* Manifesto Section (Act 3, A5, R15) */
+.manifesto-section {
+  text-align: center;
+  padding-top: var(--space-11);
+  padding-bottom: var(--space-11);
+}
+.manifesto-statement {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 54px);
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+  color: var(--paper);
+  max-width: 920px;
+  margin: var(--space-4) auto var(--space-8);
+  text-wrap: balance;
+}
+.manifesto-chips {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-9);
+}
+.floating-chip {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--r-pill);
+  font-size: var(--text-small);
+  color: var(--paper);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  animation: chipFloat 7s ease-in-out infinite alternate;
+}
+.floating-chip:nth-child(2) {
+  animation-delay: -2.3s;
+}
+.floating-chip:nth-child(3) {
+  animation-delay: -4.6s;
+}
+@keyframes chipFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-16px); }
+}
+
+.manifesto-orbit {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.manifesto-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.draw-stroke {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  transition: stroke-dashoffset 1.4s var(--ease-primary);
+}
+.is-revealed .draw-stroke {
+  stroke-dashoffset: 0;
+}
+
+/* Method Bento Grid (Act 4, P4) */
+.method-section {
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-10);
+}
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+.bento-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  padding: var(--space-6);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform var(--dur-base) var(--ease-primary),
+              border-color var(--dur-base) var(--ease-primary);
+}
+.bento-card:hover, .bento-card:focus-within {
+  transform: translateY(var(--lift-card));
+  border-color: var(--accent);
+}
+.bento-card-predict {
+  grid-column: span 6;
+  min-height: 380px;
+}
+.bento-card-trace {
+  grid-column: span 6;
+  min-height: 380px;
+}
+.bento-card-explain {
+  grid-column: span 12;
+  min-height: 300px;
+}
+
+@media (max-width: 900px) {
+  .bento-card-predict, .bento-card-trace {
+    grid-column: span 12;
+  }
+}
+
+.bento-card-header {
+  margin-bottom: var(--space-6);
+}
+.bento-number {
+  font-size: var(--text-label);
+  letter-spacing: 0.13em;
+  color: var(--accent);
+  margin-bottom: var(--space-2);
+  font-weight: 700;
+}
+.bento-title {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.5vw, 32px);
+  color: var(--paper);
+  font-weight: normal;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-2);
+}
+.bento-desc {
+  color: var(--muted);
+  font-size: var(--text-body);
+  max-width: 48ch;
+}
+.bento-art {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bento-art svg {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Interactive Trace Lab Section (Act 5, C7-C9, S6, R15) */
+.tracelab-section {
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-10);
+}
+.tab-list {
+  display: inline-flex;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  padding: 4px;
+  gap: 4px;
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-8);
+  flex-wrap: wrap;
+}
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: var(--text-small);
+  font-weight: 600;
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition: color var(--dur-fast), background var(--dur-fast);
+}
+.tab-btn:hover {
+  color: var(--paper);
+}
+.tab-btn[aria-selected="true"] {
+  background: var(--surface-2);
+  color: var(--accent);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.tracelab-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-2xl);
+  padding: var(--space-8);
+  position: relative;
+  overflow: hidden;
+  min-height: 480px;
+}
+.tracelab-watermark {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-family: var(--font-display);
+  font-size: clamp(48px, 10vw, 140px);
+  line-height: 1;
+  color: rgba(184, 242, 223, 0.04);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  pointer-events: none;
+  user-select: none;
+}
+
+.code-window-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 900px) {
+  .code-window-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.code-editor-box {
+  background: var(--brand-ink);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+.window-topbar {
+  background: rgba(20, 45, 52, 0.9);
+  border-bottom: 1px solid var(--line);
+  padding: var(--space-2) var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--text-nav);
+  color: var(--muted);
+  font-family: var(--font-code);
+}
+.window-dots {
+  display: flex;
+  gap: 6px;
+}
+.window-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(184, 242, 223, 0.25);
+}
+.code-pre {
+  font-family: var(--font-code);
+  font-size: 13px;
+  padding: var(--space-4);
+  line-height: 1.8;
+  color: var(--paper);
+  overflow-x: auto;
+}
+.code-line {
+  display: block;
+  padding: 0 4px;
+  border-radius: var(--r-sm);
+  transition: background var(--dur-fast);
+}
+.code-line.active-line {
+  background: rgba(184, 242, 223, 0.15);
+  border-left: 2px solid var(--accent);
+}
+.line-num {
+  color: rgba(161, 196, 188, 0.4);
+  margin-right: 12px;
+  user-select: none;
+}
+.kw { color: var(--accent); font-weight: 600; }
+.cm { color: rgba(161, 196, 188, 0.5); font-style: italic; }
+.num { color: #f1b392; }
+
+/* Interactive Step Inspector inside Lab */
+.inspector-box {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.choice-row {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+.choice-btn {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--paper);
+  border-radius: var(--r-md);
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-code);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--dur-fast);
+}
+.choice-btn:hover {
+  border-color: var(--accent);
+}
+.choice-btn.selected-correct {
+  background: rgba(8, 127, 117, 0.4);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.choice-btn.selected-wrong {
+  background: rgba(198, 79, 52, 0.3);
+  border-color: var(--coral);
+  color: #ff9d85;
+}
+
+.trace-step-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line);
+}
+.step-counter {
+  font-size: var(--text-small);
+  color: var(--muted);
+  font-family: var(--font-code);
+}
+
+.state-badge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  background: var(--brand-ink);
+  padding: var(--space-3);
+  border-radius: var(--r-md);
+  font-family: var(--font-code);
+  font-size: 12px;
+}
+.state-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.state-label {
+  color: var(--muted);
+  font-size: 10px;
+  text-transform: uppercase;
+}
+.state-val {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Showcase Section: Warmup Catalog (Act 6, C1-C5, R5, R6, M5, A8) */
+.warmups-section {
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-10);
+  position: relative;
+}
+.warmups-filters {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+}
+.filter-chip {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--r-pill);
+  font-size: var(--text-small);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all var(--dur-fast);
+}
+.filter-chip:hover {
+  color: var(--paper);
+  border-color: var(--muted);
+}
+.filter-chip[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--brand-ink);
+  border-color: var(--accent);
+}
+
+.warmups-rail-container {
+  position: relative;
+  width: 100%;
+}
+.warmups-rail {
+  display: flex;
+  gap: var(--space-4);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 var(--pad);
+  padding: var(--space-4) 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  mask-image: linear-gradient(90deg, transparent 0%, black 3%, black 97%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 3%, black 97%, transparent 100%);
+}
+.warmups-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.warmup-card {
+  flex: 0 0 clamp(320px, 45vw, 540px);
+  scroll-snap-align: start;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 380px;
+  transition: transform var(--dur-slow) var(--ease-primary),
+              border-color var(--dur-fast);
+  cursor: pointer;
+}
+.warmup-card:hover {
+  border-color: var(--accent);
+  transform: translateY(var(--lift-card));
+}
+.warmup-card.active {
+  border-color: var(--accent);
+}
+
+.card-tag-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-3);
+}
+.card-badge {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(184, 242, 223, 0.12);
+  padding: 2px 8px;
+  border-radius: var(--r-sm);
+  font-weight: 700;
+}
+.card-topic {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.showcase-empty-state {
+  display: none;
+  background: var(--surface);
+  border: 1px dashed var(--line);
+  border-radius: var(--r-xl);
+  padding: var(--space-8);
+  text-align: center;
+  color: var(--muted);
+  width: 100%;
+}
+.showcase-empty-state.visible {
+  display: block;
+}
+
+.warmups-nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-6);
+}
+.rail-progress-bar {
+  flex: 1;
+  max-width: 240px;
+  height: 2px;
+  background: var(--line);
+  border-radius: var(--r-pill);
+  position: relative;
+  overflow: hidden;
+}
+.rail-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 25%;
+  background: var(--accent);
+  transition: transform var(--dur-base) var(--ease-primary);
+  transform-origin: left;
+}
+.warmups-arrows {
+  display: flex;
+  gap: var(--space-2);
+}
+
+/* Principles Section: The Inverted Light Chapter (Act 7) */
+.principles-section-wrapper {
+  background: var(--brand-paper);
+  color: var(--brand-ink);
+  width: 100%;
+  margin-top: var(--space-11);
+  margin-bottom: var(--space-11);
+  padding: var(--space-11) 0;
+}
+.principles-container {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+.principles-eyebrow {
+  color: var(--brand-teal);
+}
+.principles-headline {
+  color: var(--brand-ink);
+}
+.principles-headline .accent-word {
+  color: var(--brand-teal);
+}
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-9);
+}
+@media (max-width: 900px) {
+  .principles-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.principle-item {
+  border-top: 1px solid rgba(20, 45, 52, 0.18);
+  padding-top: var(--space-5);
+}
+.principle-num {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--brand-teal);
+  margin-bottom: var(--space-2);
+  font-weight: 700;
+}
+.principle-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 1.2;
+  margin-bottom: var(--space-3);
+  color: var(--brand-ink);
+}
+.principle-desc {
+  font-size: var(--text-body);
+  color: var(--muted-inverse);
+  line-height: 1.6;
+}
+
+/* Architecture & Deployment Tiers (Act 8, C12) */
+.plans-section {
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-10);
+}
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+@media (max-width: 900px) {
+  .plans-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.plan-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform var(--dur-base) var(--ease-primary),
+              border-color var(--dur-base) var(--ease-primary);
+}
+.plan-card:hover {
+  transform: translateY(var(--lift-card));
+  border-color: var(--accent);
+}
+.plan-header {
+  margin-bottom: var(--space-6);
+}
+.plan-name {
+  font-family: var(--font-display);
+  font-size: 24px;
+  margin-bottom: var(--space-2);
+}
+.plan-price {
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 700;
+  color: var(--paper);
+  margin: var(--space-3) 0;
+  font-family: var(--font-ui);
+}
+.plan-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+.plan-feature-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-small);
+  color: var(--muted);
+}
+.check-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.plan-footnote {
+  text-align: center;
+  margin-top: var(--space-6);
+  font-size: var(--text-legal);
+  color: var(--muted);
+}
+
+/* FAQ Accordion (Act 9, C13) */
+.faq-section {
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-10);
+  max-width: 860px;
+}
+.faq-list {
+  margin-top: var(--space-8);
+  display: flex;
+  flex-direction: column;
+}
+.faq-item {
+  border-top: 1px solid var(--line);
+}
+.faq-item:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.faq-trigger {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: var(--space-5) 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: clamp(18px, 1.8vw, 22px);
+  cursor: pointer;
+  transition: color var(--dur-fast);
+}
+.faq-trigger:hover {
+  color: var(--accent);
+}
+.faq-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform var(--dur-base) var(--ease-primary);
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.faq-trigger[aria-expanded="true"] .faq-icon {
+  transform: rotate(45deg);
+  color: var(--accent);
+}
+.faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 300ms var(--ease-primary);
+  overflow: hidden;
+}
+.faq-panel[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+.faq-panel-inner {
+  min-height: 0;
+  padding-bottom: var(--space-5);
+  color: var(--muted);
+  font-size: var(--text-body);
+  line-height: 1.65;
+}
+
+/* Contact & Footer (Act 10, S7, S8, R15) */
+.contact-section {
+  padding-top: var(--space-11);
+  padding-bottom: var(--space-11);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.contact-arcs {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.25;
+}
+.contact-content {
+  position: relative;
+  z-index: 1;
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: var(--space-8) var(--pad);
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  font-size: var(--text-legal);
+  color: var(--muted);
+}
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.footer-link {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color var(--dur-fast);
+}
+.footer-link:hover {
+  color: var(--paper);
+}
+
+/* Interactive Practice Modal (Act 11, O3, T5, R14) */
+dialog.practice-dialog {
+  margin: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-2xl);
+  padding: var(--space-8);
+  max-width: 600px;
+  width: calc(100% - 32px);
+  color: var(--paper);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.7);
+  z-index: var(--z-overlay);
+}
+dialog.practice-dialog::backdrop {
+  background: rgba(20, 45, 52, 0.8);
+  backdrop-filter: blur(var(--blur-overlay));
+  -webkit-backdrop-filter: blur(var(--blur-overlay));
+}
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+.dialog-title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: normal;
+}
+.dialog-close {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: var(--space-1);
+  display: inline-flex;
+}
+.dialog-close:hover {
+  color: var(--paper);
+}
+.dialog-body {
+  margin-bottom: var(--space-6);
+  color: var(--muted);
+  font-size: var(--text-body);
+  line-height: 1.6;
+}
+.dialog-status-box {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: var(--space-4);
+  margin-top: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--text-small);
+}
+.dialog-status-text {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Toast (O5, R16) */
+.toast-container {
+  position: fixed;
+  bottom: var(--space-6);
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--accent);
+  color: var(--brand-ink);
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--r-pill);
+  font-size: var(--text-small);
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  z-index: var(--z-toast);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform var(--dur-base) var(--ease-expo), opacity var(--dur-base);
+}
+.toast-container.visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* Revealed States for Scroll (S1-S4) */
+html.has-js [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--dur-slow) var(--ease-reveal),
+              transform var(--dur-slow) var(--ease-reveal);
+}
+html.has-js [data-reveal].is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reduced Motion (WCAG 2.2 AA) */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .scroll-progress, .scroll-cue, .floating-chip {
+    animation: none !important;
+    display: none;
+  }
+  html.has-js [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .hero-phase-1, .hero-phase-2 {
+    transition: none !important;
+  }
+}
+
+body.reduce-motion-active * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Print styles */
+@media print {
+  .hero-canvas, .scroll-progress, .hero-controls, .btn, .banner, .site-header {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+}
+  </style>
+</head>
+<body>
+  <!-- Accessible Skip Link -->
+  <a href="#how-it-works" class="skip-link">Skip to content</a>
+
+  <!-- Top Scroll Progress Bar (S10) -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Act 0: Banner (L5) -->
+  <aside class="banner" role="region" aria-label="Project Status Notice">
+    TraceMigo is a local browser-only practice preview — explore warmups without an account <a href="#warmups">→</a>
+  </aside>
+
+  <!-- Act 1: Site Header (S12, L6) -->
+  <header class="site-header" id="site-header">
+    <a href="#top" class="brand-lockup" aria-label="TraceMigo Home">
+      <!-- TraceMigo exact deterministic SVG mark -->
+      <svg class="brand-mark-svg" viewBox="0 0 128 128" aria-hidden="true" fill="currentColor">
+        <path d="M28 100V28H40L56 50V70L40 48V100Z"/>
+        <circle cx="34" cy="100" r="8"/>
+        <g transform="translate(128 0) scale(-1 1)">
+          <path d="M28 100V28H40L56 50V70L40 48V100Z"/>
+          <circle cx="34" cy="100" r="8"/>
+        </g>
+      </svg>
+      <span class="brand-wordmark">TraceMigo</span>
+      <span class="brand-tag">PREVIEW</span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Primary Navigation">
+      <a href="#how-it-works" class="nav-link" data-nav="how-it-works">Method</a>
+      <a href="#tracelab" class="nav-link" data-nav="tracelab">Trace Lab</a>
+      <a href="#warmups" class="nav-link" data-nav="warmups">Warmups</a>
+      <a href="#principles" class="nav-link" data-nav="principles">Principles</a>
+      <a href="#faq" class="nav-link" data-nav="faq">FAQ</a>
+    </nav>
+
+    <div class="header-actions">
+      <button type="button" class="btn btn-primary" id="open-dialog-header">Start warmup →</button>
+      <button type="button" class="btn btn-icon menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Open menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer (O1) -->
+  <div class="mobile-drawer" id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <button type="button" class="btn btn-icon mobile-drawer-close" id="mobile-drawer-close" aria-label="Close menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <ul class="mobile-nav-list">
+      <li><a href="#how-it-works" class="mobile-nav-link">Method</a></li>
+      <li><a href="#tracelab" class="mobile-nav-link">Trace Lab</a></li>
+      <li><a href="#warmups" class="mobile-nav-link">Warmups</a></li>
+      <li><a href="#principles" class="mobile-nav-link">Principles</a></li>
+      <li><a href="#faq" class="mobile-nav-link">FAQ</a></li>
+    </ul>
+    <div class="mobile-drawer-cta">
+      <button type="button" class="btn btn-primary" style="width: 100%;" id="open-dialog-mobile">Start warmup →</button>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- Act 2: Hero Section (200svh sticky frame, trace particle river, 2-phase scroll) -->
+    <div class="hero-scroll-container" id="top">
+      <div class="hero-sticky-frame" id="hero-sticky-frame">
+        <!-- TraceMigo Canvas Particle Field -->
+        <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+
+        <!-- Static Fallback if Canvas context fails -->
+        <div class="hero-canvas-fallback" aria-hidden="true">
+          <div class="fallback-ellipse fallback-ellipse-1"></div>
+          <div class="fallback-ellipse fallback-ellipse-2"></div>
+          <div class="fallback-ellipse fallback-ellipse-3"></div>
+        </div>
+
+        <div class="hero-scrim"></div>
+
+        <div class="hero-content-wrapper">
+          <!-- Phase 1: Intro -->
+          <div class="hero-phase hero-phase-1" id="hero-phase-1">
+            <span class="eyebrow"><span class="eyebrow-dot"></span> Python · code-comprehension practice</span>
+            <h1 class="hero-h1">Read the code.<br />Find the <span class="accent-word">why.</span></h1>
+            <p class="hero-sub">Go beyond guessing the output. Follow the state, explain the decisions, and build a clearer picture of unfamiliar code.</p>
+            <div class="hero-actions">
+              <a href="#tracelab" class="btn btn-primary">Try interactive warmup →</a>
+              <a href="#warmups" class="btn btn-secondary">Browse catalog ↗</a>
+            </div>
+            <p style="font-size: 12px; color: var(--muted); margin-top: 14px;">Two short examples. No account needed. Tab-local progress.</p>
+          </div>
+
+          <!-- Phase 2: Journey -->
+          <div class="hero-phase hero-phase-2" id="hero-phase-2" aria-hidden="true">
+            <span class="eyebrow"><span class="eyebrow-dot"></span> A LITTLE LESS GUESSING</span>
+            <h2 class="headline-h2">Commit to a prediction.<br /><span class="accent-word">Follow the evidence.</span></h2>
+            <p class="hero-sub">Step through prerecorded traces line by line. Inspect every mutation as it occurs before comparing your mental model with reality.</p>
+          </div>
+        </div>
+
+        <!-- Progress Counter & Bar -->
+        <div class="hero-progress-counter" aria-hidden="true">
+          <span id="counter-num">01</span>
+          <div class="counter-bar">
+            <div class="counter-fill" id="counter-fill"></div>
+          </div>
+          <span>02</span>
+        </div>
+
+        <!-- Hero Canvas Controls (R11, R12, O6) -->
+        <div class="hero-controls">
+          <button type="button" class="hero-control-btn" id="field-pause-btn" aria-pressed="false" title="Freeze autonomous particle motion">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            <span id="field-pause-text">Motion</span>
+          </button>
+          <button type="button" class="hero-control-btn" id="field-mode-btn" aria-pressed="false" title="Toggle flow drift or state halo formation">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+            <span id="field-mode-text">Flow</span>
+          </button>
+        </div>
+
+        <!-- Scroll Cue (L7, S13) -->
+        <div class="scroll-cue" id="scroll-cue" aria-hidden="true">
+          <span>Scroll to step</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Act 3: Manifesto (A5, R15) -->
+    <section class="manifesto-section" id="manifesto" data-reveal>
+      <span class="eyebrow"><span class="eyebrow-dot"></span> A DIFFERENT STARTING POINT</span>
+      <h2 class="manifesto-statement">Understanding starts before you press <span class="accent-word">run.</span></h2>
+      <div class="manifesto-chips">
+        <span class="floating-chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          Predict before observing
+        </span>
+        <span class="floating-chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Line-by-line state trace
+        </span>
+        <span class="floating-chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Zero guessing
+        </span>
+      </div>
+      <div class="manifesto-orbit">
+        <svg class="manifesto-svg" viewBox="0 0 400 200" aria-hidden="true">
+          <ellipse cx="200" cy="100" rx="160" ry="70" fill="none" stroke="rgba(184,242,223,0.18)" stroke-width="1.5" class="draw-stroke"/>
+          <ellipse cx="200" cy="100" rx="110" ry="45" fill="none" stroke="var(--accent)" stroke-width="1.5" class="draw-stroke"/>
+          <circle cx="200" cy="100" r="5" fill="var(--paper)"/>
+          <circle cx="90" cy="100" r="4" fill="var(--coral)"/>
+          <circle cx="310" cy="100" r="4" fill="var(--accent)"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Act 4: The 3-Step Method Bento (P4) -->
+    <section class="method-section" id="how-it-works" data-reveal>
+      <span class="eyebrow"><span class="eyebrow-dot"></span> THE THREE-STEP METHOD</span>
+      <h2 class="headline-h2">Three steps to a clearer <span class="accent-word">mental model.</span></h2>
+      <p class="subcopy">Take your time. The useful part is the reasoning. TraceMigo structures practice so you verify why lines behave the way they do.</p>
+
+      <div class="bento-grid">
+        <!-- 01 PREDICT -->
+        <article class="bento-card bento-card-predict" data-card>
+          <div class="bento-card-header">
+            <div class="bento-number">01 / PREDICT</div>
+            <h3 class="bento-title">Commit to an answer.</h3>
+            <p class="bento-desc">Read a small piece of code and decide what you expect it to do before seeing the trace. Forming a clear hypothesis makes differences memorable.</p>
+          </div>
+          <div class="bento-art" aria-hidden="true">
+            <svg viewBox="0 0 320 140" fill="none" stroke="currentColor">
+              <rect x="30" y="30" width="80" height="80" rx="12" stroke="rgba(184,242,223,0.2)" stroke-width="1.5"/>
+              <rect x="120" y="30" width="80" height="80" rx="12" stroke="var(--accent)" stroke-width="2"/>
+              <rect x="210" y="30" width="80" height="80" rx="12" stroke="rgba(184,242,223,0.2)" stroke-width="1.5"/>
+              <text x="160" y="78" fill="var(--paper)" font-family="monospace" font-size="20" font-weight="bold" text-anchor="middle">7 ?</text>
+            </svg>
+          </div>
+        </article>
+
+        <!-- 02 TRACE -->
+        <article class="bento-card bento-card-trace" data-card>
+          <div class="bento-card-header">
+            <div class="bento-number">02 / TRACE</div>
+            <h3 class="bento-title">Watch the state change.</h3>
+            <p class="bento-desc">Step through a prerecorded trace. See which values change, which stay put, and examine each condition evaluation.</p>
+          </div>
+          <div class="bento-art" aria-hidden="true">
+            <svg viewBox="0 0 320 140" fill="none" stroke="currentColor">
+              <line x1="40" y1="70" x2="280" y2="70" stroke="rgba(184,242,223,0.3)" stroke-width="2"/>
+              <circle cx="80" cy="70" r="10" fill="var(--surface)" stroke="var(--accent)" stroke-width="2"/>
+              <circle cx="160" cy="70" r="14" fill="var(--accent)" stroke="var(--paper)" stroke-width="2"/>
+              <circle cx="240" cy="70" r="10" fill="var(--surface)" stroke="var(--coral)" stroke-width="2"/>
+              <path d="M160 35 L160 50" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </article>
+
+        <!-- 03 EXPLAIN -->
+        <article class="bento-card bento-card-explain" data-card>
+          <div class="bento-card-header">
+            <div class="bento-number">03 / EXPLAIN</div>
+            <h3 class="bento-title">Connect cause and effect.</h3>
+            <p class="bento-desc">Compare your prediction with the evidence and put the key idea into your own words. Articulating the mechanism turns a lucky guess into durable knowledge.</p>
+          </div>
+          <div class="bento-art" aria-hidden="true">
+            <svg viewBox="0 0 600 120" fill="none" stroke="currentColor">
+              <path d="M40 70 Q 180 20, 300 70 T 560 50" stroke="var(--accent)" stroke-width="2" class="draw-stroke"/>
+              <circle cx="40" cy="70" r="6" fill="var(--paper)"/>
+              <circle cx="300" cy="70" r="6" fill="var(--coral)"/>
+              <circle cx="560" cy="50" r="6" fill="var(--accent)"/>
+            </svg>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Act 5: Interactive Trace Lab (C7-C9, S6, R15) -->
+    <section class="tracelab-section" id="tracelab" data-reveal>
+      <span class="eyebrow"><span class="eyebrow-dot"></span> INTERACTIVE WARMUP LAB</span>
+      <h2 class="headline-h2">Step through the code. <span class="accent-word">Observe the state.</span></h2>
+      <p class="subcopy">Practice the complete TraceMigo flow right here. Commit to your prediction, then step line-by-line through the authored trace.</p>
+
+      <div class="tab-list" role="tablist" aria-label="Warmup Exercises">
+        <button type="button" class="tab-btn" role="tab" id="tab-running-total" aria-selected="true" aria-controls="panel-lab" tabindex="0">running_total.py</button>
+        <button type="button" class="tab-btn" role="tab" id="tab-list-references" aria-selected="false" aria-controls="panel-lab" tabindex="-1">list_references.py</button>
+      </div>
+
+      <div class="tracelab-panel" id="tracelab-panel">
+        <div class="tracelab-watermark" id="lab-watermark" aria-hidden="true">RUNNING TOTAL</div>
+
+        <div class="code-window-grid">
+          <!-- Code Editor View -->
+          <div class="code-editor-box">
+            <div class="window-topbar">
+              <div class="window-dots">
+                <span class="window-dot"></span>
+                <span class="window-dot"></span>
+                <span class="window-dot"></span>
+              </div>
+              <span id="lab-filename">running_total.py</span>
+              <span style="color: var(--accent);">PYTHON 3.13</span>
+            </div>
+            <pre class="code-pre" id="code-content"></pre>
+          </div>
+
+          <!-- Step & State Inspector -->
+          <div class="inspector-box">
+            <div>
+              <span class="card-badge" id="lab-topic-badge">LOOPS & CONDITIONS</span>
+              <h3 style="font-family: var(--font-display); font-size: 22px; margin-top: 8px;" id="lab-question-title">What is the final total?</h3>
+              <p class="subcopy" style="font-size: 13px; margin-top: 6px;" id="lab-prompt-desc">The loop visits all three values. Which ones change the total?</p>
+
+              <!-- Prediction Choices -->
+              <div class="choice-row" id="lab-choices"></div>
+
+              <!-- State Table Display -->
+              <div class="state-badge-grid" id="state-badges"></div>
+
+              <!-- Trace Detail Note -->
+              <div style="margin-top: 16px; padding: 12px; background: rgba(20,45,52,0.6); border-radius: var(--r-md); font-size: 13px; color: var(--paper);" id="trace-step-detail">
+                Select a prediction above to commit, then use Step to trace execution.
+              </div>
+            </div>
+
+            <!-- Trace Stepper Bar -->
+            <div class="trace-step-controls">
+              <div class="step-counter" id="step-counter-text">Line 2 · Ready</div>
+              <div style="display: flex; gap: 8px;">
+                <button type="button" class="btn btn-secondary" id="step-prev-btn" style="padding: 6px 12px; min-height: 36px; font-size: 12px;" disabled>Previous</button>
+                <button type="button" class="btn btn-primary" id="step-next-btn" style="padding: 6px 16px; min-height: 36px; font-size: 12px;">Step forward →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Act 6: Practice Warmups Catalog (C1-C5, R5, R6, M5, A8) -->
+    <section class="warmups-section" id="warmups" data-reveal>
+      <span class="eyebrow"><span class="eyebrow-dot"></span> WARMUP CATALOG</span>
+      <h2 class="headline-h2">Short code. <span class="accent-word">Durable questions.</span></h2>
+      <p class="subcopy">Every exercise focuses on a specific programming concept where mental models often diverge from Python runtime semantics.</p>
+
+      <div class="warmups-filters" role="group" aria-label="Warmup Filters">
+        <button type="button" class="filter-chip" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="filter-chip" data-filter="loops" aria-pressed="false">Loops & Conditions</button>
+        <button type="button" class="filter-chip" data-filter="references" aria-pressed="false">References & Mutation</button>
+      </div>
+
+      <div class="warmups-rail-container">
+        <div class="warmups-rail" id="warmups-rail" tabindex="0" aria-label="TraceMigo warmups catalog">
+          <!-- Card 1: Running Total -->
+          <article class="warmup-card active" data-category="loops" tabindex="0">
+            <div>
+              <div class="card-tag-row">
+                <span class="card-badge">PYTHON</span>
+                <span class="card-topic">Loops & conditions</span>
+              </div>
+              <h3 class="bento-title" style="font-size: 24px;">Follow the running total ↗</h3>
+              <p class="subcopy" style="font-size: 13px; margin-top: 8px;">Which values make it into the sum? Step through a loop with a strict inequality filter.</p>
+            </div>
+            <div style="margin-top: 24px; border-top: 1px solid var(--line); padding-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 12px; color: var(--muted);">6 lines · 1 example</span>
+              <button type="button" class="btn btn-secondary open-warmup-trigger" data-exercise="running-total" style="padding: 6px 14px; min-height: 36px; font-size: 12px;">Open warmup →</button>
+            </div>
+          </article>
+
+          <!-- Card 2: List References -->
+          <article class="warmup-card" data-category="references" tabindex="0">
+            <div>
+              <div class="card-tag-row">
+                <span class="card-badge">PYTHON</span>
+                <span class="card-topic">References & mutation</span>
+              </div>
+              <h3 class="bento-title" style="font-size: 24px;">Two names, one list ↗</h3>
+              <p class="subcopy" style="font-size: 13px; margin-top: 8px;">Does assigning a list make a copy? Track list object identities across append and reassignment.</p>
+            </div>
+            <div style="margin-top: 24px; border-top: 1px solid var(--line); padding-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 12px; color: var(--muted);">8 lines · 1 example</span>
+              <button type="button" class="btn btn-secondary open-warmup-trigger" data-exercise="list-references" style="padding: 6px 14px; min-height: 36px; font-size: 12px;">Open warmup →</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="showcase-empty-state" id="showcase-empty">
+          <p>Nothing in this category yet — try another filter.</p>
+        </div>
+      </div>
+
+      <div class="warmups-nav-row">
+        <div class="rail-progress-bar" aria-hidden="true">
+          <div class="rail-progress-fill" id="rail-progress-fill"></div>
+        </div>
+        <div class="warmups-arrows">
+          <button type="button" class="btn btn-icon" id="rail-prev" aria-label="Previous warmup card">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button type="button" class="btn btn-icon" id="rail-next" aria-label="Next warmup card">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+      <p style="font-size: 11px; color: var(--muted); margin-top: 12px; letter-spacing: 0.08em;">TRACE EVIDENCE · AUTHORED EXECUTION TRACES</p>
+    </section>
+
+    <!-- Act 7: Principles (The Inverted Light Chapter) -->
+    <div class="principles-section-wrapper" id="principles" data-reveal>
+      <div class="principles-container">
+        <span class="eyebrow principles-eyebrow"><span class="eyebrow-dot" style="background: var(--brand-teal);"></span> OUR PHILOSOPHY</span>
+        <h2 class="headline-h2 principles-headline">Code comprehension is a <span class="accent-word">deliberate practice.</span></h2>
+        <p class="subcopy" style="color: var(--muted-inverse);">Three invariants guide every warmup, user interface, and execution boundary we engineer.</p>
+
+        <div class="principles-grid">
+          <div class="principle-item">
+            <div class="principle-num">01</div>
+            <h3 class="principle-title">State over speculation</h3>
+            <p class="principle-desc">Reading code is not about guessing final outputs. We expose the exact frame-by-frame state transitions so cause and effect remain connected.</p>
+          </div>
+          <div class="principle-item">
+            <div class="principle-num">02</div>
+            <h3 class="principle-title">Articulate the rule</h3>
+            <p class="principle-desc">Putting the reasoning into your own words turns an accidental correct answer into durable, transferable comprehension.</p>
+          </div>
+          <div class="principle-item">
+            <div class="principle-num">03</div>
+            <h3 class="principle-title">Safety by isolation</h3>
+            <p class="principle-desc">Deterministic security by design. Learner code never runs directly in web or API worker processes, keeping development reproducible and secure.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Act 8: Architecture & Deployment Tiers (Act 8, C12) -->
+    <section class="plans-section" id="architecture" data-reveal>
+      <span class="eyebrow"><span class="eyebrow-dot"></span> ARCHITECTURE & ROLES</span>
+      <h2 class="headline-h2">Clear boundaries. <span class="accent-word">No hidden dependencies.</span></h2>
+      <p class="subcopy">TraceMigo is architected with strict separation between pure domain logic, trusted controllers, and untrusted execution protocols.</p>
+
+      <div class="plans-grid">
+        <!-- Local Preview -->
+        <div class="plan-card" style="border-color: var(--accent);">
+          <div class="plan-header">
+            <span class="card-badge" style="background: var(--accent); color: var(--brand-ink);">ACTIVE NOW</span>
+            <h3 class="plan-name">Local Preview</h3>
+            <p class="subcopy" style="font-size: 13px;">Browser-only Python warmups with tab-local persistence.</p>
+            <div class="plan-price">$0</div>
+            <p style="font-size: 12px; color: var(--muted);">No accounts · Instant access</p>
+          </div>
+          <ul class="plan-features">
+            <li class="plan-feature-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Authored Python execution traces</span>
+            </li>
+            <li class="plan-feature-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Independent tab sessionStorage</span>
+            </li>
+            <li class="plan-feature-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Zero server execution risk</span>
+            </li>
+          </ul>
+          <button type="button" class="btn btn-primary open-dialog-trigger" style="width: 100%;">Practice now →</button>
+        </div>
+
+        <!-- Studio / Classroom -->
+        <div class="plan-card">
+          <div class="plan-header">
+            <span class="card-badge">NEXT MILESTONE</span>
+            <h3 class="plan-name">Classroom Studio</h3>
+            <p class="subcopy" style="font-size: 13px;">Cohort practice with custom warmup authoring and discussion.</p>
+            <div class="plan-price">Team</div>
+            <p style="font-size: 12px; color: var(--muted);">Roadmap feature</p>
+          </div>
+          <ul class="plan-features">
+            <li class="plan-feature-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Custom trace schema authoring</span>
+            </li>
+            <li class="plan-feature-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Cohort mental model comparisons</span>
+            </li>
+            <li class="plan-feature-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Curriculum progression tags</span>
+            </li>
+          </ul>
+          <button type="button" class="btn btn-secondary open-dialog-trigger" style="width: 100%;">Review roadmap →</button>
+        </div>
+
+        <!-- Institutional -->
+        <div class="plan-card">
+          <div class="plan-header">
+            <span class="card-badge">ISOLATED RUNTIME</span>
+            <h3 class="plan-name">Judge Controller</h3>
+            <p class="subcopy" style="font-size: 13px;">Dedicated untrusted container isolation with gVisor / Cloud Run.</p>
+            <div class="plan-price">Enterprise</div>
+            <p style="font-size: 12px; color: var(--muted);">Production tier</p>
+          </div>
+          <ul class="plan-features">
+            <li class="plan-feature-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>gVisor sandboxed python executor</span>
+            </li>
+            <li class="plan-feature-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Default-deny database RLS policy</span>
+            </li>
+            <li class="plan-feature-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Zero learner credentials in logs</span>
+            </li>
+          </ul>
+          <button type="button" class="btn btn-secondary open-dialog-trigger" style="width: 100%;">Inspect architecture →</button>
+        </div>
+      </div>
+      <p class="plan-footnote">TraceMigo operates under contract-first specifications documented in docs/adr/ and docs/threat-model/.</p>
+    </section>
+
+    <!-- Act 9: FAQ Accordion (C13) -->
+    <section class="faq-section" id="faq" data-reveal>
+      <span class="eyebrow"><span class="eyebrow-dot"></span> QUESTIONS & ANSWERS</span>
+      <h2 class="headline-h2">Clear answers. <span class="accent-word">No speculation.</span></h2>
+
+      <div class="faq-list">
+        <!-- Q1 -->
+        <div class="faq-item">
+          <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-1">
+            <span>What is TraceMigo?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-panel" id="faq-ans-1">
+            <div class="faq-panel-inner">
+              TraceMigo is a code-comprehension practice platform. Rather than asking you to write programs from a blank file or guess terminal outputs, it helps you step through real execution traces, test your predictions, and explain why each state change occurs.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="faq-item">
+          <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-2">
+            <span>How does TraceMigo store my progress?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-panel" id="faq-ans-2">
+            <div class="faq-panel-inner">
+              In this preview, progress is saved entirely in your browser tab via sessionStorage under the key tracemigo:warmup:[id]:v1. Your answers and notes remain private to your tab and are never transmitted to external servers.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="faq-item">
+          <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-3">
+            <span>Does TraceMigo run arbitrary Python code on the server?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-panel" id="faq-ans-3">
+            <div class="faq-panel-inner">
+              No. Our preview warmups use deterministic, authored execution traces verified offline. Untrusted learner code is never executed in web or API worker processes. Future live execution runs inside isolated sandbox containers with zero network access.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="faq-item">
+          <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-4">
+            <span>Can I author my own trace exercises?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-panel" id="faq-ans-4">
+            <div class="faq-panel-inner">
+              Yes. Trace exercises follow a clean JSON schema specifying code lines, choice arrays, expected answers, column definitions, and step details. The schema is documented in packages/contracts.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Act 10: Contact (S7, S8, R15) -->
+    <section class="contact-section" id="contact" data-reveal>
+      <div class="contact-arcs" aria-hidden="true">
+        <svg viewBox="0 0 600 600" fill="none" stroke="currentColor">
+          <circle cx="300" cy="300" r="260" stroke="rgba(184,242,223,0.12)" stroke-width="1.5" class="draw-stroke"/>
+          <circle cx="300" cy="300" r="200" stroke="rgba(8,127,117,0.25)" stroke-width="1.5" class="draw-stroke"/>
+          <circle cx="300" cy="300" r="140" stroke="var(--accent)" stroke-width="1.5" class="draw-stroke"/>
+        </svg>
+      </div>
+
+      <div class="contact-content">
+        <span class="eyebrow"><span class="eyebrow-dot"></span> READY TO PRACTICE</span>
+        <h2 class="headline-h2">Start your first <span class="accent-word">trace.</span></h2>
+        <p class="subcopy" style="margin: 0 auto 32px; max-width: 520px;">Open the Running Total warmup to test your prediction and follow state changes at your own pace.</p>
+        <button type="button" class="btn btn-primary" id="open-dialog-contact">Open Running Total warmup →</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (Act 10, R16, R11, O5) -->
+  <footer class="site-footer">
+    <div class="footer-left">
+      <div class="brand-lockup">
+        <svg class="brand-mark-svg" viewBox="0 0 128 128" aria-hidden="true" fill="currentColor" style="width: 24px; height: 24px;">
+          <path d="M28 100V28H40L56 50V70L40 48V100Z"/>
+          <circle cx="34" cy="100" r="8"/>
+          <g transform="translate(128 0) scale(-1 1)">
+            <path d="M28 100V28H40L56 50V70L40 48V100Z"/>
+            <circle cx="34" cy="100" r="8"/>
+          </g>
+        </svg>
+        <span class="brand-wordmark">TraceMigo</span>
+      </div>
+      <p style="margin-top: 4px;">Read code. Think together.</p>
+      <p style="font-size: 11px; margin-top: 4px; color: var(--muted);">Local preview · Progress stays in this tab. Accounts and live execution are not available yet.</p>
+    </div>
+
+    <div class="footer-right">
+      <button type="button" class="btn btn-secondary" id="copy-logo-btn" style="padding: 6px 14px; min-height: 36px; font-size: 12px;">Copy SVG mark</button>
+      <button type="button" class="btn btn-secondary" id="global-motion-btn" style="padding: 6px 14px; min-height: 36px; font-size: 12px;" aria-pressed="true">Motion: On</button>
+      <a href="#faq" class="footer-link">About TraceMigo</a>
+    </div>
+  </footer>
+
+  <!-- Practice / Trace Dialog (O3, T5, R14) -->
+  <dialog class="practice-dialog" id="practice-dialog">
+    <div class="dialog-header">
+      <h3 class="dialog-title" id="dialog-warmup-title">Follow the running total</h3>
+      <button type="button" class="dialog-close" id="dialog-close-btn" aria-label="Close dialog">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="dialog-body">
+      <p id="dialog-warmup-desc">Which values make it into the sum? Make your prediction below.</p>
+      <div class="choice-row" id="dialog-choices" style="margin-top: 16px;"></div>
+      <div class="dialog-status-box">
+        <span class="dialog-status-text" id="dialog-status-text" aria-live="polite">Ready for your prediction.</span>
+        <button type="button" class="btn btn-secondary" id="dialog-replay-btn" style="padding: 4px 10px; min-height: 28px; font-size: 11px;">Reset</button>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <button type="button" class="btn btn-primary" id="dialog-done-btn">Back to page</button>
+    </div>
+  </dialog>
+
+  <!-- Toast Notification (O5, R16) -->
+  <div class="toast-container" id="toast" role="status" aria-live="polite">
+    Copied!
+  </div>
+
+  <script>
+/**
+ * TraceMigo Interactive Engine & Data Architecture
+ * Accurately aligned to TraceMigo core exercises, tokens, and deterministic traces.
+ */
+
+// TraceMigo Exercises Data
+const EXERCISES = {
+  'running-total': {
+    id: 'running-total',
+    filename: 'running_total.py',
+    topic: 'Loops & conditions',
+    title: 'Follow the running total',
+    description: 'Which values make it into the sum?',
+    question: 'What is the final total printed on line 6?',
+    code: [
+      { num: 1, text: 'values = [3, 1, 4]' },
+      { num: 2, text: 'total = 0' },
+      { num: 3, text: 'for value in values:' },
+      { num: 4, text: '    if value > 1:' },
+      { num: 5, text: '        total += value' },
+      { num: 6, text: 'print(total)' }
+    ],
+    choices: ['5', '7', '8'],
+    answer: '7',
+    explanation: '1 > 1 evaluates to False. Line 5 runs only for 3 and 4, giving total = 7.',
+    steps: [
+      { line: 2, state: { value: '—', condition: 'Not checked', total: '0' }, detail: 'Start with total = 0, before the loop.' },
+      { line: 5, state: { value: '3', condition: '3 > 1 → True', total: '3' }, detail: 'The first value passes the condition. Add 3 to total.' },
+      { line: 4, state: { value: '1', condition: '1 > 1 → False', total: '3' }, detail: 'Condition 1 > 1 is strictly greater than 1. Skip this value; total stays 3.' },
+      { line: 5, state: { value: '4', condition: '4 > 1 → True', total: '7' }, detail: 'Add 4. Loop completes with total = 7, so line 6 prints 7.' }
+    ]
+  },
+  'list-references': {
+    id: 'list-references',
+    filename: 'list_references.py',
+    topic: 'References & mutation',
+    title: 'Two names, one list',
+    description: 'Does assigning a list make a copy?',
+    question: 'What does print(items) show on line 5?',
+    code: [
+      { num: 1, text: 'items = [1, 2]' },
+      { num: 2, text: 'other = items' },
+      { num: 3, text: 'other.append(3)' },
+      { num: 4, text: 'other = [9]' },
+      { num: 5, text: 'print(items)' }
+    ],
+    choices: ['[1, 2]', '[1, 2, 3]', '[9]'],
+    answer: '[1, 2, 3]',
+    explanation: 'other = items binds a second name to the same list. append(3) mutates that shared object.',
+    steps: [
+      { line: 1, state: { line: '1', other: 'None', items: '[1, 2]' }, detail: 'Create a list containing 1 and 2, and bind items to it.' },
+      { line: 2, state: { line: '2', other: '[1, 2]', items: '[1, 2]' }, detail: 'other and items refer to the same list object. No copy is made.' },
+      { line: 3, state: { line: '3', other: '[1, 2, 3]', items: '[1, 2, 3]' }, detail: 'Appending through other mutates the shared list. items sees the added 3 too.' },
+      { line: 4, state: { line: '4', other: '[9]', items: '[1, 2, 3]' }, detail: 'Rebind other to [9]. items still refers to the original list [1, 2, 3].' }
+    ]
+  }
+};
+
+let currentLabKey = 'running-total';
+let currentStepIndex = 0;
+
+// Render Code Window
+function renderLab(key) {
+  currentLabKey = key;
+  currentStepIndex = 0;
+  const ex = EXERCISES[key];
+  if (!ex) return;
+
+  document.getElementById('lab-filename').textContent = ex.filename;
+  document.getElementById('lab-watermark').textContent = ex.title.toUpperCase();
+  document.getElementById('lab-topic-badge').textContent = ex.topic.toUpperCase();
+  document.getElementById('lab-question-title').textContent = ex.question;
+  document.getElementById('lab-prompt-desc').textContent = ex.description;
+
+  const codeEl = document.getElementById('code-content');
+  codeEl.innerHTML = '';
+  ex.code.forEach(lineObj => {
+    const lineSpan = document.createElement('span');
+    lineSpan.className = 'code-line';
+    lineSpan.id = `line-${lineObj.num}`;
+
+    let highlightedText = lineObj.text
+      .replace(/(for|in|if|print)/g, '<span class="kw">$1</span>')
+      .replace(/(#.*)/g, '<span class="cm">$1</span>')
+      .replace(/(\b\d+\b)/g, '<span class="num">$1</span>');
+
+    lineSpan.innerHTML = `<span class="line-num">${lineObj.num}</span>${highlightedText}`;
+    codeEl.appendChild(lineSpan);
+  });
+
+  // Choices
+  const choicesEl = document.getElementById('lab-choices');
+  choicesEl.innerHTML = '';
+  ex.choices.forEach(ch => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'choice-btn';
+    btn.textContent = ch;
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#lab-choices .choice-btn').forEach(b => {
+        b.classList.remove('selected-correct', 'selected-wrong');
+      });
+      if (ch === ex.answer) {
+        btn.classList.add('selected-correct');
+        document.getElementById('trace-step-detail').textContent = `Correct! ${ex.explanation}`;
+        showToast('Prediction confirmed!');
+      } else {
+        btn.classList.add('selected-wrong');
+        document.getElementById('trace-step-detail').textContent = `Not quite. Trace the steps below to observe why.`;
+      }
+    });
+    choicesEl.appendChild(btn);
+  });
+
+  updateStep(0);
+}
+
+function updateStep(index) {
+  const ex = EXERCISES[currentLabKey];
+  if (!ex) return;
+  const step = ex.steps[index];
+  if (!step) return;
+
+  currentStepIndex = index;
+
+  // Highlight line in code window
+  document.querySelectorAll('.code-line').forEach(l => l.classList.remove('active-line'));
+  const activeLineEl = document.getElementById(`line-${step.line}`);
+  if (activeLineEl) activeLineEl.classList.add('active-line');
+
+  // Update State Badges
+  const badgesEl = document.getElementById('state-badges');
+  badgesEl.innerHTML = '';
+  Object.keys(step.state).forEach(k => {
+    const item = document.createElement('div');
+    item.className = 'state-item';
+    item.innerHTML = `<span class="state-label">${k}</span><span class="state-val">${step.state[k]}</span>`;
+    badgesEl.appendChild(item);
+  });
+
+  document.getElementById('trace-step-detail').textContent = step.detail;
+  document.getElementById('step-counter-text').textContent = `Step ${index + 1} of ${ex.steps.length} (Line ${step.line})`;
+
+  document.getElementById('step-prev-btn').disabled = (index === 0);
+  document.getElementById('step-next-btn').disabled = (index === ex.steps.length - 1);
+}
+
+document.getElementById('step-prev-btn').addEventListener('click', () => {
+  if (currentStepIndex > 0) updateStep(currentStepIndex - 1);
+});
+document.getElementById('step-next-btn').addEventListener('click', () => {
+  const ex = EXERCISES[currentLabKey];
+  if (currentStepIndex < ex.steps.length - 1) updateStep(currentStepIndex + 1);
+});
+
+// Tab Switchers
+document.getElementById('tab-running-total').addEventListener('click', () => {
+  document.getElementById('tab-running-total').setAttribute('aria-selected', 'true');
+  document.getElementById('tab-list-references').setAttribute('aria-selected', 'false');
+  renderLab('running-total');
+});
+document.getElementById('tab-list-references').addEventListener('click', () => {
+  document.getElementById('tab-list-references').setAttribute('aria-selected', 'true');
+  document.getElementById('tab-running-total').setAttribute('aria-selected', 'false');
+  renderLab('list-references');
+});
+
+// Toast Utility (O5)
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('visible');
+  setTimeout(() => {
+    toast.classList.remove('visible');
+  }, 1800);
+}
+
+// Copy TraceMigo SVG Logo (R16, O5)
+const logoSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128"><g fill="#B8F2DF"><path d="M28 100V28H40L56 50V70L40 48V100Z"/><circle cx="34" cy="100" r="8"/><g transform="translate(128 0) scale(-1 1)"><path d="M28 100V28H40L56 50V70L40 48V100Z"/><circle cx="34" cy="100" r="8"/></g></g></svg>`;
+const copyLogoBtn = document.getElementById('copy-logo-btn');
+if (copyLogoBtn) {
+  copyLogoBtn.addEventListener('click', async () => {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(logoSvgString);
+      }
+      copyLogoBtn.textContent = 'Copied!';
+      showToast('TraceMigo mark copied to clipboard');
+      setTimeout(() => {
+        copyLogoBtn.textContent = 'Copy SVG mark';
+      }, 2000);
+    } catch (err) {
+      showToast('Clipboard unavailable');
+    }
+  });
+}
+
+// Header Glass & Scroll Progress (S10, S12)
+const siteHeader = document.getElementById('site-header');
+const scrollProgressBar = document.getElementById('scroll-progress');
+const scrollCue = document.getElementById('scroll-cue');
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = maxScroll > 0 ? scrollY / maxScroll : 0;
+
+  if (scrollProgressBar) {
+    scrollProgressBar.style.transform = `scaleX(${progress})`;
+  }
+
+  if (siteHeader) {
+    if (scrollY > 16) {
+      siteHeader.classList.add('scrolled');
+    } else {
+      siteHeader.classList.remove('scrolled');
+    }
+  }
+
+  if (scrollCue) {
+    if (scrollY > 60) {
+      scrollCue.style.opacity = '0';
+    } else {
+      scrollCue.style.opacity = '1';
+    }
+  }
+}, { passive: true });
+
+// Scrollspy (S11)
+const sections = document.querySelectorAll('section[id], .hero-scroll-container[id], .principles-section-wrapper[id]');
+const navLinks = document.querySelectorAll('.nav-link[data-nav]');
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      navLinks.forEach(link => {
+        if (link.getAttribute('data-nav') === id) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+
+sections.forEach(sec => navObserver.observe(sec));
+
+// Section Reveal on Scroll (S1)
+const revealElements = document.querySelectorAll('[data-reveal]');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-revealed');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+revealElements.forEach(el => revealObserver.observe(el));
+
+// Mobile Drawer Interaction (O1)
+const menuToggle = document.getElementById('menu-toggle');
+const mobileDrawer = document.getElementById('mobile-drawer');
+const mobileDrawerClose = document.getElementById('mobile-drawer-close');
+const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+function openDrawer() {
+  if (!mobileDrawer) return;
+  mobileDrawer.classList.add('open');
+  menuToggle.setAttribute('aria-expanded', 'true');
+  mobileDrawerClose.focus();
+}
+
+function closeDrawer() {
+  if (!mobileDrawer) return;
+  mobileDrawer.classList.remove('open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menuToggle.focus();
+}
+
+if (menuToggle && mobileDrawer && mobileDrawerClose) {
+  menuToggle.addEventListener('click', openDrawer);
+  mobileDrawerClose.addEventListener('click', closeDrawer);
+  mobileLinks.forEach(l => l.addEventListener('click', closeDrawer));
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileDrawer.classList.contains('open')) {
+      closeDrawer();
+    }
+  });
+}
+
+// Practice Dialog Management (O3, T5, R14)
+const practiceDialog = document.getElementById('practice-dialog');
+const dialogCloseBtn = document.getElementById('dialog-close-btn');
+const dialogDoneBtn = document.getElementById('dialog-done-btn');
+const dialogReplayBtn = document.getElementById('dialog-replay-btn');
+const dialogStatusText = document.getElementById('dialog-status-text');
+let lastFocusedElement = null;
+
+function openPracticeDialog(exerciseKey) {
+  if (!practiceDialog) return;
+  lastFocusedElement = document.activeElement;
+  const ex = EXERCISES[exerciseKey || 'running-total'];
+
+  document.getElementById('dialog-warmup-title').textContent = ex.title;
+  document.getElementById('dialog-warmup-desc').textContent = `${ex.question} Choices:`;
+
+  const choicesEl = document.getElementById('dialog-choices');
+  choicesEl.innerHTML = '';
+  ex.choices.forEach(ch => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'choice-btn';
+    btn.textContent = ch;
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#dialog-choices .choice-btn').forEach(b => {
+        b.classList.remove('selected-correct', 'selected-wrong');
+      });
+      if (ch === ex.answer) {
+        btn.classList.add('selected-correct');
+        dialogStatusText.textContent = `Correct: ${ex.answer}. ${ex.explanation}`;
+        try {
+          sessionStorage.setItem(`tracemigo:warmup:${ex.id}:v1`, JSON.stringify({ prediction: ch, completed: true }));
+        } catch (e) {}
+      } else {
+        btn.classList.add('selected-wrong');
+        dialogStatusText.textContent = `Selected ${ch}. The correct output is ${ex.answer}.`;
+      }
+    });
+    choicesEl.appendChild(btn);
+  });
+
+  dialogStatusText.textContent = 'Ready for your prediction.';
+  practiceDialog.showModal();
+}
+
+function closePracticeDialog() {
+  if (!practiceDialog) return;
+  practiceDialog.close();
+  if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+    lastFocusedElement.focus();
+  }
+}
+
+document.querySelectorAll('#open-dialog-header, #open-dialog-mobile, #open-dialog-contact, .open-dialog-trigger').forEach(btn => {
+  btn.addEventListener('click', () => openPracticeDialog('running-total'));
+});
+
+document.querySelectorAll('.open-warmup-trigger').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const key = btn.getAttribute('data-exercise');
+    openPracticeDialog(key);
+  });
+});
+
+if (dialogCloseBtn) dialogCloseBtn.addEventListener('click', closePracticeDialog);
+if (dialogDoneBtn) dialogDoneBtn.addEventListener('click', closePracticeDialog);
+if (dialogReplayBtn) dialogReplayBtn.addEventListener('click', () => {
+  dialogStatusText.textContent = 'Prediction reset. Commit again.';
+  document.querySelectorAll('#dialog-choices .choice-btn').forEach(b => {
+    b.classList.remove('selected-correct', 'selected-wrong');
+  });
+});
+
+if (practiceDialog) {
+  practiceDialog.addEventListener('click', (e) => {
+    const rect = practiceDialog.getBoundingClientRect();
+    const isInDialog = (
+      rect.top <= e.clientY &&
+      e.clientY <= rect.top + rect.height &&
+      rect.left <= e.clientX &&
+      e.clientX <= rect.left + rect.width
+    );
+    if (!isInDialog) {
+      closePracticeDialog();
+    }
+  });
+}
+
+// Warmup Rail & Filters (C1-C5, R5, R6)
+const filterChips = document.querySelectorAll('.filter-chip');
+const warmupsRail = document.getElementById('warmups-rail');
+const warmupCards = document.querySelectorAll('.warmup-card');
+const showcaseEmpty = document.getElementById('showcase-empty');
+const railPrev = document.getElementById('rail-prev');
+const railNext = document.getElementById('rail-next');
+const railProgressFill = document.getElementById('rail-progress-fill');
+
+function updateRailProgress() {
+  if (!warmupsRail || !railProgressFill) return;
+  const max = warmupsRail.scrollWidth - warmupsRail.clientWidth;
+  const pos = max > 0 ? warmupsRail.scrollLeft / max : 0;
+  railProgressFill.style.transform = `scaleX(${0.25 + pos * 0.75})`;
+}
+
+if (warmupsRail) {
+  warmupsRail.addEventListener('scroll', updateRailProgress, { passive: true });
+}
+
+filterChips.forEach(chip => {
+  chip.addEventListener('click', () => {
+    filterChips.forEach(c => c.setAttribute('aria-pressed', 'false'));
+    chip.setAttribute('aria-pressed', 'true');
+    const category = chip.getAttribute('data-filter');
+
+    let visibleCount = 0;
+    warmupCards.forEach(card => {
+      const match = category === 'all' || card.getAttribute('data-category') === category;
+      if (match) {
+        card.style.display = 'flex';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    if (showcaseEmpty) {
+      if (visibleCount === 0) {
+        showcaseEmpty.classList.add('visible');
+      } else {
+        showcaseEmpty.classList.remove('visible');
+      }
+    }
+    if (warmupsRail) {
+      warmupsRail.scrollLeft = 0;
+    }
+    updateRailProgress();
+  });
+});
+
+if (railPrev && warmupsRail) {
+  railPrev.addEventListener('click', () => {
+    warmupsRail.scrollBy({ left: -360, behavior: 'smooth' });
+  });
+}
+if (railNext && warmupsRail) {
+  railNext.addEventListener('click', () => {
+    warmupsRail.scrollBy({ left: 360, behavior: 'smooth' });
+  });
+}
+
+// FAQ Accordion (C13)
+const faqTriggers = document.querySelectorAll('.faq-trigger');
+faqTriggers.forEach(trigger => {
+  trigger.addEventListener('click', () => {
+    const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+    const panelId = trigger.getAttribute('aria-controls');
+    const panel = document.getElementById(panelId);
+
+    faqTriggers.forEach(otherTrigger => {
+      if (otherTrigger !== trigger) {
+        otherTrigger.setAttribute('aria-expanded', 'false');
+        const otherPanel = document.getElementById(otherTrigger.getAttribute('aria-controls'));
+        if (otherPanel) otherPanel.removeAttribute('data-open');
+      }
+    });
+
+    if (isExpanded) {
+      trigger.setAttribute('aria-expanded', 'false');
+      if (panel) panel.removeAttribute('data-open');
+    } else {
+      trigger.setAttribute('aria-expanded', 'true');
+      if (panel) panel.setAttribute('data-open', 'true');
+    }
+  });
+});
+
+// Global Motion Toggle (R11)
+const globalMotionBtn = document.getElementById('global-motion-btn');
+let globalMotionActive = true;
+
+if (globalMotionBtn) {
+  globalMotionBtn.addEventListener('click', () => {
+    globalMotionActive = !globalMotionActive;
+    if (globalMotionActive) {
+      document.body.classList.remove('reduce-motion-active');
+      globalMotionBtn.textContent = 'Motion: On';
+      globalMotionBtn.setAttribute('aria-pressed', 'true');
+    } else {
+      document.body.classList.add('reduce-motion-active');
+      globalMotionBtn.textContent = 'Motion: Off';
+      globalMotionBtn.setAttribute('aria-pressed', 'false');
+    }
+  });
+}
+
+// Magnetic Card Borders (P4)
+document.querySelectorAll('.bento-card').forEach(card => {
+  card.addEventListener('pointermove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--mx', `${x}px`);
+    card.style.setProperty('--my', `${y}px`);
+  });
+});
+
+// TraceMigo Execution Trace Particle River Engine (§6)
+class TraceMigoRiverEngine {
+  constructor(canvas) {
+    this.canvas = canvas;
+    this.ctx = canvas.getContext('2d');
+    if (!this.ctx) {
+      document.documentElement.classList.add('engine-failed');
+      return;
+    }
+
+    this.isRunning = true;
+    this.isPaused = false;
+    this.mode = 'flow';
+    this.lastTime = 0;
+    this.scrollProgress = 0;
+    this.smoothedProgress = 0;
+    this.width = 0;
+    this.height = 0;
+    this.dpr = 1;
+
+    this.pointer = { x: -1000, y: -1000, active: false };
+
+    this.dustCanvas = document.createElement('canvas');
+    this.dustCtx = this.dustCanvas.getContext('2d');
+
+    this.particles = [];
+    this.particleCount = window.innerWidth <= 700 ? 44 : 88;
+
+    this.initDust();
+    this.initParticles();
+    this.setupListeners();
+    this.resize();
+
+    requestAnimationFrame(this.render.bind(this));
+  }
+
+  resize() {
+    const isMobile = window.innerWidth <= 700;
+    const maxDpr = isMobile ? 1.5 : 1.75;
+    this.dpr = Math.min(window.devicePixelRatio || 1, maxDpr);
+    this.width = this.canvas.clientWidth;
+    this.height = this.canvas.clientHeight;
+
+    this.canvas.width = this.width * this.dpr;
+    this.canvas.height = this.height * this.dpr;
+    this.ctx.scale(this.dpr, this.dpr);
+
+    this.dustCanvas.width = this.width * this.dpr;
+    this.dustCanvas.height = this.height * this.dpr;
+    this.dustCtx.scale(this.dpr, this.dpr);
+    this.drawDust();
+  }
+
+  initDust() {
+    this.dustPoints = [];
+    for (let i = 0; i < 650; i++) {
+      this.dustPoints.push({
+        x: Math.random(),
+        y: Math.random(),
+        size: Math.random() * 1.5 + 0.5,
+        alpha: Math.random() * 0.35 + 0.05
+      });
+    }
+  }
+
+  drawDust() {
+    this.dustCtx.clearRect(0, 0, this.width, this.height);
+    this.dustCtx.fillStyle = '#F6F8F5';
+    this.dustPoints.forEach(p => {
+      this.dustCtx.globalAlpha = p.alpha;
+      this.dustCtx.beginPath();
+      this.dustCtx.arc(p.x * this.width, p.y * this.height, p.size, 0, Math.PI * 2);
+      this.dustCtx.fill();
+    });
+  }
+
+  initParticles() {
+    this.particles = [];
+    const shapes = ['circle', 'node', 'capsule', 'dot'];
+
+    for (let i = 0; i < this.particleCount; i++) {
+      const u = Math.random();
+      const depth = 0.4 + Math.random() * 0.8;
+      const seed = Math.random();
+      const isSparkle = seed < 0.03;
+
+      let color = '#B8F2DF';
+      if (seed < 0.12) color = '#C64F34'; // Coral trace point
+      else if (seed < 0.35) color = '#087F75'; // Teal node
+      else if (seed > 0.85) color = '#F6F8F5'; // Paper white
+
+      this.particles.push({
+        u: u,
+        depth: depth,
+        seed: seed,
+        isSparkle: isSparkle,
+        isWisp: seed > 0.92,
+        shape: shapes[Math.floor(Math.random() * shapes.length)],
+        size: (Math.random() * 3 + 2) * depth,
+        rot: Math.random() * Math.PI * 2,
+        rotSpeed: (Math.random() - 0.5) * 0.02,
+        color: color,
+        opacity: (0.35 + Math.random() * 0.6) * depth,
+        x: 0,
+        y: 0
+      });
+    }
+  }
+
+  setupListeners() {
+    window.addEventListener('resize', () => this.resize(), { passive: true });
+
+    window.addEventListener('pointermove', (e) => {
+      if (e.pointerType === 'mouse') {
+        const rect = this.canvas.getBoundingClientRect();
+        this.pointer.x = e.clientX - rect.left;
+        this.pointer.y = e.clientY - rect.top;
+        this.pointer.active = true;
+      }
+    }, { passive: true });
+
+    window.addEventListener('pointerleave', () => {
+      this.pointer.active = false;
+    });
+
+    const heroSection = document.getElementById('top');
+    const heroObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        this.isRunning = entry.isIntersecting;
+      });
+    }, { rootMargin: '100px' });
+    if (heroSection) heroObserver.observe(heroSection);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        this.isRunning = false;
+      } else {
+        this.isRunning = true;
+        this.lastTime = performance.now();
+      }
+    });
+  }
+
+  updateScroll() {
+    const hero = document.getElementById('top');
+    const frame = document.getElementById('hero-sticky-frame');
+    if (!hero || !frame) return;
+
+    const rect = hero.getBoundingClientRect();
+    const heroH = hero.offsetHeight;
+    const frameH = frame.offsetHeight;
+    const rawProgress = Math.max(0, Math.min(1, -rect.top / (heroH - frameH)));
+    this.scrollProgress = rawProgress;
+
+    const p1 = document.getElementById('hero-phase-1');
+    const p2 = document.getElementById('hero-phase-2');
+    const counterFill = document.getElementById('counter-fill');
+    const counterNum = document.getElementById('counter-num');
+
+    if (counterFill) {
+      counterFill.style.transform = `scaleX(${0.05 + rawProgress * 0.95})`;
+    }
+
+    if (rawProgress >= 0.45) {
+      if (p1) {
+        p1.style.opacity = '0';
+        p1.style.transform = 'translateY(-28px)';
+        p1.style.pointerEvents = 'none';
+      }
+      if (p2) {
+        p2.classList.add('active');
+        p2.setAttribute('aria-hidden', 'false');
+      }
+      if (counterNum) counterNum.textContent = '02';
+    } else {
+      if (p1) {
+        p1.style.opacity = `${1 - rawProgress * 2}`;
+        p1.style.transform = `translateY(${-rawProgress * 40}px)`;
+        p1.style.pointerEvents = 'auto';
+      }
+      if (p2) {
+        p2.classList.remove('active');
+        p2.setAttribute('aria-hidden', 'true');
+      }
+      if (counterNum) counterNum.textContent = '01';
+    }
+  }
+
+  render(timestamp) {
+    if (!this.lastTime) this.lastTime = timestamp;
+    const dt = Math.min((timestamp - this.lastTime) / 1000, 0.05);
+    this.lastTime = timestamp;
+
+    if (this.isRunning && !this.isPaused && globalMotionActive) {
+      this.updateScroll();
+      this.smoothedProgress += (this.scrollProgress - this.smoothedProgress) * (1 - Math.exp(-dt * 8));
+
+      this.ctx.clearRect(0, 0, this.width, this.height);
+
+      this.ctx.globalAlpha = 1;
+      this.ctx.drawImage(this.dustCanvas, 0, 0, this.width, this.height);
+
+      const time = timestamp * 0.001;
+      const cx = this.width * 0.65;
+      const spread = this.width * 0.22;
+      const foldPhase = Math.sin(time * 0.13);
+
+      this.particles.forEach(p => {
+        p.u = (p.u + dt * 0.04 * (1 - this.smoothedProgress * 0.5)) % 1;
+
+        const u = p.u;
+        const targetX = cx + Math.sin(u * 7 - 0.8) * spread + Math.cos(foldPhase) * (p.isWisp ? 80 : 20);
+        const targetY = u * this.height;
+
+        let finalX = targetX;
+        let finalY = targetY;
+
+        if (this.mode === 'orbit') {
+          const orbitRadius = Math.min(this.width, this.height) * 0.28;
+          const angle = p.seed * Math.PI * 2 + time * 0.2;
+          const orbitX = cx + Math.cos(angle) * orbitRadius;
+          const orbitY = this.height * 0.5 + Math.sin(angle) * (orbitRadius * 0.6);
+          finalX += (orbitX - finalX) * 0.82;
+          finalY += (orbitY - finalY) * 0.82;
+        }
+
+        if (this.pointer.active) {
+          const dx = finalX - this.pointer.x;
+          const dy = finalY - this.pointer.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          const maxDist = 120;
+          if (dist < maxDist && dist > 0) {
+            const force = (1 - dist / maxDist) * 35;
+            finalX += (dx / dist) * force;
+            finalY += (dy / dist) * force;
+          }
+        }
+
+        p.x += (finalX - p.x) * 0.1;
+        p.y += (finalY - p.y) * 0.1;
+        p.rot += p.rotSpeed;
+
+        this.ctx.save();
+        this.ctx.translate(p.x, p.y);
+        this.ctx.rotate(p.rot);
+        this.ctx.globalAlpha = p.opacity;
+        this.ctx.fillStyle = p.color;
+
+        if (p.isSparkle) {
+          this.ctx.globalCompositeOperation = 'lighter';
+          const grad = this.ctx.createRadialGradient(0, 0, 1, 0, 0, p.size * 2);
+          grad.addColorStop(0, '#B8F2DF');
+          grad.addColorStop(1, 'transparent');
+          this.ctx.fillStyle = grad;
+          this.ctx.beginPath();
+          this.ctx.arc(0, 0, p.size * 2, 0, Math.PI * 2);
+          this.ctx.fill();
+        } else if (p.shape === 'node') {
+          this.ctx.beginPath();
+          this.ctx.arc(0, 0, p.size, 0, Math.PI * 2);
+          this.ctx.fill();
+          this.ctx.strokeStyle = '#F6F8F5';
+          this.ctx.lineWidth = 1;
+          this.ctx.stroke();
+        } else if (p.shape === 'capsule') {
+          this.ctx.fillRect(-p.size, -p.size * 0.5, p.size * 2, p.size);
+        } else {
+          this.ctx.beginPath();
+          this.ctx.arc(0, 0, p.size, 0, Math.PI * 2);
+          this.ctx.fill();
+        }
+
+        this.ctx.restore();
+      });
+    }
+
+    requestAnimationFrame(this.render.bind(this));
+  }
+}
+
+// Initialise Hero Canvas Engine
+const heroCanvas = document.getElementById('hero-canvas');
+let engineInstance = null;
+if (heroCanvas) {
+  try {
+    engineInstance = new TraceMigoRiverEngine(heroCanvas);
+  } catch (e) {
+    document.documentElement.classList.add('engine-failed');
+  }
+}
+
+// Field Controls Binding
+const fieldPauseBtn = document.getElementById('field-pause-btn');
+const fieldPauseText = document.getElementById('field-pause-text');
+if (fieldPauseBtn && engineInstance) {
+  fieldPauseBtn.addEventListener('click', () => {
+    engineInstance.isPaused = !engineInstance.isPaused;
+    fieldPauseBtn.setAttribute('aria-pressed', engineInstance.isPaused ? 'true' : 'false');
+    fieldPauseText.textContent = engineInstance.isPaused ? 'Paused' : 'Motion';
+  });
+}
+
+const fieldModeBtn = document.getElementById('field-mode-btn');
+const fieldModeText = document.getElementById('field-mode-text');
+if (fieldModeBtn && engineInstance) {
+  fieldModeBtn.addEventListener('click', () => {
+    const isOrbit = engineInstance.mode === 'orbit';
+    engineInstance.mode = isOrbit ? 'flow' : 'orbit';
+    fieldModeBtn.setAttribute('aria-pressed', isOrbit ? 'false' : 'true');
+    fieldModeText.textContent = isOrbit ? 'Flow' : 'Orbit';
+  });
+}
+
+// Initial Lab Render
+renderLab('running-total');
+  </script>
+</body>
+</html>

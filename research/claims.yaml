@@ -1,0 +1,124 @@
+# Claims are deliberately narrower than the source text. Claim status records
+# evidence, not product completion.
+schema_version: 1
+updated_utc: "2026-10-25T00:00:00Z"
+claims:
+  - id: CLM-001
+    statement: "TraceMigo is proposed as an existing-code comprehension practice product, not a general DSA catalogue."
+    source_ids: [PLAN-2026-10-25]
+    evidence_level: D
+    status: proposed
+    limitation: "Product positioning; no learner or market validation completed."
+    review_by: "Before P10.02 and P12.03"
+  - id: CLM-002
+    statement: "Thirty reviewed Python cases and thirty derived micro-exercises are proposed for the initial release."
+    source_ids: [PLAN-2026-10-25]
+    evidence_level: D
+    status: proposed
+    limitation: "No cases, provenance, or independent reviews exist yet."
+    review_by: "Before P02.04 and P10.01"
+  - id: CLM-003
+    statement: "A reported Google pilot makes existing-code interview practice timely."
+    source_ids: [BI-2026-05, BI-2026-10, TAKEUFORWARD-REF]
+    evidence_level: B
+    status: externally_reported
+    limitation: "Pilot reporting and a community scenario do not prove a universal Google process, private rubric, or role coverage."
+    review_by: "2026-11-25"
+  - id: CLM-004
+    statement: "The supplied token-bucket reference already caps tokens; synchronization, clock choice, and validation require separate analysis."
+    source_ids: [PLAN-2026-10-25]
+    evidence_level: D
+    status: planning_assertion
+    limitation: "Must be demonstrated by the authored case, tests, and reviewed oracle; it is not implementation evidence today."
+    review_by: "Before P02.04"
+  - id: CLM-005
+    statement: "Structured inspection and self-explanation inform the proposed evidence-first exercise design."
+    source_ids: [Fagan-1976, CHI-1989]
+    evidence_level: A
+    status: evidence_informed
+    limitation: "The cited research does not establish TraceMigo learning outcomes."
+    review_by: "Before public learning claims"
+  - id: CLM-006
+    statement: "Reciprocal teaching may improve delayed explanation quality."
+    source_ids: [CHASE-2009, PLAN-2026-10-25]
+    evidence_level: D
+    status: hypothesis
+    limitation: "The source does not establish an LLM-peer effect for this learner population; trial evidence is required."
+    review_by: "Before P10.04"
+  - id: CLM-007
+    statement: "Retrieval and spaced practice are evidence-informed mechanisms, but TraceMigo's schedule and effect size are unknown."
+    source_ids: [DUNLOSKY-2013]
+    evidence_level: A
+    status: evidence_informed
+    limitation: "No product-specific efficacy result exists."
+    review_by: "Before P08.03 or public learning claims"
+  - id: CLM-008
+    statement: "Placed and Nyrion overlap with the proposed code-comprehension practice category."
+    source_ids: [PLACED-GOOGLE, NYRION-GOOGLE]
+    evidence_level: C
+    status: dated_market_observation
+    limitation: "Only public descriptions were inspected; no superiority or world-first claim is allowed."
+    review_by: "Before any comparative advertising"
+  - id: CLM-009
+    statement: "The proposed initial core-service availability objective is 99.5 percent monthly."
+    source_ids: [PLAN-2026-10-25, OPS-03]
+    evidence_level: D
+    status: proposed_target
+    limitation: "Indicator definition, window, error budget, staffing, and measured reliability are not yet defined."
+    review_by: "Before P11.01"
+  - id: CLM-010
+    statement: "DORA metrics can be used as service-delivery trends rather than individual performance scores."
+    source_ids: [OPS-01]
+    evidence_level: A
+    status: evidence_informed
+    limitation: "Instrumentation and data quality must be implemented before reporting metrics."
+    review_by: "Before P01.04"
+  - id: CLM-011
+    statement: "A risk-based SSDF and ASVS mapping can guide TraceMigo security work."
+    source_ids: [OPS-02, OPS-09]
+    evidence_level: A
+    status: evidence_informed
+    limitation: "The control selection, evidence, and independent review remain future work."
+    review_by: "Before P00.03"
+  - id: CLM-012
+    statement: "Learner/imported code must not run in credentialed web, API, or CI processes."
+    source_ids: [PLAN-2026-10-25, OPS-10, OPS-11]
+    evidence_level: D
+    status: architectural_requirement
+    limitation: "No runner or effective isolation-control evidence exists."
+    review_by: "Before P00.05 and P05"
+  - id: CLM-013
+    statement: "GKE Sandbox control effectiveness and language/debugger compatibility must be measured in a bounded spike."
+    source_ids: [OPS-11]
+    evidence_level: A
+    status: evidence_informed
+    limitation: "No cloud project, runtime image, or spike result is available."
+    review_by: "Before P00.05"
+  - id: CLM-014
+    statement: "WCAG 2.2 AA is the proposed accessibility target across the learning, payment, and privacy paths."
+    source_ids: [OPS-12, PLAN-2026-10-25]
+    evidence_level: D
+    status: proposed_target
+    limitation: "No user interface or manual assistive-technology test exists."
+    review_by: "Before P03.04"
+  - id: CLM-015
+    statement: "The TraceMigo identity availability observations do not prove domain ownership or trademark clearance."
+    source_ids: [BRAND-2026-10-25, USPTO-SEARCH]
+    evidence_level: D
+    status: unresolved
+    limitation: "Registrar checkout, social account recovery, and specialist clearance have not occurred."
+    review_by: "Before P10.03"
+  - id: CLM-016
+    statement: "The supplied raster identity board conflicts with the written flat, straight-stem vector brief."
+    source_ids: [BRAND-2026-10-25]
+    evidence_level: D
+    status: documented_conflict
+    limitation: "No production vector assets or design decision exists."
+    review_by: "Before P03.01"
+  - id: CLM-017
+    statement: "The original plan contains opaque citation tokens that cannot be treated as usable sources."
+    source_ids: [OPAQUE-PLAN-CITATIONS]
+    evidence_level: D
+    status: unresolved
+    limitation: "Original browser/export evidence is required to resolve them."
+    review_by: "Before any public claim relying on an opaque token"

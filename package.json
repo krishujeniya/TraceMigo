@@ -1,0 +1,35 @@
+{
+  "name": "tracemigo",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.16.1",
+  "engines": {
+    "node": ">=24.22.2 <25"
+  },
+  "scripts": {
+    "build": "turbo run build && node tools/security/public-artifacts.mjs",
+    "dev": "turbo run dev dev:compile",
+    "lint": "node tools/check-boundaries.mjs && node tools/lint.mjs",
+    "typecheck": "tsc -b && pnpm --filter @tracemigo/web typecheck",
+    "test:unit": "pnpm --filter @tracemigo/api build && node tools/check-boundaries.test.mjs && node tools/api-foundation.test.mjs",
+    "python:check": "uv run --frozen python tools/check_python.py",
+    "local:secrets": "node tools/local-secrets.mjs",
+    "local:up": "docker compose -f infra/local/compose.yaml up -d --wait",
+    "local:down": "docker compose -f infra/local/compose.yaml down",
+    "db:migrate": "pnpm --filter @tracemigo/db build && node tools/db/migrate.mjs",
+    "test:integration": "pnpm --filter @tracemigo/db build && node tools/db/integration.test.mjs",
+    "brand:generate": "python3 tools/brand/generate.py && node tools/brand/rasterize.mjs && python3 tools/brand/finish.py",
+    "brand:check": "python3 tools/brand/check.py",
+    "brand:verify": "node tools/brand/verify.mjs",
+    "security:check": "node --test tools/security/public-artifacts.test.mjs && node tools/security/public-artifacts.mjs"
+  },
+  "devDependencies": {
+    "@babel/parser": "7.28.5",
+    "@types/node": "24.13.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "turbo": "2.11.10",
+    "typescript": "7.0.2",
+    "sharp": "0.35.5"
+  }
+}

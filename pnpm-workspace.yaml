@@ -1,0 +1,16 @@
+packages:
+  - 'apps/*'
+  - 'packages/*'
+  - 'services/*'
+
+minimumReleaseAge: 1440
+
+overrides:
+  '@babel/types': '7.28.5'
+
+engineStrict: true
+saveExact: true
+storeDir: .pnpm-store
+cacheDir: .local/pnpm-cache
+
+verifyDepsBeforeRun: error

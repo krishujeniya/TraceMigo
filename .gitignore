@@ -1,0 +1,21 @@
+# Private planning handoff (not an access control).
+/planning/
+node_modules/
+.pnpm-store/
+.next/
+dist/
+.turbo/
+coverage/
+*.tsbuildinfo
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!.env.example
+.local/
+.DS_Store
+.server.pid
+.server.log
+apps/web/next-env.d.ts
+.vercel

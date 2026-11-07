@@ -1,0 +1,20 @@
+{
+  "lockup_width": 495,
+  "lockup_height": 128,
+  "font_weight": 700,
+  "center_gap_units": 16,
+  "visible_bounds": [
+    26,
+    28,
+    102,
+    108
+  ],
+  "clear_space_min_units": 19,
+  "optical_kerning_em": {
+    "Tr": -0.035,
+    "ra": -0.008,
+    "eM": 0.006,
+    "Mi": -0.012,
+    "go": -0.008
+  }
+}

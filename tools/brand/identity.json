@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "canvas": 128,
+  "leftPath": "M28 100V28H40L56 50V70L40 48V100Z",
+  "node": {
+    "cx": 34,
+    "cy": 100,
+    "r": 8
+  },
+  "maskableScale": 0.82,
+  "wordmark": "TraceMigo",
+  "wordmarkWeight": 700,
+  "palette": {
+    "ink": "#142D34",
+    "teal": "#087F75",
+    "mint": "#B8F2DF",
+    "paper": "#F6F8F5",
+    "coral": "#C64F34",
+    "white": "#FFFFFF"
+  },
+  "themes": {
+    "light": {
+      "background": "paper",
+      "surface": "white",
+      "text": "ink",
+      "muted": "ink",
+      "link": "teal",
+      "border": "teal",
+      "primary": "teal",
+      "on-primary": "white",
+      "primary-hover": "ink",
+      "on-primary-hover": "white",
+      "primary-active": "ink",
+      "on-primary-active": "white",
+      "focus": "teal",
+      "disabled": "mint",
+      "on-disabled": "ink",
+      "disabled-border": "teal",
+      "accent": "coral",
+      "on-accent": "white",
+      "notice-border": "coral"
+    },
+    "dark": {
+      "background": "ink",
+      "surface": "ink",
+      "text": "paper",
+      "muted": "mint",
+      "link": "mint",
+      "border": "mint",
+      "primary": "mint",
+      "on-primary": "ink",
+      "primary-hover": "paper",
+      "on-primary-hover": "ink",
+      "primary-active": "white",
+      "on-primary-active": "ink",
+      "focus": "mint",
+      "disabled": "ink",
+      "on-disabled": "mint",
+      "disabled-border": "mint",
+      "accent": "coral",
+      "on-accent": "white",
+      "notice-border": "coral"
+    }
+  },
+  "contrastPairs": [
+    {
+      "name": "body",
+      "foreground": "text",
+      "background": "background",
+      "minimum": 4.5
+    },
+    {
+      "name": "muted",
+      "foreground": "muted",
+      "background": "background",
+      "minimum": 4.5
+    },
+    {
+      "name": "link",
+      "foreground": "link",
+      "background": "background",
+      "minimum": 4.5
+    },
+    {
+      "name": "primary",
+      "foreground": "on-primary",
+      "background": "primary",
+      "minimum": 4.5
+    },
+    {
+      "name": "primary hover",
+      "foreground": "on-primary-hover",
+      "background": "primary-hover",
+      "minimum": 4.5
+    },
+    {
+      "name": "primary active",
+      "foreground": "on-primary-active",
+      "background": "primary-active",
+      "minimum": 4.5
+    },
+    {
+      "name": "disabled text",
+      "foreground": "on-disabled",
+      "background": "disabled",
+      "minimum": 4.5
+    },
+    {
+      "name": "disabled boundary",
+      "foreground": "disabled-border",
+      "background": "background",
+      "minimum": 3
+    },
+    {
+      "name": "accent button",
+      "foreground": "on-accent",
+      "background": "accent",
+      "minimum": 4.5
+    },
+    {
+      "name": "focus",
+      "foreground": "focus",
+      "background": "background",
+      "minimum": 3
+    },
+    {
+      "name": "control boundary",
+      "foreground": "border",
+      "background": "background",
+      "minimum": 3
+    },
+    {
+      "name": "notice border",
+      "foreground": "notice-border",
+      "background": "background",
+      "minimum": 3
+    },
+    {
+      "name": "surface body",
+      "foreground": "text",
+      "background": "surface",
+      "minimum": 4.5
+    },
+    {
+      "name": "surface link",
+      "foreground": "link",
+      "background": "surface",
+      "minimum": 4.5
+    },
+    {
+      "name": "surface focus",
+      "foreground": "focus",
+      "background": "surface",
+      "minimum": 3
+    },
+    {
+      "name": "surface boundary",
+      "foreground": "border",
+      "background": "surface",
+      "minimum": 3
+    }
+  ]
+}

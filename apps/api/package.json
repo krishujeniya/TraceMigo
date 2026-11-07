@@ -1,0 +1,22 @@
+{
+  "name": "@tracemigo/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "node --watch dist/server.js",
+    "start": "node dist/server.js",
+    "dev:compile": "tsc -b --watch --preserveWatchOutput"
+  },
+  "dependencies": {
+    "@tracemigo/contracts": "workspace:*",
+    "fastify": "5.12.7"
+  }
+}

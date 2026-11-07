@@ -1,0 +1,463 @@
+{
+  "release": "5.0.0",
+  "verified_source_date": "2026-10-30",
+  "coverage": "risk-based subset; not certification",
+  "controls": [
+    {
+      "id": "v5.0.0-1.2.1",
+      "intent": "Context-safe response rendering",
+      "threats": [
+        "T07"
+      ],
+      "owner": "ENG",
+      "tasks": [
+        "P03.03",
+        "P05.03"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x10-V1-Encoding-and-Sanitization.md"
+    },
+    {
+      "id": "v5.0.0-1.2.4",
+      "intent": "Parameterized data queries",
+      "threats": [
+        "T02"
+      ],
+      "owner": "ENG",
+      "tasks": [
+        "P02.01"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x10-V1-Encoding-and-Sanitization.md"
+    },
+    {
+      "id": "v5.0.0-1.2.5",
+      "intent": "Safe OS invocation",
+      "threats": [
+        "T06"
+      ],
+      "owner": "SECURITY",
+      "tasks": [
+        "P05.02"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x10-V1-Encoding-and-Sanitization.md"
+    },
+    {
+      "id": "v5.0.0-1.3.6",
+      "intent": "Restrict outbound request destinations",
+      "threats": [
+        "T04",
+        "T05"
+      ],
+      "owner": "SECURITY",
+      "tasks": [
+        "P05.01",
+        "P07.02"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x10-V1-Encoding-and-Sanitization.md"
+    },
+    {
+      "id": "v5.0.0-2.2.1",
+      "intent": "Server-validated structures and ranges",
+      "threats": [
+        "T06",
+        "T09",
+        "T10"
+      ],
+      "owner": "ENG",
+      "tasks": [
+        "P01.02",
+        "P04.01"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x11-V2-Validation-and-Business-Logic.md"
+    },
+    {
+      "id": "v5.0.0-2.3.1",
+      "intent": "Ordered owner-bound workflow",
+      "threats": [
+        "T04",
+        "T09"
+      ],
+      "owner": "ENG",
+      "tasks": [
+        "P04.03",
+        "P07.01"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x11-V2-Validation-and-Business-Logic.md"
+    },
+    {
+      "id": "v5.0.0-2.3.3",
+      "intent": "Atomic business operation",
+      "threats": [
+        "T08",
+        "T10"
+      ],
+      "owner": "FINANCE",
+      "tasks": [
+        "P09.03"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x11-V2-Validation-and-Business-Logic.md"
+    },
+    {
+      "id": "v5.0.0-2.3.4",
+      "intent": "Concurrent resource reservation",
+      "threats": [
+        "T08",
+        "T09"
+      ],
+      "owner": "ENG",
+      "tasks": [
+        "P05.04"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x11-V2-Validation-and-Business-Logic.md"
+    },
+    {
+      "id": "v5.0.0-2.4.1",
+      "intent": "Bound automated costly operations",
+      "threats": [
+        "T08"
+      ],
+      "owner": "FINANCE",
+      "tasks": [
+        "P00.04",
+        "P05.04"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x11-V2-Validation-and-Business-Logic.md"
+    },
+    {
+      "id": "v5.0.0-5.1.1",
+      "intent": "Document accepted file formats and bounds",
+      "threats": [
+        "T06"
+      ],
+      "owner": "ENG",
+      "tasks": [
+        "P04.01"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x14-V5-File-Handling.md"
+    },
+    {
+      "id": "v5.0.0-5.2.1",
+      "intent": "Bound accepted file size",
+      "threats": [
+        "T06"
+      ],
+      "owner": "ENG",
+      "tasks": [
+        "P04.01"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x14-V5-File-Handling.md"
+    },
+    {
+      "id": "v5.0.0-5.2.3",
+      "intent": "Bound archive expansion before unpacking",
+      "threats": [
+        "T06"
+      ],
+      "owner": "SECURITY",
+      "tasks": [
+        "P05.02"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x14-V5-File-Handling.md"
+    },
+    {
+      "id": "v5.0.0-5.3.2",
+      "intent": "Use trusted paths",
+      "threats": [
+        "T06"
+      ],
+      "owner": "SECURITY",
+      "tasks": [
+        "P05.02"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x14-V5-File-Handling.md"
+    },
+    {
+      "id": "v5.0.0-6.1.3",
+      "intent": "Document every authentication route",
+      "threats": [
+        "T01"
+      ],
+      "owner": "SECURITY",
+      "tasks": [
+        "P02.02"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x15-V6-Authentication.md"
+    },
+    {
+      "id": "v5.0.0-6.3.3",
+      "intent": "Define multifactor access and documented deviations",
+      "threats": [
+        "T01",
+        "T12"
+      ],
+      "owner": "SECURITY",
+      "tasks": [
+        "P02.02"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x15-V6-Authentication.md"
+    },
+    {
+      "id": "v5.0.0-6.4.3",
+      "intent": "Recovery preserves MFA protection",
+      "threats": [
+        "T01"
+      ],
+      "owner": "SECURITY",
+      "tasks": [
+        "P02.02"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x15-V6-Authentication.md"
+    },
+    {
+      "id": "v5.0.0-7.1.1",
+      "intent": "Document inactivity and absolute lifetimes",
+      "threats": [
+        "T01"
+      ],
+      "owner": "SECURITY",
+      "tasks": [
+        "P02.02"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x16-V7-Session-Management.md"
+    },
+    {
+      "id": "v5.0.0-7.2.1",
+      "intent": "Backend session verification",
+      "threats": [
+        "T01"
+      ],
+      "owner": "SECURITY",
+      "tasks": [
+        "P02.02"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x16-V7-Session-Management.md"
+    },
+    {
+      "id": "v5.0.0-7.4.1",
+      "intent": "Invalidate terminated sessions",
+      "threats": [
+        "T01",
+        "T14"
+      ],
+      "owner": "SECURITY",
+      "tasks": [
+        "P02.02",
+        "P09.01"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x16-V7-Session-Management.md"
+    },
+    {
+      "id": "v5.0.0-7.4.2",
+      "intent": "Disable all sessions on deletion",
+      "threats": [
+        "T14"
+      ],
+      "owner": "PRIVACY",
+      "tasks": [
+        "P09.01"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x16-V7-Session-Management.md"
+    },
+    {
+      "id": "v5.0.0-8.1.1",
+      "intent": "Document function and object authorization",
+      "threats": [
+        "T02",
+        "T12"
+      ],
+      "owner": "SECURITY",
+      "tasks": [
+        "P02.02"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x17-V8-Authorization.md"
+    },
+    {
+      "id": "v5.0.0-8.1.2",
+      "intent": "Document field authorization",
+      "threats": [
+        "T03"
+      ],
+      "owner": "SECURITY",
+      "tasks": [
+        "P02.03"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x17-V8-Authorization.md"
+    },
+    {
+      "id": "v5.0.0-8.2.1",
+      "intent": "Explicit function permissions",
+      "threats": [
+        "T04",
+        "T12"
+      ],
+      "owner": "SECURITY",
+      "tasks": [
+        "P02.02",
+        "P07.01"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x17-V8-Authorization.md"
+    },
+    {
+      "id": "v5.0.0-8.2.2",
+      "intent": "Explicit object permissions",
+      "threats": [
+        "T02",
+        "T13"
+      ],
+      "owner": "SECURITY",
+      "tasks": [
+        "P02.02",
+        "P09.01"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x17-V8-Authorization.md"
+    },
+    {
+      "id": "v5.0.0-8.2.3",
+      "intent": "Explicit field permissions",
+      "threats": [
+        "T03"
+      ],
+      "owner": "SECURITY",
+      "tasks": [
+        "P02.03"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x17-V8-Authorization.md"
+    },
+    {
+      "id": "v5.0.0-8.3.1",
+      "intent": "Trusted-layer authorization",
+      "threats": [
+        "T04",
+        "T09"
+      ],
+      "owner": "ENG",
+      "tasks": [
+        "P06.01",
+        "P07.01"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x17-V8-Authorization.md"
+    },
+    {
+      "id": "v5.0.0-8.4.1",
+      "intent": "Cross-tenant controls",
+      "threats": [
+        "T02"
+      ],
+      "owner": "SECURITY",
+      "tasks": [
+        "P02.02"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x17-V8-Authorization.md"
+    },
+    {
+      "id": "v5.0.0-14.1.1",
+      "intent": "Classify sensitive assets",
+      "threats": [
+        "T13",
+        "T14"
+      ],
+      "owner": "PRIVACY",
+      "tasks": [
+        "P09.01"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x23-V14-Data-Protection.md"
+    },
+    {
+      "id": "v5.0.0-14.1.2",
+      "intent": "Specify class protection requirements",
+      "threats": [
+        "T03",
+        "T13"
+      ],
+      "owner": "PRIVACY",
+      "tasks": [
+        "P09.01"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x23-V14-Data-Protection.md"
+    },
+    {
+      "id": "v5.0.0-14.2.2",
+      "intent": "Prevent sensitive server cache retention",
+      "threats": [
+        "T02",
+        "T13"
+      ],
+      "owner": "ENG",
+      "tasks": [
+        "P03.03",
+        "P09.01"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x23-V14-Data-Protection.md"
+    },
+    {
+      "id": "v5.0.0-14.2.3",
+      "intent": "Prevent unintended third-party disclosure",
+      "threats": [
+        "T13"
+      ],
+      "owner": "PRIVACY",
+      "tasks": [
+        "P09.02"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x23-V14-Data-Protection.md"
+    },
+    {
+      "id": "v5.0.0-14.2.7",
+      "intent": "Automate classified expiry",
+      "threats": [
+        "T13",
+        "T14"
+      ],
+      "owner": "PRIVACY",
+      "tasks": [
+        "P09.01"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x23-V14-Data-Protection.md"
+    },
+    {
+      "id": "v5.0.0-14.3.2",
+      "intent": "Sensitive browser response no-store",
+      "threats": [
+        "T02",
+        "T13"
+      ],
+      "owner": "ENG",
+      "tasks": [
+        "P03.03"
+      ],
+      "status": "NOT RUN",
+      "source": "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x23-V14-Data-Protection.md"
+    }
+  ]
+}

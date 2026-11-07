@@ -1,0 +1,23 @@
+{
+  "name": "@tracemigo/ui",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens.css": "./dist/tokens.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b && node ../../tools/brand/copy-ui-css.mjs"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "19.3.1"
+  }
+}
