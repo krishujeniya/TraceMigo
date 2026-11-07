@@ -21,6 +21,7 @@
     "brand:generate": "python3 tools/brand/generate.py && node tools/brand/rasterize.mjs && python3 tools/brand/finish.py",
     "brand:check": "python3 tools/brand/check.py",
     "brand:verify": "node tools/brand/verify.mjs",
+    "preview:check": "python3 tools/check-preview-server.py",
     "security:check": "node --test tools/security/public-artifacts.test.mjs && node tools/security/public-artifacts.mjs"
   },
   "devDependencies": {

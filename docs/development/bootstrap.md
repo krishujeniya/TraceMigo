@@ -16,10 +16,13 @@ pnpm test:unit
 pnpm python:check
 pnpm build
 pnpm security:check
+pnpm preview:check
 pnpm dev
 ```
 
-Web: http://127.0.0.1:3000. API development composition root: http://127.0.0.1:3001. Stop with Ctrl+C. Root dev runs the API TypeScript watcher alongside its Node watcher and Next.js dev server; source edits rebuild the API. Start only web or API with `pnpm --filter @tracemigo/web dev` or `pnpm --filter @tracemigo/api dev` after the root build. For API source edits outside root dev, also run `pnpm --filter @tracemigo/api dev:compile` in another terminal. Server-only packages compile to `dist/` and expose only declared root exports. TypeScript project references build shared libraries before consumers; Next.js generates route types with `next typegen` before its separate no-emit project check, so fresh copies do not need existing `.next/` output.
+Web: http://127.0.0.1:3000. API development composition root: http://127.0.0.1:3001. Stop with Ctrl+C. Root dev runs the API TypeScript watcher alongside its Node watcher and Next.js dev server; source edits rebuild the API. Start only web or API with `pnpm --filter @tracemigo/web dev` or `pnpm --filter @tracemigo/api dev` after the root build. For API source edits outside root dev, also run `pnpm --filter @tracemigo/api dev:compile` in another terminal.
+
+Alternatively, the standalone single-page static preview can be run directly using `python3 run.py start` (foreground) or `python3 run.py start --bg` (background daemon). It binds strictly to loopback (`127.0.0.1:3000`), serves only `index.html`, denies repository traversal, and manages its lifecycle through verified PID cmdline ownership without interfering with foreign listeners. Run `pnpm preview:check` (`python3 tools/check-preview-server.py`) to verify containment and ownership invariance. Server-only packages compile to `dist/` and expose only declared root exports. TypeScript project references build shared libraries before consumers; Next.js generates route types with `next typegen` before its separate no-emit project check, so fresh copies do not need existing `.next/` output.
 
 `pnpm lint` checks executable package/import policy, tool JavaScript syntax and root JSON. TypeScript compiler checks syntax/types via `pnpm typecheck`. This bootstrap does not claim broad style or security scanning; P01.03 adds credential-safe CI/scanners. `pnpm test:unit` compiles API references and tests both import-policy bypass attempts and API configuration, privacy, validation, readiness and shutdown behavior; `pnpm python:check` statically checks the credential-free Python source and negative import fixtures. Application unit/integration/property/e2e tests are introduced with real behaviors, rather than scripts that return placeholder success.
 

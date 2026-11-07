@@ -13,8 +13,14 @@ pnpm test:unit
 pnpm python:check
 pnpm build
 pnpm security:check
+pnpm preview:check
 pnpm dev
 ```
+
+### Surfaces and Development Runners
+
+* **Full Application (`apps/web`)**: Run `pnpm dev` to launch the Next.js development server at `http://127.0.0.1:3000` alongside Fastify API watchers.
+* **Standalone Static Preview (`index.html`)**: Run `python3 run.py start` (or with `--bg`) to launch the contained single-page static preview on loopback `http://127.0.0.1:3000`. Stop with `python3 run.py stop`. The standalone server strictly serves `index.html` and blocks all repository source, planning, and dotfile paths. Run `pnpm preview:check` to verify server containment and process ownership.
 
 | Path | Purpose |
 |---|---|
