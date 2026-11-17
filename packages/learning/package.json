@@ -19,7 +19,7 @@
   "dependencies": {
     "@tracemigo/contracts": "workspace:*",
     "@tracemigo/db": "workspace:*",
-    "kysely": "0.29.7",
+    "kysely": "0.29.9",
     "pg": "8.23.1"
   },
   "devDependencies": {
