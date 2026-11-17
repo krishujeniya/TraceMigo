@@ -47,6 +47,7 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
           uv sync --frozen
+          uv pip install --system -r tools/brand/requirements.txt
 
       - name: Verify package boundaries and linting
         run: pnpm lint
@@ -115,6 +116,7 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
           uv sync --frozen
+          uv pip install --system -r tools/brand/requirements.txt
 
       - name: Full workspace build
         run: pnpm build
