@@ -17,6 +17,6 @@
   },
   "dependencies": {
     "@tracemigo/contracts": "workspace:*",
-    "fastify": "5.12.7"
+    "fastify": "5.12.8"
   }
 }
