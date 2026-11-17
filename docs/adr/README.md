@@ -20,3 +20,4 @@ This directory records foundational architectural decisions for TraceMigo. ADRs 
 | [0006](0006-content-derivation-and-assessment-secrecy.md) | Content derivation, micro-exercise isolation, and assessment secrecy | ACCEPTED | 2026-10-26 | REQ-P-01, REQ-P-03, Audit A13 |
 | [0007](0007-assessment-authority-and-ai-peer-boundaries.md) | Assessment authority and AI peer boundary constraints | ACCEPTED | 2026-10-26 | REQ-P-04, REQ-P-05, Audit A15 |
 | [0008](0008-data-retention-privacy-and-user-deletion.md) | Data retention, privacy controls, and user deletion lifecycles | ACCEPTED | 2026-10-26 | REQ-P-07, REQ-P-10, OPS-09 |
+| [0009](0009-proposed-architecture-amendments.md) | Proposed amendments for governance, security claims, origin, retention, and SLOs | PROPOSED | 2026-11-07 | Resolves Findings F02, F03, F04, F05, F06, F07, F15 |

@@ -7,8 +7,11 @@ import { parse } from '@babel/parser';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const policy = {
   contracts: [], domain: ['contracts'], db: ['contracts'], ui: [],
-  'execution-client': ['contracts'], web: ['ui'], api: ['contracts'],
+  'execution-client': ['contracts'], web: ['ui'], api: ['contracts', 'identity'],
   'judge-controller': ['contracts', 'execution-client'],
+  identity: ['contracts', 'db'],
+  catalog: ['contracts', 'db'],
+  learning: ['contracts', 'db'],
 };
 const pure = new Set(['contracts', 'domain', 'execution-client']);
 

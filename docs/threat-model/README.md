@@ -1,6 +1,6 @@
 # TraceMigo threat model
 
-Updated: 2026-10-30. Task P00.03. Status: IN_REVIEW; independent security review and named accountable acceptance pending. This is a design baseline; no security control is implemented or verified by these documents.
+Updated: 2026-11-07 (Reconciled under Task N01). Task P00.03. Status: IN_REVIEW; accountable owner Krish Ujeniya confirmed across all operational roles including SECURITY and PRODUCT; independent security review and formal gate acceptance pending. This is a design baseline; local web, API, database and standalone preview server foundations are implemented, while cloud runner and runtime security enforcement checks remain NOT RUN.
 
 Read [data flows](data-flows.md), [asset classification](assets.md), [threat register](threats.md), [control mapping](asvs-mapping.md), and [review scope](review.md). Architecture inputs are the [ADR index](../adr/README.md) and [ownership record](../ownership.md). Requirement coverage: REQ-P-03, REQ-P-05, REQ-P-07, REQ-P-10, REQ-A-02.
 
@@ -8,7 +8,7 @@ Read [data flows](data-flows.md), [asset classification](assets.md), [threat reg
 
 Python-first adult learning service, trusted TypeScript application, PostgreSQL authority, advisory model peer, and separate isolated execution plane. Threat actors include anonymous automation, malicious authenticated learners, another tenant, compromised provider accounts, malicious content/dependencies, and privileged insiders. Browsers, submitted code, case comments, model output, queues, and runner results are untrusted at their receiving boundary. UUIDs and noindex are not authorization controls.
 
-Every register entry specifies prevention, detection, a reproducible acceptance scenario, delivery tasks, and an accountable role. These are assignments to roles only; actual people must be recorded privately before acceptance. All runtime checks remain NOT RUN. Initial severity reflects impact before controls: Critical means tenant/answer/runner/privileged delivery compromise; High means account, payment, privacy, integrity, or material availability loss. Residual risk remains open until implementation evidence and review exist.
+Every register entry specifies prevention, detection, a reproducible acceptance scenario, delivery tasks, and an accountable role. Krish Ujeniya is the confirmed accountable person across all nine operational roles; independent specialist reviewers must be recorded privately before release gate acceptance. All runtime checks remain NOT RUN. Initial severity reflects impact before controls: Critical means tenant/answer/runner/privileged delivery compromise; High means account, payment, privacy, integrity, or material availability loss. Residual risk remains open until implementation evidence and review exist.
 
 ## Security invariants
 

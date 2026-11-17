@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.tracemigo.com/case.public.v1.json",
+  "title": "TraceMigo Public Case Manifest",
+  "description": "Public learner-facing problem metadata, prompt, files, and warmup references. Strictly contains no solutions, witnesses, or rubrics.",
+  "type": "object",
+  "required": ["schema_version", "data"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "case.public.v1"
+    },
+    "data": {
+      "type": "object",
+      "required": ["title", "slug", "summary", "difficulty", "entrypoint", "files"],
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "difficulty": {
+          "type": "string",
+          "enum": ["foundation", "core", "advanced"]
+        },
+        "entrypoint": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "files": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "maxLength": 65536
+          }
+        },
+        "hints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 500
+          }
+        },
+        "warmup_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 100
+          }
+        }
+      }
+    }
+  }
+}

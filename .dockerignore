@@ -1,0 +1,35 @@
+# Version control
+.git/
+.gitignore
+.github/
+
+# Monorepo dependencies & store
+node_modules/
+**/node_modules/
+.pnpm-store/
+.npmrc
+.turbo/
+.vercel/
+
+# Build outputs
+dist/
+**/dist/
+.next/
+**/next/
+*.tsbuildinfo
+
+# Python artifacts
+.venv/
+__pycache__/
+*.pyc
+
+# Local secrets & envs
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Tests & OS
+coverage/
+.DS_Store

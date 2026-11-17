@@ -1,0 +1,32 @@
+{
+  "description": "Synthetic non-production canary test fixtures for negative CI security checks",
+  "canaries": {
+    "secret_canary": {
+      "type": "api_key",
+      "content": "sk-proj-CANARYTEST0123456789ABCDEF0123456789ABCDEF01234567",
+      "expected_rule": "private-canary"
+    },
+    "private_key_canary": {
+      "type": "rsa_private_key",
+      "content": "-----BEGIN PRIVATE KEY-----\nCANARY_MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC3\n-----END PRIVATE KEY-----",
+      "expected_rule": "private-key"
+    },
+    "sealed_answer_canary": {
+      "type": "sealed_oracle",
+      "content": "{\"sealed_answer\": \"def solve_token_bucket(): return True\", \"private_bundle_key\": \"canary_oracle_bundle_v1\"}",
+      "expected_rule": "private-authority"
+    },
+    "source_map_canary": {
+      "type": "sourcemap",
+      "filename": "bundle.js.map",
+      "content": "{\"version\":3,\"file\":\"bundle.js\",\"mappings\":\"AAAA\"}",
+      "expected_rule": "forbidden-public-path"
+    },
+    "dotfile_canary": {
+      "type": "env_file",
+      "filename": ".env.local",
+      "content": "DATABASE_URL=postgres://user:pass@localhost:5432/db",
+      "expected_rule": "forbidden-public-path"
+    }
+  }
+}

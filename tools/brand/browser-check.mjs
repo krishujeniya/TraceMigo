@@ -1,15 +1,26 @@
 import { spawn } from 'node:child_process';
-import { mkdtemp, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdtemp, mkdir, readFile, writeFile, rm } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 
 const root=path.resolve(fileURLToPath(new URL('../../',import.meta.url)));
-const evidence=path.resolve(root,process.env.TRACEMIGO_BROWSER_EVIDENCE??'planning/evidence/P03.01');
-await mkdir(evidence,{recursive:true});
+let evidence;
+if (process.env.TRACEMIGO_BROWSER_EVIDENCE) {
+  evidence = path.resolve(root, process.env.TRACEMIGO_BROWSER_EVIDENCE);
+  if (existsSync(path.join(evidence, 'browser.json')) && process.env.TRACEMIGO_BROWSER_OVERWRITE !== '1') {
+    throw new Error(`Refusing to overwrite existing browser evidence in ${evidence}. Set TRACEMIGO_BROWSER_OVERWRITE=1 to allow overwrite.`);
+  }
+  await mkdir(evidence, { recursive: true });
+} else {
+  evidence = await mkdtemp(path.join('/tmp', 'tracemigo-browser-evidence-'));
+}
+
+const chromeBin = process.env.CHROME_BIN || (existsSync('/usr/bin/google-chrome') ? '/usr/bin/google-chrome' : (existsSync('/home/ai/.local/bin/google-chrome') ? '/home/ai/.local/bin/google-chrome' : 'google-chrome'));
 const profile=await mkdtemp('/tmp/tracemigo-brand-chrome-');
-const chrome=spawn('/usr/bin/google-chrome',['--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--no-first-run','--no-default-browser-check','--disable-background-networking','--disable-component-update','--disable-extensions','--disable-sync',`--user-data-dir=${profile}`,'--remote-debugging-port=0','about:blank'],{stdio:['ignore','ignore','pipe']});
+const chrome=spawn(chromeBin,['--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--no-first-run','--no-default-browser-check','--disable-background-networking','--disable-component-update','--disable-extensions','--disable-sync',`--user-data-dir=${profile}`,'--remote-debugging-port=0','about:blank'],{stdio:['ignore','ignore','pipe']});
 let chromeError='';chrome.stderr.on('data',chunk=>{chromeError+=chunk;});
 let web;let ws;let preview;
 const output={cases:[],errors:[],externalRequests:[]};
@@ -192,7 +203,18 @@ try {
   if(output.warmup)console.log('PASS: keyboard warmup journey, trace, review, session restore/reset, invalid data and denied storage.');
   console.log('VERDICT: PASS');
 } finally {
-  if(ws)ws.close();
-  if(preview)await new Promise(resolve=>preview.close(resolve));
-  for(const child of [web,chrome])if(child&&child.exitCode===null){const exited=new Promise(resolve=>child.once('exit',resolve));child.kill('SIGTERM');const timer=setTimeout(()=>child.kill('SIGKILL'),5000);await exited;clearTimeout(timer);}
+  if(ws) try { ws.close(); } catch {}
+  if(preview) await new Promise(resolve=>preview.close(resolve)).catch(() => {});
+  for(const child of [web,chrome]){
+    if(child&&child.exitCode===null){
+      const exited=new Promise(resolve=>child.once('exit',resolve));
+      child.kill('SIGTERM');
+      const timer=setTimeout(()=>child.kill('SIGKILL'),5000);
+      await exited;
+      clearTimeout(timer);
+    }
+  }
+  if(profile){
+    await rm(profile,{recursive:true,force:true}).catch(()=>{});
+  }
 }

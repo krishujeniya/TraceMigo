@@ -1,7 +1,8 @@
 # Claims are deliberately narrower than the source text. Claim status records
 # evidence, not product completion.
+# Reconciled 2026-11-07 under Task N03: refreshed limitations on CLM-002, CLM-009, CLM-011, CLM-014, and CLM-016 (Finding F08).
 schema_version: 1
-updated_utc: "2026-10-25T00:00:00Z"
+updated_utc: "2026-11-07T14:30:00Z"
 claims:
   - id: CLM-001
     statement: "TraceMigo is proposed as an existing-code comprehension practice product, not a general DSA catalogue."
@@ -15,7 +16,7 @@ claims:
     source_ids: [PLAN-2026-10-25]
     evidence_level: D
     status: proposed
-    limitation: "No cases, provenance, or independent reviews exist yet."
+    limitation: "Two local preview warmups (client-only, prerecorded) exist in U01/U02 for demonstration; thirty reviewed production Python cases, full case schemas, provenance records, and independent expert reviews remain future work for P02.04 and P10.01."
     review_by: "Before P02.04 and P10.01"
   - id: CLM-003
     statement: "A reported Google pilot makes existing-code interview practice timely."
@@ -64,7 +65,7 @@ claims:
     source_ids: [PLAN-2026-10-25, OPS-03]
     evidence_level: D
     status: proposed_target
-    limitation: "Indicator definition, window, error budget, staffing, and measured reliability are not yet defined."
+    limitation: "Indicator definitions, measurement windows, route-level exclusions, and error budget policy have been drafted in ADR 0007 and proposed ADR 0009; however, automated telemetry pipelines, on-call staffing schedules, judge/peer SLO thresholds, and measured production reliability remain unbuilt future work for P11.01."
     review_by: "Before P11.01"
   - id: CLM-010
     statement: "DORA metrics can be used as service-delivery trends rather than individual performance scores."
@@ -78,7 +79,7 @@ claims:
     source_ids: [OPS-02, OPS-09]
     evidence_level: A
     status: evidence_informed
-    limitation: "The control selection, evidence, and independent review remain future work."
+    limitation: "Risk-based control selection, threat mapping (15 threats, 33 ASVS v5 pinned controls), and threat model review have been documented in docs/threat-model/asvs-mapping.md and docs/threat-model/review.md (P00.03 IN_REVIEW); however, independent external application security review, verification evidence, and CI enforcement remain pending for P00.03 and P01.03."
     review_by: "Before P00.03"
   - id: CLM-012
     statement: "Learner/imported code must not run in credentialed web, API, or CI processes."
@@ -99,7 +100,7 @@ claims:
     source_ids: [OPS-12, PLAN-2026-10-25]
     evidence_level: D
     status: proposed_target
-    limitation: "No user interface or manual assistive-technology test exists."
+    limitation: "Local responsive web UI shells and preview interfaces exist and passed automated viewport, font loading, color contrast, and keyboard navigation checks in U01/U02/N02; however, full production user journeys, screen-reader testing with assistive technology, and independent formal WCAG 2.2 AA audit remain unexecuted future work for P03.04 and P09.05."
     review_by: "Before P03.04"
   - id: CLM-015
     statement: "The TraceMigo identity availability observations do not prove domain ownership or trademark clearance."
@@ -113,7 +114,7 @@ claims:
     source_ids: [BRAND-2026-10-25]
     evidence_level: D
     status: documented_conflict
-    limitation: "No production vector assets or design decision exists."
+    limitation: "Design decision was formalized and production vector SVG assets (lockups, marks, favicon, social preview) were authored, validated, and verified in P03.01 and M01; final design acceptance remains subject to P00.02 reviewer sign-off, and standalone HTML preview still carries historical raster references."
     review_by: "Before P03.01"
   - id: CLM-017
     statement: "The original plan contains opaque citation tokens that cannot be treated as usable sources."

@@ -4,7 +4,7 @@
   "type": "module",
   "packageManager": "pnpm@12.16.1",
   "engines": {
-    "node": ">=24.22.2 <25"
+    "node": ">=24.11.1 <25"
   },
   "scripts": {
     "build": "turbo run build && node tools/security/public-artifacts.mjs",
@@ -17,11 +17,18 @@
     "local:up": "docker compose -f infra/local/compose.yaml up -d --wait",
     "local:down": "docker compose -f infra/local/compose.yaml down",
     "db:migrate": "pnpm --filter @tracemigo/db build && node tools/db/migrate.mjs",
+    "test:db": "pnpm --filter @tracemigo/db build && node tools/db/run-disposable.mjs",
+    "test:identity": "pnpm --filter @tracemigo/identity build && node tools/db/run-disposable.mjs packages/identity/test/rls-isolation.test.ts",
+    "test:catalog": "pnpm --filter @tracemigo/catalog build && node tools/db/run-disposable.mjs packages/catalog/test/catalog-publication.test.ts",
+    "test:learning": "pnpm --filter @tracemigo/learning build && node tools/db/run-disposable.mjs packages/learning/test/learning-journey.test.ts",
+    "test:web": "node tools/web-routes.test.mjs",
+    "smoke:web": "node tools/smoke-bootstrap.mjs",
     "test:integration": "pnpm --filter @tracemigo/db build && node tools/db/integration.test.mjs",
     "brand:generate": "python3 tools/brand/generate.py && node tools/brand/rasterize.mjs && python3 tools/brand/finish.py",
     "brand:check": "python3 tools/brand/check.py",
     "brand:verify": "node tools/brand/verify.mjs",
     "preview:check": "python3 tools/check-preview-server.py",
+    "ci:canaries": "python3 tools/ci/check-canaries.py",
     "security:check": "node --test tools/security/public-artifacts.test.mjs && node tools/security/public-artifacts.mjs"
   },
   "devDependencies": {

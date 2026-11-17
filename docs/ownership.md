@@ -1,10 +1,10 @@
 # TraceMigo Accountable Ownership and Review Assignments
 
-- **Last Updated**: 2026-11-01
+- **Last Updated**: 2026-11-07
 - **Status**: IN_REVIEW — accountable roles confirmed; reviewer assignment/acceptance pending
-- **Traceability**: P00.02, `planning/tracker.md` Section 3
+- **Traceability**: P00.02, N01, `planning/tracker.md` Section 3
 
-This document defines role responsibilities and proposed reviewer qualifications. The job titles below are not assigned people or evidence of acceptance. Named owners, reviewers, scope and acceptance dates belong in the approved private planning handoff. Every task and release gate still requires the corresponding actual acceptance.
+This document defines role responsibilities and proposed reviewer qualifications. The job titles below define functional accountability domains. Named owner, reviewer assignments, scope and acceptance dates are maintained in the approved private planning handoff. Every task and release gate still requires the corresponding actual acceptance.
 
 ## Domain Roles and Accountabilities
 
@@ -23,14 +23,13 @@ This document defines role responsibilities and proposed reviewer qualifications
 ## Review & Approval Protocol
 
 1. **Two-Review Publication Gate (Content)**: Every problem published to the public catalog or sealed assessment pool requires independent review and cryptographic sign-off from two distinct reviewers (Content Author + Independent Content Reviewer).
-2. **Release Sign-Off (Gates G00–G12)**: Release gates cannot be approved by a single person. Production promotion requires joint approval across PRODUCT, ENG, OPS, and SECURITY.
+2. **Release Sign-Off (Gates G00–G12)**: Release gates cannot be approved on self-attestation alone. Under the confirmed solo-owner model where Krish Ujeniya holds primary accountability across all nine domains, production promotion requires recorded approval covering PRODUCT, ENG, OPS, and SECURITY, supported by separately identifiable independent specialist review evidence (e.g. independent AppSec review for sandboxing/data flows and independent content evaluation). The multi-person verification requirement is preserved in substance; contractor or external reviewer participation provides independent assurance without transferring project ownership. Proposed refinements to this protocol are tracked in ADR 0009.
 3. **Escalation Path**: Any unresolved conflict between security/privacy controls and product velocity must be formally escalated to the Lead Product Architect and Security Architect for an ADR amendment.
-
 
 ## Current assignment state
 
-The user explicitly assigned all nine operational accountabilities to the sole individual project owner on 2026-11-01. The approved private ownership record contains the name and role scopes. India/US remain the launch markets. Role ownership does not prove completed implementation, domain control, specialist review or release acceptance.
+The user explicitly assigned all nine operational accountabilities to the sole individual project owner, Krish Ujeniya, on 2026-11-01. The approved private ownership record contains the confirmed name and role scopes. India and the United States remain the launch markets. Role ownership establishes accountability; it does not prove completed implementation, domain control, specialist review, or release acceptance.
 
-The private P00.02 handoff contains a nine-role nomination and acceptance register. A normal clone does not include that ignored planning record; request its approved handoff when needed. Record the role's named accountable person, named reviewer, accepted scope, date and evidence. Preserve independent content/security review and joint release-signoff requirements. All nine accountable assignments are now confirmed. Named reviewer assignments and actual task/release acceptance remain pending.
+The private P00.02 handoff contains a nine-role nomination and acceptance register. A normal clone does not include that ignored planning record; request its approved handoff when needed. The register records the role's named accountable person, designated reviewer, accepted scope, date, and evidence. All nine accountable role assignments are confirmed with Krish Ujeniya. Named reviewer assignments and actual task/release acceptance remain pending.
 
 P00.02 remains IN_REVIEW pending the remaining reviewer assignment and acceptance evidence. Local ADR and implementation evidence remains valid for its stated scope.

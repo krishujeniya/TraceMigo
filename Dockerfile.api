@@ -1,0 +1,50 @@
+# syntax=docker/dockerfile:1.4
+FROM node:22-alpine AS builder
+
+RUN corepack enable && corepack prepare pnpm@10.5.2 --activate
+
+WORKDIR /app
+
+COPY pnpm-lock.yaml pnpm-workspace.yaml package.json turbo.json tsconfig*.json ./
+COPY apps/api/package.json ./apps/api/
+COPY packages/ ./packages/
+
+RUN pnpm install --frozen-lockfile --filter "@tracemigo/api..."
+
+COPY apps/api/ ./apps/api/
+
+RUN pnpm --filter "@tracemigo/api" build
+
+# Runtime Stage
+FROM node:22-alpine AS runner
+
+RUN apk add --no-cache curl
+
+WORKDIR /app
+
+ENV NODE_ENV=production \
+    TRACEMIGO_HOST=0.0.0.0 \
+    TRACEMIGO_PORT=3001
+
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nodejs -u 1001 -G nodejs
+
+RUN corepack enable && corepack prepare pnpm@10.5.2 --activate
+
+COPY pnpm-lock.yaml pnpm-workspace.yaml package.json turbo.json tsconfig*.json ./
+COPY apps/api/package.json ./apps/api/
+COPY packages/ ./packages/
+
+RUN pnpm install --prod --frozen-lockfile --filter "@tracemigo/api..."
+
+COPY --from=builder --chown=nodejs:nodejs /app/apps/api/dist ./apps/api/dist
+
+USER nodejs
+
+EXPOSE 3001
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+    CMD curl -f http://127.0.0.1:3001/v1/health/live || exit 1
+
+WORKDIR /app/apps/api
+CMD ["node", "dist/server.js"]

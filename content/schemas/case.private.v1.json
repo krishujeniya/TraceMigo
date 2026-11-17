@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.tracemigo.com/case.private.v1.json",
+  "title": "TraceMigo Private Evaluation Bundle",
+  "description": "Restricted evaluation authority containing oracle implementation, secret test vectors, and rubric specifications. Strictly isolated from public projections.",
+  "type": "object",
+  "required": ["schema_version", "data"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "case.private.v1"
+    },
+    "data": {
+      "type": "object",
+      "required": ["oracle_source", "hidden_test_cases", "expected_witness_hash"],
+      "additionalProperties": false,
+      "properties": {
+        "oracle_source": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 65536
+        },
+        "hidden_test_cases": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "input", "expected_output"],
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string", "maxLength": 100 },
+              "input": { "type": "string", "maxLength": 8192 },
+              "expected_output": { "type": "string", "maxLength": 8192 }
+            }
+          }
+        },
+        "expected_witness_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "rubric_definitions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["dimension", "criteria", "weight"],
+            "additionalProperties": false,
+            "properties": {
+              "dimension": {
+                "type": "string",
+                "enum": ["functional_model", "trace", "bug_reasoning", "complexity", "refactoring", "communication"]
+              },
+              "criteria": { "type": "string", "maxLength": 1000 },
+              "weight": { "type": "number", "minimum": 0, "maximum": 1 }
+            }
+          }
+        }
+      }
+    }
+  }
+}

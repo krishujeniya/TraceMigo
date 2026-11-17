@@ -1,329 +1,2371 @@
-# P00.01 source register. URLs and dates below are source-record metadata, not a
-# fresh availability, pricing, licensing, or compliance verification.
 schema_version: 1
-updated_utc: "2026-10-25T00:00:00Z"
+updated_utc: '2026-11-07T14:30:00Z'
 evidence_levels:
-  A: "Original paper, official technical documentation, first-party repository, or dataset card."
-  B: "Attributed original reporting; retain date and pilot caveat."
-  C: "Candidate report or vendor/product description; discovery only."
-  D: "TraceMigo design proposal, target, estimate, or inference; not external proof."
+  A: Original paper, official technical documentation, first-party repository, or dataset card.
+  B: Attributed original reporting; retain date and pilot caveat.
+  C: Candidate report or vendor/product description; discovery only.
+  D: TraceMigo design proposal, target, estimate, or inference; not external proof.
 sources:
-  - id: PLAN-2026-10-25
-    title: "TraceMigo product and implementation specification"
-    owner: "TraceMigo planning input"
-    publication_date: "2026-10-25"
-    url: "planning/plan.md"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: D
-    supports: "Proposed product scope, architecture, delivery phases, and release gates."
-    limitation: "A planning input; it is not implementation, market proof, or production evidence."
-    license: "Not supplied"
-    review_by: "Before each affected implementation task"
-  - id: BRAND-2026-10-25
-    title: "TraceMigo naming research and brand specification"
-    owner: "TraceMigo planning input"
-    publication_date: "2026-10-25"
-    url: "planning/TraceMigo_Brand_Research.md"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: D
-    supports: "Proposed identity, copy, availability observations, and publishing guidance."
-    limitation: "Availability and identity observations are dated and do not establish ownership or clearance."
-    license: "Not supplied"
-    review_by: "Before P03.01, P10.03, and P12.03"
-  - id: OPS-01
-    title: "DORA software delivery performance metrics"
-    owner: "Google Cloud / DORA"
-    publication_date: "Not recorded"
-    url: "https://dora.dev/guides/dora-metrics/"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "Definitions for delivery-performance trend metrics."
-    limitation: "Metrics do not rate individuals or substitute for service reliability measures."
-    license: "Not recorded"
-    review_by: "Before P01.04 and P11.01"
-  - id: OPS-02
-    title: "NIST Secure Software Development Framework"
-    owner: "NIST"
-    publication_date: "Not recorded"
-    url: "https://csrc.nist.gov/projects/ssdf"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "Risk-based secure-development practice categories."
-    limitation: "A mapped checklist is not proof that the system is secure."
-    license: "Not recorded"
-    review_by: "Before P00.03, P01.03, and P11.04"
-  - id: OPS-03
-    title: "Google SRE Workbook: error-budget policy"
-    owner: "Google SRE"
-    publication_date: "Not recorded"
-    url: "https://sre.google/workbook/error-budget-policy/"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "Measured reliability can govern feature-delivery pace."
-    limitation: "TraceMigo must define its own indicators, windows, thresholds, and exceptions."
-    license: "Not recorded"
-    review_by: "Before P11.01"
-  - id: OPS-04
-    title: "SLSA v1.2 tracks"
-    owner: "SLSA"
-    publication_date: "Not recorded"
-    url: "https://slsa.dev/spec/v1.2/tracks"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "Increasing build-provenance integrity requirements."
-    limitation: "An SBOM alone does not establish a SLSA level."
-    license: "Not recorded"
-    review_by: "Before P01.03 and P11.05"
-  - id: OPS-05
-    title: "OpenGitOps principles"
-    owner: "OpenGitOps"
-    publication_date: "Not recorded"
-    url: "https://opengitops.dev/"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "Declarative, versioned, reconciled desired state."
-    limitation: "A push deployment is not automatically GitOps."
-    license: "Not recorded"
-    review_by: "Before P05.01 and P13.02"
-  - id: OPS-06
-    title: "GitHub Actions OIDC"
-    owner: "GitHub Docs"
-    publication_date: "Not recorded"
-    url: "https://docs.github.com/en/actions/concepts/security/openid-connect"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "Short-lived cloud identity for workflows."
-    limitation: "Trust policy still requires narrow repository, ref, environment, audience, and role binding."
-    license: "Not recorded"
-    review_by: "Before P01.04 and P05.01"
-  - id: OPS-07
-    title: "OpenTelemetry signals"
-    owner: "OpenTelemetry"
-    publication_date: "Not recorded"
-    url: "https://opentelemetry.io/docs/concepts/signals/"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "Distinct traces, metrics, logs, and context propagation."
-    limitation: "Instrumentation alone does not create usable alerting or protect sensitive content."
-    license: "Not recorded"
-    review_by: "Before P01.02 and P11.01"
-  - id: OPS-08
-    title: "FinOps Framework"
-    owner: "FinOps Foundation"
-    publication_date: "Not recorded"
-    url: "https://www.finops.org/framework/"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "Shared accountability, allocation, budgeting, and unit economics."
-    limitation: "Budget alerts do not automatically stop spend."
-    license: "CC BY 4.0 attribution noted in planning research"
-    review_by: "Before P00.04, P08.04, and P13.03"
-  - id: OPS-09
-    title: "OWASP Application Security Verification Standard"
-    owner: "OWASP"
-    publication_date: "Not recorded"
-    url: "https://owasp.org/www-project-application-security-verification-standard/"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "A structured security-verification basis."
-    limitation: "Applicable controls and pinned release version must be decided; scans do not replace assessment."
-    license: "Not recorded"
-    review_by: "Before P00.03 and P11.04"
-  - id: OPS-10
-    title: "OWASP LLM01: Prompt Injection"
-    owner: "OWASP GenAI Security Project"
-    publication_date: "Not recorded"
-    url: "https://genai.owasp.org/llmrisk/llm01-prompt-injection/"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "Untrusted content can redirect model behavior."
-    limitation: "Prompt wording is not a sufficient protection; policy and capabilities must constrain outcomes."
-    license: "Not recorded"
-    review_by: "Before P07.01 through P07.04"
-  - id: OPS-11
-    title: "GKE Sandbox concepts and limitations"
-    owner: "Google Cloud"
-    publication_date: "Not recorded"
-    url: "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/sandbox-pods"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "Sandbox runtime compatibility and control limitations require testing."
-    limitation: "A manifest field is not evidence of an effective runtime control."
-    license: "Not recorded"
-    review_by: "Before P00.05, P05.02, and P05.05"
-  - id: OPS-12
-    title: "Web Content Accessibility Guidelines 2.2"
-    owner: "W3C"
-    publication_date: "Not recorded"
-    url: "https://www.w3.org/TR/WCAG22/"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "Testable accessibility success criteria."
-    limitation: "Automated scans cannot demonstrate complete conformance."
-    license: "Not recorded"
-    review_by: "Before P03.04, P09.05, and P11.04"
-  - id: OPS-13
-    title: "Google SRE Book: postmortem culture"
-    owner: "Google SRE"
-    publication_date: "Not recorded"
-    url: "https://sre.google/sre-book/postmortem-culture/"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "Blameless incident analysis with owned preventive follow-up."
-    limitation: "A template does not prove response readiness."
-    license: "Not recorded"
-    review_by: "Before P11.03 and P13.01"
-  - id: GOOGLE-TIE
-    title: "Google Technical Interview Exercises"
-    owner: "Google"
-    publication_date: "Not recorded"
-    url: "https://google.github.io/tie/"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "Historical conversational coding exercises existed."
-    limitation: "Does not provide a private current rubric or endorse TraceMigo."
-    license: "Not recorded"
-    review_by: "Monthly while used in public copy"
-  - id: GOOGLE-CAREERS
-    title: "Google Careers interview tips"
-    owner: "Google"
-    publication_date: "Not recorded"
-    url: "https://www.google.com/about/careers/applications/interview-tips"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "First-party general interview guidance."
-    limitation: "Not a private comprehension rubric or policy for every role."
-    license: "Not recorded"
-    review_by: "Monthly while used in public copy"
-  - id: BI-2026-05
-    title: "Business Insider reporting on a Google AI-assisted interview pilot"
-    owner: "Business Insider"
-    publication_date: "2026-05-07"
-    url: "https://www.businessinsider.com/google-job-interview-software-engineers-ai-assistant-coding-2026-5"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: B
-    supports: "Reported pilot context for existing-code work."
-    limitation: "Reporting about a pilot; it cannot establish universal hiring practice."
-    license: "Not recorded"
-    review_by: "Monthly while used in public copy"
-  - id: BI-2026-10
-    title: "Business Insider follow-up on Google interview process"
-    owner: "Business Insider"
-    publication_date: "2026-10-20"
-    url: "https://www.businessinsider.com/google-interview-process-ai-gemini-coding-comprehension-software-engineer-2026-10"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: B
-    supports: "Reported continued pilot/expansion context."
-    limitation: "Original planning notes say direct retrieval failed; recheck before reuse."
-    license: "Not recorded"
-    review_by: "Monthly while used in public copy"
-  - id: TAKEUFORWARD-REF
-    title: "Google technical interviews: code comprehension round"
-    owner: "takeUforward community"
-    publication_date: "Not recorded"
-    url: "https://takeuforward.org/community/posts/google-technical-interviews-code-comprehension-round"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: C
-    supports: "A candidate teaching scenario."
-    limitation: "Anonymous community material; mutable engagement is not market or rubric evidence."
-    license: "Not recorded"
-    review_by: "Monthly while used in public copy"
-  - id: Fagan-1976
-    title: "Design and Code Inspections to Reduce Errors in Program Development"
-    owner: "Michael E. Fagan"
-    publication_date: "1976"
-    url: "https://www.ida.liu.se/~TDDC90/labs/lab-papers/fagan76.pdf"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "Structured inspection practice."
-    limitation: "Historical study; not a product-efficacy claim for TraceMigo."
-    license: "Not recorded"
-    review_by: "Before research publication"
-  - id: CHI-1989
-    title: "Self-Explanations: How Students Study and Use Examples in Learning to Solve Problems"
-    owner: "Chi et al."
-    publication_date: "1989"
-    url: "https://doi.org/10.1207/s15516709cog1302_1"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "Self-explanation as a learning mechanism."
-    limitation: "Original setting is not adult code-interview practice."
-    license: "Not recorded"
-    review_by: "Before research publication"
-  - id: CHASE-2009
-    title: "Teachable Agents and the Protege Effect"
-    owner: "Chase, Chin, Oppezzo, and Schwartz"
-    publication_date: "2009"
-    url: "https://aaalab.stanford.edu/papers/Protege_Effect_Teachable_Agents.pdf"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "Teach-back as a research hypothesis."
-    limitation: "Does not prove that an LLM role-play improves developer learning."
-    license: "Not recorded"
-    review_by: "Before P10.04 or public learning claims"
-  - id: DUNLOSKY-2013
-    title: "Improving Students' Learning With Effective Learning Techniques"
-    owner: "Dunlosky et al."
-    publication_date: "2013"
-    url: "https://doi.org/10.1177/1529100612453266"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "Retrieval and spaced practice considerations."
-    limitation: "TraceMigo's schedule, effect size, and population must be measured separately."
-    license: "Not recorded"
-    review_by: "Before P08.03 or public learning claims"
-  - id: PLACED-GOOGLE
-    title: "Placed Google pack"
-    owner: "Placed"
-    publication_date: "Not recorded"
-    url: "https://placed.dev/packs/google"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: C
-    supports: "A direct competitor provides Google-focused existing-code practice."
-    limitation: "Only public material was reviewed; recheck before comparisons."
-    license: "Not applicable"
-    review_by: "Before comparative advertising"
-  - id: NYRION-GOOGLE
-    title: "Nyrion Google page"
-    owner: "Nyrion"
-    publication_date: "Not recorded"
-    url: "https://www.nyrion.ai/companies/google"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: C
-    supports: "A competitor markets code-comprehension practice."
-    limitation: "Public marketing is incomplete product evidence; do not claim superiority."
-    license: "Not applicable"
-    review_by: "Before comparative advertising"
-  - id: W3C-CONTRAST
-    title: "W3C contrast guidance"
-    owner: "W3C"
-    publication_date: "Not recorded"
-    url: "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "Non-text contrast expectations for identity assets."
-    limitation: "Pixel and user-interface validation are still required."
-    license: "Not recorded"
-    review_by: "Before P03.01"
-  - id: USPTO-SEARCH
-    title: "USPTO guidance on searching similar trademarks"
-    owner: "USPTO"
-    publication_date: "Not recorded"
-    url: "https://www.uspto.gov/trademarks/basics/why-search-similar-trademarks"
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: A
-    supports: "Exact-name searches are insufficient for clearance."
-    limitation: "Guidance is not a legal clearance opinion."
-    license: "Not recorded"
-    review_by: "Before P10.03"
-  - id: OPAQUE-PLAN-CITATIONS
-    title: "Unresolved plan citation tokens"
-    owner: "Unknown"
-    publication_date: "Unknown"
-    url: null
-    accessed_utc: "2026-10-25T00:00:00Z"
-    evidence_level: D
-    supports: "Nothing until the original browsing/export record is supplied."
-    limitation: "Opaque turn and genui references in planning/plan.md lack source URLs; do not reconstruct, cite, or rely on them."
-    license: "Unknown"
-    review_by: "P00.01 follow-up when original source record is available"
+- id: PLAN-2026-10-25
+  title: TraceMigo product and implementation specification
+  owner: TraceMigo planning input
+  publication_date: '2026-10-25'
+  url: planning/plan.md
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: D
+  supports: Proposed product scope, architecture, delivery phases, and release gates.
+  limitation: A planning input; it is not implementation, market proof, or production evidence.
+  license: Not supplied
+  review_by: Before each affected implementation task
+- id: BRAND-2026-10-25
+  title: TraceMigo naming research and brand specification
+  owner: TraceMigo planning input
+  publication_date: '2026-10-25'
+  url: planning/TraceMigo_Brand_Research.md
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: D
+  supports: Proposed identity, copy, availability observations, and publishing guidance.
+  limitation: Availability and identity observations are dated and do not establish ownership or clearance.
+  license: Not supplied
+  review_by: Before P03.01, P10.03, and P12.03
+- id: OPS-01
+  title: DORA software delivery performance metrics
+  owner: Google Cloud / DORA
+  publication_date: Not recorded
+  url: https://dora.dev/guides/dora-metrics/
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: Definitions for delivery-performance trend metrics.
+  limitation: Metrics do not rate individuals or substitute for service reliability measures.
+  license: Not recorded
+  review_by: Before P01.04 and P11.01
+  appendix_ref: SRC-069
+- id: OPS-02
+  title: NIST Secure Software Development Framework
+  owner: NIST
+  publication_date: Not recorded
+  url: https://csrc.nist.gov/projects/ssdf
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: Risk-based secure-development practice categories.
+  limitation: A mapped checklist is not proof that the system is secure.
+  license: Not recorded
+  review_by: Before P00.03, P01.03, and P11.04
+  appendix_ref: SRC-070
+- id: OPS-03
+  title: 'Google SRE Workbook: error-budget policy'
+  owner: Google SRE
+  publication_date: Not recorded
+  url: https://sre.google/workbook/error-budget-policy/
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: Measured reliability can govern feature-delivery pace.
+  limitation: TraceMigo must define its own indicators, windows, thresholds, and exceptions.
+  license: Not recorded
+  review_by: Before P11.01
+  appendix_ref: SRC-071
+- id: OPS-04
+  title: SLSA v1.2 tracks
+  owner: SLSA
+  publication_date: Not recorded
+  url: https://slsa.dev/spec/v1.2/tracks
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: Increasing build-provenance integrity requirements.
+  limitation: An SBOM alone does not establish a SLSA level.
+  license: Not recorded
+  review_by: Before P01.03 and P11.05
+  appendix_ref: SRC-072
+- id: OPS-05
+  title: OpenGitOps principles
+  owner: OpenGitOps
+  publication_date: Not recorded
+  url: https://opengitops.dev/
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: Declarative, versioned, reconciled desired state.
+  limitation: A push deployment is not automatically GitOps.
+  license: Not recorded
+  review_by: Before P05.01 and P13.02
+  appendix_ref: SRC-073
+- id: OPS-06
+  title: GitHub Actions OIDC
+  owner: GitHub Docs
+  publication_date: Not recorded
+  url: https://docs.github.com/en/actions/concepts/security/openid-connect
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: Short-lived cloud identity for workflows.
+  limitation: Trust policy still requires narrow repository, ref, environment, audience, and role binding.
+  license: Not recorded
+  review_by: Before P01.04 and P05.01
+  appendix_ref: SRC-074
+- id: OPS-07
+  title: OpenTelemetry signals
+  owner: OpenTelemetry
+  publication_date: Not recorded
+  url: https://opentelemetry.io/docs/concepts/signals/
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: Distinct traces, metrics, logs, and context propagation.
+  limitation: Instrumentation alone does not create usable alerting or protect sensitive content.
+  license: Not recorded
+  review_by: Before P01.02 and P11.01
+  appendix_ref: SRC-075
+- id: OPS-08
+  title: FinOps Framework
+  owner: FinOps Foundation
+  publication_date: Not recorded
+  url: https://www.finops.org/framework/
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: Shared accountability, allocation, budgeting, and unit economics.
+  limitation: Budget alerts do not automatically stop spend.
+  license: CC BY 4.0 attribution noted in planning research
+  review_by: Before P00.04, P08.04, and P13.03
+  appendix_ref: SRC-076
+- id: OPS-09
+  title: OWASP Application Security Verification Standard
+  owner: OWASP
+  publication_date: Not recorded
+  url: https://owasp.org/www-project-application-security-verification-standard/
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: A structured security-verification basis.
+  limitation: Applicable controls and pinned release version must be decided; scans do not replace assessment.
+  license: Not recorded
+  review_by: Before P00.03 and P11.04
+  appendix_ref: SRC-077
+- id: OPS-10
+  title: 'OWASP LLM01: Prompt Injection'
+  owner: OWASP GenAI Security Project
+  publication_date: Not recorded
+  url: https://genai.owasp.org/llmrisk/llm01-prompt-injection/
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: Untrusted content can redirect model behavior.
+  limitation: Prompt wording is not a sufficient protection; policy and capabilities must constrain outcomes.
+  license: Not recorded
+  review_by: Before P07.01 through P07.04
+  appendix_ref: SRC-078
+- id: OPS-11
+  title: GKE Sandbox concepts and limitations
+  owner: Google Cloud
+  publication_date: Not recorded
+  url: https://docs.cloud.google.com/kubernetes-engine/docs/concepts/sandbox-pods
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: Sandbox runtime compatibility and control limitations require testing.
+  limitation: A manifest field is not evidence of an effective runtime control.
+  license: Not recorded
+  review_by: Before P00.05, P05.02, and P05.05
+  appendix_ref: SRC-079
+- id: OPS-12
+  title: Web Content Accessibility Guidelines 2.2
+  owner: W3C
+  publication_date: Not recorded
+  url: https://www.w3.org/TR/WCAG22/
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: Testable accessibility success criteria.
+  limitation: Automated scans cannot demonstrate complete conformance.
+  license: Not recorded
+  review_by: Before P03.04, P09.05, and P11.04
+  appendix_ref: SRC-080
+- id: OPS-13
+  title: 'Google SRE Book: postmortem culture'
+  owner: Google SRE
+  publication_date: Not recorded
+  url: https://sre.google/sre-book/postmortem-culture/
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: Blameless incident analysis with owned preventive follow-up.
+  limitation: A template does not prove response readiness.
+  license: Not recorded
+  review_by: Before P11.03 and P13.01
+  appendix_ref: SRC-081
+- id: GOOGLE-TIE
+  title: Google Technical Interview Exercises
+  owner: Google
+  publication_date: Not recorded
+  url: https://google.github.io/tie/
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: Historical conversational coding exercises existed.
+  limitation: Does not provide a private current rubric or endorse TraceMigo.
+  license: Not recorded
+  review_by: Monthly while used in public copy
+  appendix_ref: SRC-092
+- id: GOOGLE-CAREERS
+  title: Google Careers interview tips
+  owner: Google
+  publication_date: Not recorded
+  url: https://www.google.com/about/careers/applications/interview-tips
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: First-party general interview guidance.
+  limitation: Not a private comprehension rubric or policy for every role.
+  license: Not recorded
+  review_by: Monthly while used in public copy
+  appendix_ref: SRC-093
+- id: BI-2026-05
+  title: Business Insider reporting on a Google AI-assisted interview pilot
+  owner: Business Insider
+  publication_date: '2026-05-07'
+  url: https://www.businessinsider.com/google-job-interview-software-engineers-ai-assistant-coding-2026-5
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: B
+  supports: Reported pilot context for existing-code work.
+  limitation: Reporting about a pilot; it cannot establish universal hiring practice.
+  license: Not recorded
+  review_by: Monthly while used in public copy
+  appendix_ref: SRC-094
+- id: BI-2026-10
+  title: Business Insider follow-up on Google interview process
+  owner: Business Insider
+  publication_date: '2026-10-20'
+  url: https://www.businessinsider.com/google-interview-process-ai-gemini-coding-comprehension-software-engineer-2026-10
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: B
+  supports: Reported continued pilot/expansion context.
+  limitation: Original planning notes say direct retrieval failed; recheck before reuse.
+  license: Not recorded
+  review_by: Monthly while used in public copy
+  appendix_ref: SRC-095
+- id: TAKEUFORWARD-REF
+  title: 'Google technical interviews: code comprehension round'
+  owner: takeUforward community
+  publication_date: Not recorded
+  url: https://takeuforward.org/community/posts/google-technical-interviews-code-comprehension-round
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: C
+  supports: A candidate teaching scenario.
+  limitation: Anonymous community material; mutable engagement is not market or rubric evidence.
+  license: Not recorded
+  review_by: Monthly while used in public copy
+  appendix_ref: SRC-096
+- id: Fagan-1976
+  title: Design and Code Inspections to Reduce Errors in Program Development
+  owner: Michael E. Fagan
+  publication_date: '1976'
+  url: https://www.ida.liu.se/~TDDC90/labs/lab-papers/fagan76.pdf
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: Structured inspection practice.
+  limitation: Historical study; not a product-efficacy claim for TraceMigo.
+  license: Not recorded
+  review_by: Before research publication
+  appendix_ref: SRC-082
+- id: CHI-1989
+  title: 'Self-Explanations: How Students Study and Use Examples in Learning to Solve Problems'
+  owner: Chi et al.
+  publication_date: '1989'
+  url: https://doi.org/10.1207/s15516709cog1302_1
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: Self-explanation as a learning mechanism.
+  limitation: Original setting is not adult code-interview practice.
+  license: Not recorded
+  review_by: Before research publication
+  appendix_ref: SRC-097
+- id: CHASE-2009
+  title: Teachable Agents and the Protege Effect
+  owner: Chase, Chin, Oppezzo, and Schwartz
+  publication_date: '2009'
+  url: https://aaalab.stanford.edu/papers/Protege_Effect_Teachable_Agents.pdf
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: Teach-back as a research hypothesis.
+  limitation: Does not prove that an LLM role-play improves developer learning.
+  license: Not recorded
+  review_by: Before P10.04 or public learning claims
+  appendix_ref: SRC-098
+- id: DUNLOSKY-2013
+  title: Improving Students' Learning With Effective Learning Techniques
+  owner: Dunlosky et al.
+  publication_date: '2013'
+  url: https://doi.org/10.1177/1529100612453266
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: Retrieval and spaced practice considerations.
+  limitation: TraceMigo's schedule, effect size, and population must be measured separately.
+  license: Not recorded
+  review_by: Before P08.03 or public learning claims
+  appendix_ref: SRC-100
+- id: PLACED-GOOGLE
+  title: Placed Google pack
+  owner: Placed
+  publication_date: Not recorded
+  url: https://placed.dev/packs/google
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: C
+  supports: A direct competitor provides Google-focused existing-code practice.
+  limitation: Only public material was reviewed; recheck before comparisons.
+  license: Not applicable
+  review_by: Before comparative advertising
+  appendix_ref: SRC-108
+- id: NYRION-GOOGLE
+  title: Nyrion Google page
+  owner: Nyrion
+  publication_date: Not recorded
+  url: https://www.nyrion.ai/companies/google
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: C
+  supports: A competitor markets code-comprehension practice.
+  limitation: Public marketing is incomplete product evidence; do not claim superiority.
+  license: Not applicable
+  review_by: Before comparative advertising
+  appendix_ref: SRC-109
+- id: W3C-CONTRAST
+  title: W3C contrast guidance
+  owner: W3C
+  publication_date: Not recorded
+  url: https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: Non-text contrast expectations for identity assets.
+  limitation: Pixel and user-interface validation are still required.
+  license: Not recorded
+  review_by: Before P03.01
+  appendix_ref: SRC-048
+- id: USPTO-SEARCH
+  title: USPTO guidance on searching similar trademarks
+  owner: USPTO
+  publication_date: Not recorded
+  url: https://www.uspto.gov/trademarks/basics/why-search-similar-trademarks
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: A
+  supports: Exact-name searches are insufficient for clearance.
+  limitation: Guidance is not a legal clearance opinion.
+  license: Not recorded
+  review_by: Before P10.03
+  appendix_ref: SRC-046
+- id: OPAQUE-PLAN-CITATIONS
+  title: Unresolved plan citation tokens
+  owner: Unknown
+  publication_date: Unknown
+  url: null
+  accessed_utc: '2026-10-25T00:00:00Z'
+  evidence_level: D
+  supports: Nothing until the original browsing/export record is supplied.
+  limitation: Opaque turn and genui references in planning/plan.md lack source URLs; do not reconstruct, cite, or rely on
+    them.
+  license: Unknown
+  review_by: P00.01 follow-up when original source record is available
+- id: SRC-001
+  title: Google Kubernetes Engine (GKE) Pricing
+  owner: Google Cloud
+  publication_date: Dated reference (2026)
+  url: https://cloud.google.com/kubernetes-engine/pricing
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: docs/architecture/capacity-cost-model.md:17
+  task: P00.04
+  disposition: infrastructure_pricing
+  supports: GKE cluster management fee and Autopilot/Standard compute cost modeling in the capacity model.
+  limitation: Vendor pricing page; subject to regional variations, committed use discounts, and platform changes. Requires
+    quote verification before spend.
+  license: Proprietary vendor documentation
+  review_by: Before P00.04
+- id: SRC-002
+  title: Compute Engine General-Purpose VM Pricing
+  owner: Google Cloud
+  publication_date: Dated reference (2026)
+  url: https://cloud.google.com/products/compute/pricing/general-purpose
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: docs/architecture/capacity-cost-model.md:18
+  task: P00.04
+  disposition: infrastructure_pricing
+  supports: General-purpose compute VM hourly and monthly cost projections.
+  limitation: Vendor list pricing; does not reflect sustained use discounts, regional network egress, or currency fluctuations.
+  license: Proprietary vendor documentation
+  review_by: Before P00.04
+- id: SRC-003
+  title: Cloud SQL Pricing
+  owner: Google Cloud
+  publication_date: Dated reference (2026)
+  url: https://cloud.google.com/sql/pricing
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: docs/architecture/capacity-cost-model.md:19
+  task: P00.04
+  disposition: infrastructure_pricing
+  supports: Managed PostgreSQL instance sizing and high-availability cost modeling.
+  limitation: Estimates based on provisioned vCPU/RAM; does not include backup storage or cross-region replication fees.
+  license: Proprietary vendor documentation
+  review_by: Before P00.04
+- id: SRC-004
+  title: Cloud Run Pricing
+  owner: Google Cloud
+  publication_date: Dated reference (2026)
+  url: https://cloud.google.com/run/pricing
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: docs/architecture/capacity-cost-model.md:20
+  task: P00.04
+  disposition: infrastructure_pricing
+  supports: Serverless container execution tier pricing for API and background services.
+  limitation: Pay-per-use rates vary with invocation frequency, CPU allocation time, and concurrency.
+  license: Proprietary vendor documentation
+  review_by: Before P00.04
+- id: SRC-005
+  title: Memorystore for Redis Pricing
+  owner: Google Cloud
+  publication_date: Dated reference (2026)
+  url: https://cloud.google.com/memorystore/docs/redis/pricing
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: docs/architecture/capacity-cost-model.md:21
+  task: P00.04
+  disposition: infrastructure_pricing
+  supports: Redis cache tier and token-bucket rate limiter storage cost projections.
+  limitation: Capacity tiers are fixed per instance; does not model self-hosted or Valkey alternatives.
+  license: Proprietary vendor documentation
+  review_by: Before P00.04
+- id: SRC-006
+  title: Cloud Storage Pricing
+  owner: Google Cloud
+  publication_date: Dated reference (2026)
+  url: https://cloud.google.com/storage/pricing
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: docs/architecture/capacity-cost-model.md:22
+  task: P00.04
+  disposition: infrastructure_pricing
+  supports: Object storage pricing for case bundles, traces, and backup archives.
+  limitation: Excludes operational Class A/B request fees and inter-region replication egress.
+  license: Proprietary vendor documentation
+  review_by: Before P00.04
+- id: SRC-007
+  title: Cloud Pub/Sub Pricing
+  owner: Google Cloud
+  publication_date: Dated reference (2026)
+  url: https://cloud.google.com/pubsub/pricing
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: docs/architecture/capacity-cost-model.md:23
+  task: P00.04
+  disposition: infrastructure_pricing
+  supports: Message throughput and queue ingestion cost modeling for asynchronous grading.
+  limitation: Volume-tiered pricing; free tier applied in models must be verified against total project throughput.
+  license: Proprietary vendor documentation
+  review_by: Before P00.04
+- id: SRC-008
+  title: Cloud Logging and Observability Pricing
+  owner: Google Cloud
+  publication_date: Dated reference (2026)
+  url: https://cloud.google.com/products/observability/pricing
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: docs/architecture/capacity-cost-model.md:24
+  task: P00.04
+  disposition: infrastructure_pricing
+  supports: Audit log retention and metrics telemetry cost estimates.
+  limitation: Log ingestion volume can spike rapidly during incident debugging or verbose tracing.
+  license: Proprietary vendor documentation
+  review_by: Before P00.04
+- id: SRC-009
+  title: OpenAI API Pricing
+  owner: OpenAI
+  publication_date: Dated reference (2026)
+  url: https://developers.openai.com/api/docs/pricing
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: docs/architecture/capacity-cost-model.md:25
+  task: P00.04
+  disposition: infrastructure_pricing
+  supports: Token usage and audio processing unit costs for LLM assistance and peer dialogues.
+  limitation: Subject to frequent vendor model deprecation, price revisions, and prompt-caching rules.
+  license: Proprietary vendor documentation
+  review_by: Before P00.04
+- id: SRC-010
+  title: Razorpay Payment Gateway Pricing
+  owner: Razorpay
+  publication_date: Dated reference (2026)
+  url: https://razorpay.com/pricing/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: docs/architecture/capacity-cost-model.md:26
+  task: P00.04
+  disposition: infrastructure_pricing
+  supports: Domestic (India) UPI and card transaction processing fee modeling.
+  limitation: GST and international card surcharges are not factored into baseline merchant pricing.
+  license: Proprietary vendor documentation
+  review_by: Before P00.04
+- id: SRC-011
+  title: Google Cloud Billing Budgets Guide
+  owner: Google Cloud
+  publication_date: '2026-11-01'
+  url: https://docs.cloud.google.com/billing/docs/how-to/budgets
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/architecture/capacity-cost-model.md:27
+  task: P00.04
+  disposition: official_documentation
+  supports: Budget notification thresholds and automated spend alerts in billing infrastructure.
+  limitation: Budgets generate alerts but do not halt service execution without custom Cloud Functions.
+  license: Proprietary vendor documentation
+  review_by: Before P00.04
+- id: SRC-012
+  title: Google Cloud Budgets and Spend Caps
+  owner: Google Cloud
+  publication_date: Dated reference (2026)
+  url: https://docs.cloud.google.com/billing/docs/how-to/budgets-spend-caps
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/architecture/capacity-cost-model.md:28
+  task: P00.04
+  disposition: official_documentation
+  supports: Disabling billing or programmatic shutdown mechanisms to enforce hard cost caps.
+  limitation: Disabling billing shuts down all project resources immediately and can cause data loss.
+  license: Proprietary vendor documentation
+  review_by: Before P00.04
+- id: SRC-013
+  title: 'RFC 9457: Problem Details for HTTP APIs'
+  owner: Internet Engineering Task Force (IETF)
+  publication_date: 2023-07
+  url: https://www.rfc-editor.org/rfc/rfc9457.html
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/development/api-foundation.md:55
+  task: P01.02
+  disposition: normative_standard
+  supports: Standardized machine-readable error payload format for all API routes.
+  limitation: Defines structure; specific domain error extension types and titles require project schemas.
+  license: IETF RFC Trust
+  review_by: Before P01.02
+- id: SRC-014
+  title: Fastify Server Lifecycle Reference
+  owner: Fastify
+  publication_date: Dated reference
+  url: https://fastify.dev/docs/latest/Reference/Server/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/development/api-foundation.md:93
+  task: P01.02
+  disposition: official_documentation
+  supports: Lifecycle hook order (onRequest, preValidation, handler, onResponse) for middleware.
+  limitation: Framework version specific; plugin encapsulation rules must be strictly followed.
+  license: MIT
+  review_by: Before P01.02
+- id: SRC-015
+  title: Fastify Validation and Serialization
+  owner: Fastify
+  publication_date: Dated reference
+  url: https://fastify.dev/docs/latest/Reference/Validation-and-Serialization/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/development/api-foundation.md:93
+  task: P01.02
+  disposition: official_documentation
+  supports: Fast-json-stringify and schema validation patterns for performant endpoint handling.
+  limitation: JSON schema compilation behavior differs from pure runtime TypeScript checking.
+  license: MIT
+  review_by: Before P01.02
+- id: SRC-016
+  title: Fastify Logging Reference
+  owner: Fastify
+  publication_date: Dated reference
+  url: https://fastify.dev/docs/latest/Reference/Logging/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/development/api-foundation.md:93
+  task: P01.02
+  disposition: official_documentation
+  supports: Pino logger integration and request redaction configuration.
+  limitation: Log serializers must explicitly strip sensitive authorization headers and learner code.
+  license: MIT
+  review_by: Before P01.02
+- id: SRC-017
+  title: Node.js Previous Releases and Support Schedule
+  owner: Node.js Foundation
+  publication_date: Dated reference
+  url: https://nodejs.org/en/about/previous-releases
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/development/bootstrap.md:28
+  task: P01.01
+  disposition: official_documentation
+  supports: Node runtime pinning to Active LTS in .node-version.
+  limitation: Upstream release policy dictates support windows; requires scheduled upgrades.
+  license: OpenJS Foundation License
+  review_by: Before P01.01
+- id: SRC-018
+  title: pnpm Installation Guide
+  owner: pnpm
+  publication_date: Dated reference
+  url: https://pnpm.io/installation
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/development/bootstrap.md:28
+  task: P01.01
+  disposition: official_documentation
+  supports: Corepack-managed pnpm version pinning in package.json.
+  limitation: Strict dependency isolation prevents phantom dependencies but requires explicit declarations.
+  license: MIT
+  review_by: Before P01.01
+- id: SRC-019
+  title: Turborepo Structuring a Repository
+  owner: Vercel
+  publication_date: Dated reference
+  url: https://turborepo.dev/docs/crafting-your-repository/structuring-a-repository
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/development/bootstrap.md:28
+  task: P01.01
+  disposition: official_documentation
+  supports: Monorepo pipeline caching and workspace task dependencies.
+  limitation: Cache invalidation keys must track all inputs and environment variables accurately.
+  license: MPL-2.0
+  review_by: Before P01.01
+- id: SRC-020
+  title: TypeScript Project References Handbook
+  owner: Microsoft
+  publication_date: Dated reference
+  url: https://www.typescriptlang.org/docs/handbook/project-references.html
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/development/bootstrap.md:28
+  task: P01.01
+  disposition: official_documentation
+  supports: Composite tsconfig.json configurations for fast incremental multi-package compilation.
+  limitation: 'Requires declaration: true and tsbuildinfo state management across packages.'
+  license: Apache-2.0
+  review_by: Before P01.01
+- id: SRC-021
+  title: Next.js TypeScript Configuration Reference
+  owner: Vercel
+  publication_date: Dated reference
+  url: https://nextjs.org/docs/app/api-reference/config/typescript
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/development/bootstrap.md:28
+  task: P01.01
+  disposition: official_documentation
+  supports: Next.js typed routes and App Router TypeScript integration.
+  limitation: Next plugin modifies tsconfig options during development builds.
+  license: MIT
+  review_by: Before P01.01
+- id: SRC-022
+  title: uv Workspaces Documentation
+  owner: Astral
+  publication_date: Dated reference
+  url: https://docs.astral.sh/uv/concepts/projects/workspaces/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/development/bootstrap.md:28
+  task: P01.01
+  disposition: official_documentation
+  supports: Python dependency locking and virtual environment orchestration.
+  limitation: Requires uv binary installed on host; cross-platform lock resolution must be verified.
+  license: Apache-2.0 / MIT
+  review_by: Before P01.01
+- id: SRC-023
+  title: PostgreSQL 17 Constraints Documentation
+  owner: PostgreSQL Global Development Group
+  publication_date: Dated reference
+  url: https://www.postgresql.org/docs/17/ddl-constraints.html
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/development/database.md:80
+  task: P02.01
+  disposition: official_documentation
+  supports: Foreign key, check constraint, and unique index enforcement at database tier.
+  limitation: Constraint violations produce database error codes that API layers must map to RFC 9457.
+  license: PostgreSQL License
+  review_by: Before P02.01
+- id: SRC-024
+  title: PostgreSQL 17 Row Security Policies Documentation
+  owner: PostgreSQL Global Development Group
+  publication_date: '2026-11-01'
+  url: https://www.postgresql.org/docs/17/ddl-rowsecurity.html
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/development/database.md:80
+  task: P02.01
+  disposition: official_documentation
+  supports: Row-level security policy isolation between learner tenants and administrative contexts.
+  limitation: Superusers and table owners bypass RLS; application database roles must be restricted.
+  license: PostgreSQL License
+  review_by: Before P02.01
+- id: SRC-025
+  title: Kysely Migrations Principles
+  owner: Kysely
+  publication_date: Dated reference
+  url: https://kysely.dev/docs/migrations
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/development/database.md:80
+  task: P02.01
+  disposition: official_documentation
+  supports: Code-first migration files with explicit up() and down() steps.
+  limitation: Requires transactional DDL support; down migrations cannot easily recover dropped columns.
+  license: MIT
+  review_by: Before P02.01
+- id: SRC-026
+  title: node-postgres Transaction Connections
+  owner: Brianc / node-postgres
+  publication_date: Dated reference
+  url: https://node-postgres.com/features/transactions
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/development/database.md:80
+  task: P02.01
+  disposition: official_documentation
+  supports: Acquiring dedicated pool clients for atomic multi-statement database transactions.
+  limitation: Client leaks occur if try/finally blocks omit client.release().
+  license: MIT
+  review_by: Before P02.01
+- id: SRC-027
+  title: OWASP ASVS Release Index
+  owner: OWASP Foundation
+  publication_date: '2026-11-01'
+  url: https://asvs.owasp.org/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/threat-model/asvs-mapping.md:3
+  task: P00.03
+  disposition: normative_standard
+  supports: Verification levels and standard release tracking for application security.
+  limitation: General standard; project-specific threats require targeted mapping.
+  license: Creative Commons Attribution-ShareAlike 4.0
+  review_by: Before P00.03
+- id: SRC-028
+  title: ASVS v5.0.0 V1 Encoding and Sanitization
+  owner: OWASP Foundation
+  publication_date: Dated reference
+  url: https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x10-V1-Encoding-and-Sanitization.md
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/threat-model/asvs-mapping.md:9
+  task: P00.03
+  disposition: normative_standard
+  supports: Input sanitization and output encoding controls (v5.0.0-1.2.1).
+  limitation: Draft repository revision; version must remain pinned.
+  license: CC-BY-SA 4.0
+  review_by: Before P00.03
+- id: SRC-029
+  title: ASVS v5.0.0 V2 Validation and Business Logic
+  owner: OWASP Foundation
+  publication_date: Dated reference
+  url: https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x11-V2-Validation-and-Business-Logic.md
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/threat-model/asvs-mapping.md:13
+  task: P00.03
+  disposition: normative_standard
+  supports: Boundary validation controls and payload type checking (v5.0.0-2.2.1).
+  limitation: Defines requirement statements; unit tests provide verification evidence.
+  license: CC-BY-SA 4.0
+  review_by: Before P00.03
+- id: SRC-030
+  title: ASVS v5.0.0 V5 File Handling
+  owner: OWASP Foundation
+  publication_date: Dated reference
+  url: https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x14-V5-File-Handling.md
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/threat-model/asvs-mapping.md:18
+  task: P00.03
+  disposition: normative_standard
+  supports: Uploaded file path traversal and content-type verification (v5.0.0-5.1.1).
+  limitation: Must be implemented at both API boundary and isolated execution runner.
+  license: CC-BY-SA 4.0
+  review_by: Before P00.03
+- id: SRC-031
+  title: ASVS v5.0.0 V6 Authentication
+  owner: OWASP Foundation
+  publication_date: Dated reference
+  url: https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x15-V6-Authentication.md
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/threat-model/asvs-mapping.md:22
+  task: P00.03
+  disposition: normative_standard
+  supports: Credential storage, lockout, and password complexity controls (v5.0.0-6.1.3).
+  limitation: Delegated authentication providers require separate OIDC contract checks.
+  license: CC-BY-SA 4.0
+  review_by: Before P00.03
+- id: SRC-032
+  title: ASVS v5.0.0 V7 Session Management
+  owner: OWASP Foundation
+  publication_date: Dated reference
+  url: https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x16-V7-Session-Management.md
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/threat-model/asvs-mapping.md:25
+  task: P00.03
+  disposition: normative_standard
+  supports: Token revocation, cookie security flags, and session timeout controls (v5.0.0-7.1.1).
+  limitation: Requires stateful session tracking or short-lived token rotation.
+  license: CC-BY-SA 4.0
+  review_by: Before P00.03
+- id: SRC-033
+  title: ASVS v5.0.0 V8 Authorization
+  owner: OWASP Foundation
+  publication_date: Dated reference
+  url: https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x17-V8-Authorization.md
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/threat-model/asvs-mapping.md:29
+  task: P00.03
+  disposition: normative_standard
+  supports: Role-based access control and tenant resource boundary enforcement (v5.0.0-8.1.1).
+  limitation: Tested via positive and negative permission matrix.
+  license: CC-BY-SA 4.0
+  review_by: Before P00.03
+- id: SRC-034
+  title: ASVS v5.0.0 V14 Data Protection
+  owner: OWASP Foundation
+  publication_date: Dated reference
+  url: https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/en/0x23-V14-Data-Protection.md
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: docs/threat-model/asvs-mapping.md:36
+  task: P00.03
+  disposition: normative_standard
+  supports: PII classification, TLS enforcement, and sensitive data masking (v5.0.0-14.1.1).
+  limitation: Applies across logs, persistent storage, and client storage (sessionStorage).
+  license: CC-BY-SA 4.0
+  review_by: Before P00.03
+- id: SRC-035
+  title: Predicting short-term stock price impact of initial public offering ticker fluency
+  owner: Adam L. Alter and Daniel M. Oppenheimer (PNAS / NYU Stern)
+  publication_date: '2006'
+  url: https://pages.stern.nyu.edu/~aalter/namefluency.pdf
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/TraceMigo_Brand_Research.md:342
+  task: P03.01
+  disposition: primary_research
+  supports: Cognitive fluency and pronounceability hypotheses in brand naming.
+  limitation: Financial market research; does not directly test developer educational brand recall.
+  license: Academic research paper
+  review_by: Before P10.02
+- id: SRC-036
+  title: Phonetic Symbolism and Brand Name Preference
+  owner: Tina M. Lowrey and L. J. Shrum (Journal of Consumer Research)
+  publication_date: '2007'
+  url: https://academic.oup.com/jcr/article-abstract/31/1/43/1812051
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/TraceMigo_Brand_Research.md:343
+  task: P03.01
+  disposition: primary_research
+  supports: Sound symbolism and consumer preference for plosive vs sonorant phonemes.
+  limitation: Laboratory consumer study; serves as qualitative brand guidance, not proof of conversion.
+  license: Oxford University Press
+  review_by: Before P10.02
+- id: SRC-037
+  title: Sound Symbolism in New Brand Name Creation
+  owner: Richard R. Klink (Behavior Research Methods / Springer)
+  publication_date: '2000'
+  url: https://link.springer.com/article/10.3758/s13428-024-02525-x
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/TraceMigo_Brand_Research.md:344
+  task: P03.01
+  disposition: primary_research
+  supports: Linguistic association between vowel qualities and brand attribute perceptions.
+  limitation: Experimental linguistics; general tendencies do not substitute for audience testing.
+  license: Springer Nature
+  review_by: Before P10.02
+- id: SRC-038
+  title: Site Names in Google Search Documentation
+  owner: Google Search Central
+  publication_date: Dated reference
+  url: https://developers.google.com/search/docs/appearance/site-names
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/TraceMigo_Brand_Research.md:345
+  task: P12.03
+  disposition: official_documentation
+  supports: Structured data requirements (WebSite schema with alternateName) for brand display.
+  limitation: Google Search algorithms decide site name display heuristically; markup is eligibility only.
+  license: Creative Commons Attribution 4.0
+  review_by: Before P12.03
+- id: SRC-039
+  title: Strong Trademarks Basics
+  owner: United States Patent and Trademark Office (USPTO)
+  publication_date: Dated reference
+  url: https://www.uspto.gov/trademarks/basics/strong-trademarks
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/TraceMigo_Brand_Research.md:346
+  task: P10.03
+  disposition: legal_trademark
+  supports: Distinction between fanciful, arbitrary, suggestive, and descriptive marks.
+  limitation: Educational guidance; formal clearance requires registered trademark attorney opinion.
+  license: US Government Public Domain
+  review_by: Before P10.03
+- id: SRC-040
+  title: Google SEO Starter Guide
+  owner: Google Search Central
+  publication_date: Dated reference
+  url: https://developers.google.com/search/docs/fundamentals/seo-starter-guide
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/TraceMigo_Brand_Research.md:347
+  task: P12.03
+  disposition: official_documentation
+  supports: Canonical URLs, crawlability, mobile responsiveness, and page hierarchy best practices.
+  limitation: General guidance; search ranking cannot be guaranteed.
+  license: Creative Commons Attribution 4.0
+  review_by: Before P12.03
+- id: SRC-041
+  title: Guide to Google Search Ranking Systems
+  owner: Google Search Central
+  publication_date: Dated reference
+  url: https://developers.google.com/search/docs/appearance/ranking-systems-guide
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/TraceMigo_Brand_Research.md:348
+  task: P12.03
+  disposition: official_documentation
+  supports: Understanding helpful content criteria and automated ranking systems.
+  limitation: Algorithms update continuously; avoid speculative SEO tricks.
+  license: Creative Commons Attribution 4.0
+  review_by: Before P12.03
+- id: SRC-042
+  title: Define a Favicon to Show in Search Results
+  owner: Google Search Central
+  publication_date: Dated reference
+  url: https://developers.google.com/search/docs/appearance/favicon-in-search
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/TraceMigo_Brand_Research.md:349
+  task: P03.01
+  disposition: official_documentation
+  supports: Favicon dimension, format, and HTTP access rules for search result rendering.
+  limitation: Favicon display is algorithmic; square multiple of 48px required.
+  license: Creative Commons Attribution 4.0
+  review_by: Before P03.01
+- id: SRC-043
+  title: AI Features and Your Website
+  owner: Google Search Central
+  publication_date: Dated reference
+  url: https://developers.google.com/search/docs/appearance/ai-features
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/TraceMigo_Brand_Research.md:350
+  task: P12.03
+  disposition: official_documentation
+  supports: Google AI overview extraction and content eligibility considerations.
+  limitation: Emerging standard; requirements evolve frequently.
+  license: Creative Commons Attribution 4.0
+  review_by: Before P12.03
+- id: SRC-044
+  title: ICANN Registration Data Lookup Tool
+  owner: Internet Corporation for Assigned Names and Numbers (ICANN)
+  publication_date: Dated reference
+  url: https://lookup.icann.org/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/TraceMigo_Brand_Research.md:351
+  task: P10.03
+  disposition: legal_trademark
+  supports: Domain registration and registrar identification lookup protocol.
+  limitation: Lookup shows registrar status only; privacy redaction limits owner identification.
+  license: ICANN Public Service
+  review_by: Before P10.03
+- id: SRC-045
+  title: IANA RDAP DNS Bootstrap Data
+  owner: Internet Assigned Numbers Authority (IANA)
+  publication_date: Dated reference
+  url: https://data.iana.org/rdap/dns.json
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/TraceMigo_Brand_Research.md:352
+  task: P10.03
+  disposition: official_documentation
+  supports: Authoritative base URLs for TLD RDAP queries.
+  limitation: Bootstrapping data; registry availability must be verified at execution time.
+  license: IANA Public Data
+  review_by: Before P10.03
+- id: SRC-047
+  title: WIPO Global Brand Database Guidance
+  owner: World Intellectual Property Organization (WIPO)
+  publication_date: Dated reference
+  url: https://www.wipo.int/en/web/global-brand-database
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/TraceMigo_Brand_Research.md:354
+  task: P10.03
+  disposition: legal_trademark
+  supports: International trademark search across Madrid Protocol jurisdictions.
+  limitation: Online search tool; does not replace formal legal opinion in US or India.
+  license: WIPO Public Service
+  review_by: Before P10.03
+- id: SRC-049
+  title: W3C WCAG 2.1 Understanding Contrast Minimum
+  owner: World Wide Web Consortium (W3C)
+  publication_date: Dated reference
+  url: https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/TraceMigo_Brand_Research.md:356
+  task: P03.01
+  disposition: normative_standard
+  supports: 4.5:1 text luminance contrast ratio requirements for AA compliance.
+  limitation: Normative guidance; verified with automated color sampling and browser checks.
+  license: W3C Document License
+  review_by: Before P03.01
+- id: SRC-050
+  title: Manrope Variable Font Open Font License
+  owner: Mikhail Sharanda / Google Fonts
+  publication_date: Dated reference
+  url: https://github.com/google/fonts/blob/main/ofl/manrope/OFL.txt
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/TraceMigo_Brand_Research.md:357
+  task: P03.01
+  disposition: official_documentation
+  supports: License verification for self-hosting and distributing Manrope typography.
+  limitation: Requires preserving copyright notices and SIL Open Font License 1.1 terms.
+  license: SIL Open Font License 1.1
+  review_by: Before P03.01
+- id: SRC-051
+  title: Shurli Go SDK Documentation
+  owner: Shurli
+  publication_date: Dated observation (2026)
+  url: https://shurli.io/docs/sdk/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/TraceMigo_Brand_Research.md:361
+  task: P10.03
+  disposition: competitor_observation
+  supports: Discovery lead in adjacent tracing/developer tooling naming research.
+  limitation: Third-party commercial documentation; no affiliation or product similarity.
+  license: Proprietary
+  review_by: Before P10.03
+- id: SRC-052
+  title: Tracemate Listing on Google Play Store
+  owner: Tracemate
+  publication_date: Dated observation (2026)
+  url: https://play.google.com/store/apps/details?id=in.tracemate.app
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/TraceMigo_Brand_Research.md:362
+  task: P10.03
+  disposition: competitor_observation
+  supports: Trademark landscape check for 'Trace*' prefixes in Indian market.
+  limitation: Mobile application listing; distinct industry segment (logistics/tracking).
+  license: Proprietary
+  review_by: Before P10.03
+- id: SRC-053
+  title: CodeClue on Devpost
+  owner: Devpost / Hackathon Project
+  publication_date: Dated observation
+  url: https://devpost.com/software/codeclue
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/TraceMigo_Brand_Research.md:363
+  task: P10.03
+  disposition: discovery_only
+  supports: Historical hackathon project naming research in code comprehension space.
+  limitation: Inactive hackathon entry; not a commercial enterprise competitor.
+  license: Public Devpost entry
+  review_by: Before P10.03
+- id: SRC-054
+  title: Tracewise.ai Homepage
+  owner: Tracewise
+  publication_date: Dated observation (2026)
+  url: https://tracewise.ai/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/TraceMigo_Brand_Research.md:364
+  task: P10.03
+  disposition: competitor_observation
+  supports: Domain and brand collision check for AI-assisted tracing applications.
+  limitation: Third-party commercial offering; monitoring required for confusing similarity.
+  license: Proprietary
+  review_by: Before P10.03
+- id: SRC-055
+  title: TraceKin Presentation
+  owner: Gabriel Pires / LinkedIn
+  publication_date: Dated observation
+  url: https://pt.linkedin.com/posts/devgabrielpires_apresenta%C3%A7%C3%A3o-tracekin-activity-7470106411956396032-Qg0J
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/TraceMigo_Brand_Research.md:365
+  task: P10.03
+  disposition: discovery_only
+  supports: Alternative brand candidate collision check for 'TraceKin'.
+  limitation: Personal portfolio presentation post.
+  license: LinkedIn public content
+  review_by: Before P10.03
+- id: SRC-056
+  title: Loopkin Company Profile
+  owner: Loopkin / LinkedIn
+  publication_date: Dated observation
+  url: https://www.linkedin.com/company/loopkin
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/TraceMigo_Brand_Research.md:366
+  task: P10.03
+  disposition: discovery_only
+  supports: Alternative brand candidate collision check for '*kin' suffix.
+  limitation: Corporate social profile; not an active market overlap.
+  license: LinkedIn public content
+  review_by: Before P10.03
+- id: SRC-057
+  title: TracePact GitHub Repository
+  owner: dcdeve / GitHub
+  publication_date: Dated observation
+  url: https://github.com/dcdeve/tracepact
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/TraceMigo_Brand_Research.md:367
+  task: P10.03
+  disposition: discovery_only
+  supports: Alternative brand candidate namespace check on GitHub.
+  limitation: Personal repository; not an active commercial conflict.
+  license: Public GitHub repository
+  review_by: Before P10.03
+- id: SRC-058
+  title: Tracelo Homepage
+  owner: Tracelo
+  publication_date: Dated observation
+  url: https://tracelo.com/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/TraceMigo_Brand_Research.md:368
+  task: P10.03
+  disposition: discovery_only
+  supports: Alternative brand candidate collision check in .com namespace.
+  limitation: Registered domain; observed during naming triage.
+  license: Proprietary
+  review_by: Before P10.03
+- id: SRC-059
+  title: Verisign RDAP Query for tracemigo.com
+  owner: Verisign RDAP Service
+  publication_date: '2026-10-25'
+  url: https://rdap.verisign.com/com/v1/domain/tracemigo.com
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/TraceMigo_Brand_Research.md:369
+  task: P10.03
+  disposition: legal_trademark
+  supports: Domain registration observation (HTTP 404 in October 2026).
+  limitation: Snapshot observation; does not guarantee current availability or prevent registration.
+  license: Verisign RDAP Public Service
+  review_by: Before P10.03
+- id: SRC-060
+  title: Google Registry RDAP Query for tracemigo.dev
+  owner: Google Registry
+  publication_date: '2026-10-25'
+  url: https://pubapi.registry.google/rdap/domain/tracemigo.dev
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/TraceMigo_Brand_Research.md:370
+  task: P10.03
+  disposition: legal_trademark
+  supports: Domain registration observation in .dev namespace.
+  limitation: Historical lookup; requires live registrar query before acquisition.
+  license: Google Registry Public Service
+  review_by: Before P10.03
+- id: SRC-061
+  title: Identity Digital RDAP Query for tracemigo.ai
+  owner: Identity Digital
+  publication_date: '2026-10-25'
+  url: https://rdap.identitydigital.services/rdap/domain/tracemigo.ai
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/TraceMigo_Brand_Research.md:371
+  task: P10.03
+  disposition: legal_trademark
+  supports: Domain registration observation in .ai namespace.
+  limitation: Historical lookup; premium pricing tier may apply.
+  license: Identity Digital Public Service
+  review_by: Before P10.03
+- id: SRC-062
+  title: Verisign RDAP Query for tracetomo.com
+  owner: Verisign RDAP Service
+  publication_date: '2026-10-25'
+  url: https://rdap.verisign.com/com/v1/domain/tracetomo.com
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/TraceMigo_Brand_Research.md:372
+  task: P10.03
+  disposition: discovery_only
+  supports: Comparative domain availability check during brand selection.
+  limitation: Alternate candidate record; not the selected brand.
+  license: Verisign RDAP Public Service
+  review_by: Before P10.03
+- id: SRC-063
+  title: Verisign RDAP Query for tracepeer.com
+  owner: Verisign RDAP Service
+  publication_date: '2026-10-25'
+  url: https://rdap.verisign.com/com/v1/domain/tracepeer.com
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/TraceMigo_Brand_Research.md:373
+  task: P10.03
+  disposition: discovery_only
+  supports: Comparative domain availability check during brand selection.
+  limitation: Alternate candidate record; not the selected brand.
+  license: Verisign RDAP Public Service
+  review_by: Before P10.03
+- id: SRC-064
+  title: Verisign RDAP Query for tracefable.com
+  owner: Verisign RDAP Service
+  publication_date: '2026-10-25'
+  url: https://rdap.verisign.com/com/v1/domain/tracefable.com
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/TraceMigo_Brand_Research.md:374
+  task: P10.03
+  disposition: discovery_only
+  supports: Comparative domain availability check during brand selection.
+  limitation: Alternate candidate record; not the selected brand.
+  license: Verisign RDAP Public Service
+  review_by: Before P10.03
+- id: SRC-065
+  title: GitHub API User Query for tracemigo
+  owner: GitHub
+  publication_date: '2026-10-25'
+  url: https://api.github.com/users/tracemigo
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/TraceMigo_Brand_Research.md:375
+  task: P10.03
+  disposition: discovery_only
+  supports: Platform handle availability observation.
+  limitation: Handle status may change; does not grant handle ownership.
+  license: GitHub API Public Service
+  review_by: Before P10.03
+- id: SRC-066
+  title: npm Registry Query for tracemigo
+  owner: npm / GitHub
+  publication_date: '2026-10-25'
+  url: https://registry.npmjs.org/tracemigo
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/TraceMigo_Brand_Research.md:376
+  task: P10.03
+  disposition: discovery_only
+  supports: Package registry namespace availability observation.
+  limitation: Unregistered package namespace; does not reserve package name.
+  license: npm Registry Public Service
+  review_by: Before P10.03
+- id: SRC-067
+  title: PyPI Project Query for tracemigo
+  owner: Python Software Foundation
+  publication_date: '2026-10-25'
+  url: https://pypi.org/pypi/tracemigo/json
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/TraceMigo_Brand_Research.md:377
+  task: P10.03
+  disposition: discovery_only
+  supports: Python package namespace availability observation.
+  limitation: Package name availability snapshot; requires claim/publish to secure.
+  license: PyPI Public Service
+  review_by: Before P10.03
+- id: SRC-068
+  title: Hugging Face User Query for tracemigo
+  owner: Hugging Face
+  publication_date: '2026-10-25'
+  url: https://huggingface.co/api/users/tracemigo
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/TraceMigo_Brand_Research.md:378
+  task: P10.03
+  disposition: discovery_only
+  supports: ML community org/user handle availability observation.
+  limitation: Community account availability snapshot.
+  license: Hugging Face Public Service
+  review_by: Before P10.03
+- id: SRC-083
+  title: 'Source Code Comprehension: A Contemporary Definition and Conceptual Model for Empirical Investigation'
+  owner: Guido Salvaneschi et al. (arXiv:2310.11301)
+  publication_date: '2023'
+  url: https://arxiv.org/html/2310.11301v1
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:71
+  task: P02.04
+  disposition: primary_research
+  supports: Cognitive model of multi-level code comprehension for exercise design.
+  limitation: Conceptual empirical model; requires validation on TraceMigo micro-exercise outcomes.
+  license: arXiv open access / CC-BY-NC-SA 4.0
+  review_by: Before P10.04
+- id: SRC-084
+  title: Empirical Studies of Programming Knowledge
+  owner: Elliot Soloway and Kate Ehrlich (IEEE Transactions on Software Engineering)
+  publication_date: '1984'
+  url: https://www.cs.kent.edu/~jmaletic/Prog-Comp/Papers/Soloway84.pdf
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:73
+  task: P02.04
+  disposition: primary_research
+  supports: Programming plans and discourse rules theory in code reading.
+  limitation: Classical study on Pascal novices/experts; transfer to modern Python requires testing.
+  license: IEEE
+  review_by: Before P10.04
+- id: SRC-085
+  title: Cognitive Processes in Program Comprehension
+  owner: Stanley Letovsky (Journal of Systems and Software)
+  publication_date: '1987'
+  url: https://www.sciencedirect.com/science/article/abs/pii/016412128790032X
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:75
+  task: P02.04
+  disposition: primary_research
+  supports: Knowledge base, mental model, and assimilation process theory during code inspection.
+  limitation: Small protocol analysis study; informs hypothesis generation, not quantitative bounds.
+  license: Elsevier
+  review_by: Before P10.04
+- id: SRC-086
+  title: 'Block Model: An Educational Model of Program Comprehension as a Tool for a Scholarly Approach to Teaching'
+  owner: Carsten Schulte (ACM ICER)
+  publication_date: '2008'
+  url: https://doi.org/10.1145/1404520.1404535
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:77
+  task: P02.04
+  disposition: primary_research
+  supports: Matrix of program dimensions (structure, data flow, function) across macro/micro levels.
+  limitation: Educational framework; informs curriculum rubric rather than automated grading.
+  license: ACM
+  review_by: Before P02.04
+- id: SRC-087
+  title: 'Eye Movements in Code Reading: Relaxing the Linear Order'
+  owner: Teresa Busjahn et al. (IEEE ICPC)
+  publication_date: '2015'
+  url: https://researchonline.gcu.ac.uk/en/publications/eye-movements-in-code-reading-relaxing-the-linear-order
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:79
+  task: P02.04
+  disposition: primary_research
+  supports: Nonlinear scanning behavior during expert program comprehension.
+  limitation: Eye-tracking laboratory study; informs navigation UX rather than grading criteria.
+  license: IEEE
+  review_by: Before P03.02
+- id: SRC-088
+  title: 'Measuring Program Comprehension: A Large-Scale Field Study with Professionals'
+  owner: Xin Xia et al. (IEEE Transactions on Software Engineering)
+  publication_date: '2017'
+  url: https://xin-xia.github.io/publication/TSE17.pdf
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:81
+  task: P02.04
+  disposition: primary_research
+  supports: Time allocation and task frequency during industrial maintenance code comprehension.
+  limitation: Professional developer survey/field study; does not assess interview performance.
+  license: IEEE
+  review_by: Before P10.02
+- id: SRC-089
+  title: 'Modern Code Review: A Case Study at Google'
+  owner: Caitlin Sadowski et al. (ACM ICSE)
+  publication_date: '2018'
+  url: https://research.google/pubs/modern-code-review-a-case-study-at-google/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:83
+  task: P02.04
+  disposition: primary_research
+  supports: Motivations, review sizes, and comment categories in modern industrial peer review.
+  limitation: Internal Google tooling study (Critique); does not establish hiring or interview rubric.
+  license: ACM
+  review_by: Before P10.02
+- id: SRC-090
+  title: 'Developer Reading Behavior While Summarizing Java Methods: Size and Context Matters'
+  owner: Muhammad Asaduzzaman, Nicole Novielli, David C. Shepherd (arXiv:1903.03358)
+  publication_date: '2019'
+  url: https://arxiv.org/abs/1903.03358
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:85
+  task: P02.04
+  disposition: primary_research
+  supports: Method signature and control structure scanning patterns during summarization.
+  limitation: Java method focus; differences in Python dynamic semantics require consideration.
+  license: arXiv open access
+  review_by: Before P02.04
+- id: SRC-091
+  title: Explaining Code with a Purpose
+  owner: Andrew Begel et al. (arXiv:2403.06050)
+  publication_date: '2024'
+  url: https://arxiv.org/abs/2403.06050
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:87
+  task: P02.04
+  disposition: primary_research
+  supports: Purpose-driven code explanation taxonomies and prompt framing.
+  limitation: Preprint; informs prompt rubric design for AI peer, not evaluated scoring model.
+  license: arXiv open access / CC-BY 4.0
+  review_by: Before P07.01
+- id: SRC-099
+  title: Self-Determination Theory and the Facilitation of Intrinsic Motivation, Social Development, and Well-Being
+  owner: Richard M. Ryan and Edward L. Deci (American Psychologist)
+  publication_date: '2000'
+  url: https://www.selfdeterminationtheory.org/SDT/documents/2000_RyanDeci_SDT.pdf
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:123
+  task: P08.02
+  disposition: primary_research
+  supports: Autonomy, competence, and relatedness psychological foundation for learner motivation.
+  limitation: Broad psychological framework; must be translated into specific UI feedback mechanics.
+  license: American Psychological Association
+  review_by: Before P08.02
+- id: SRC-101
+  title: A Behavior Model for Persuasive Design
+  owner: B.J. Fogg (ACM Persuasive)
+  publication_date: '2009'
+  url: https://doi.org/10.1145/1541948.1541999
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:127
+  task: P08.02
+  disposition: primary_research
+  supports: Motivation, ability, prompt (B=MAP) framework for learning engagement.
+  limitation: Design model; dark patterns or manipulative streak mechanics are explicitly rejected.
+  license: ACM
+  review_by: Before P08.02
+- id: SRC-102
+  title: Stanford Behavior Design Lab Resources
+  owner: Stanford University Behavior Design Lab
+  publication_date: Dated reference
+  url: https://behaviordesign.stanford.edu/resources
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:129
+  task: P08.02
+  disposition: discovery_only
+  supports: Educational material on habit design and trigger placement.
+  limitation: General university lab materials; secondary summary.
+  license: Stanford University
+  review_by: Before P08.02
+- id: SRC-103
+  title: 'Finding Flow: The Psychology of Engagement with Everyday Life'
+  owner: Mihaly Csikszentmihalyi (Basic Books / Springer)
+  publication_date: '1997'
+  url: https://link.springer.com/chapter/10.1007/978-94-017-9088-8_15
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:131
+  task: P08.02
+  disposition: primary_research
+  supports: Challenge vs skill balance curve for exercise progression.
+  limitation: Qualitative psychological theory; requires dynamic difficulty tuning.
+  license: Springer
+  review_by: Before P08.02
+- id: SRC-104
+  title: 'How are habits formed: Modelling habit formation in the real world'
+  owner: Phillippa Lally et al. (European Journal of Social Psychology)
+  publication_date: '2010'
+  url: https://onlinelibrary.wiley.com/doi/abs/10.1002/ejsp.674
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:133
+  task: P08.02
+  disposition: primary_research
+  supports: Asymptotic curve of automaticity in daily practice routines.
+  limitation: Habit formation time varies widely (18 to 254 days); no magic 21-day guarantee.
+  license: John Wiley & Sons
+  review_by: Before P08.02
+- id: SRC-105
+  title: A Neural Substrate of Prediction and Reward
+  owner: Wolfram Schultz, Peter Dayan, P. Read Montague (Science / Gatsby UCL)
+  publication_date: '1997'
+  url: https://www.gatsby.ucl.ac.uk/~dayan/papers/sdm97.pdf
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:135
+  task: P08.02
+  disposition: primary_research
+  supports: Reward prediction error theory in feedback loops.
+  limitation: Neurobiology literature; serves as theoretical context, not direct software claim.
+  license: AAAS / Science
+  review_by: Before P08.02
+- id: SRC-106
+  title: 'Interruption, Recall and Resumption: A Meta-Analysis of the Zeigarnik and Ovsiankina Effects'
+  owner: Nature Humanities and Social Sciences Communications
+  publication_date: '2024'
+  url: https://www.nature.com/articles/s41599-024-03125-y
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:137
+  task: P08.02
+  disposition: primary_research
+  supports: Incomplete task tension and resumption prompts in session recovery.
+  limitation: Meta-analysis reveals small-to-moderate heterogeneous effects across settings.
+  license: Nature Springer / CC-BY 4.0
+  review_by: Before P08.02
+- id: SRC-107
+  title: 'Hooked: How to Build Habit-Forming Products'
+  owner: Nir Eyal (Penguin Random House)
+  publication_date: '2014'
+  url: https://www.penguinrandomhouse.com/books/316972/hooked-by-nir-eyal/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:139
+  task: P08.02
+  disposition: discovery_only
+  supports: Trigger-action-variable reward-investment product framework.
+  limitation: Commercial trade book; must be filtered through ethical learner autonomy principles.
+  license: Penguin Random House
+  review_by: Before P08.02
+- id: SRC-110
+  title: CodeSparring Bug-Fix Practice
+  owner: CodeSparring
+  publication_date: Dated observation (2026)
+  url: https://www.codesparring.dev/bug-fix-interview
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:154
+  task: P10.02
+  disposition: competitor_observation
+  supports: Competitor landscape observation in bug-fix interview practice.
+  limitation: URL retrieval failed in earlier audits; recheck availability before comparative claims.
+  license: Proprietary
+  review_by: Before P10.02
+- id: SRC-111
+  title: LeetCode Platform
+  owner: LeetCode
+  publication_date: Dated observation
+  url: https://leetcode.com/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:156
+  task: P10.02
+  disposition: competitor_observation
+  supports: Incumbent benchmark for algorithmic interview preparation.
+  limitation: DSA problem catalog; does not focus on reading/comprehending existing multi-file code.
+  license: Proprietary
+  review_by: Before P10.02
+- id: SRC-112
+  title: GeeksforGeeks Coding Platform
+  owner: GeeksforGeeks
+  publication_date: Dated observation
+  url: https://www.geeksforgeeks.org/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:158
+  task: P10.02
+  disposition: competitor_observation
+  supports: Broad Indian and international engineering interview tutorial portal.
+  limitation: Article/problem repository; differing pedagogical mechanism.
+  license: Proprietary
+  review_by: Before P10.02
+- id: SRC-113
+  title: Exercism Coding Practice
+  owner: Exercism
+  publication_date: Dated observation
+  url: https://exercism.org/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:160
+  task: P10.02
+  disposition: competitor_observation
+  supports: Language track and mentor feedback model observation.
+  limitation: Focuses on language fluency through tests; not an interview-simulation tool.
+  license: Open source / non-profit
+  review_by: Before P10.02
+- id: SRC-114
+  title: Code Reading Club Community
+  owner: Code Reading Club (Felienne Hermans)
+  publication_date: Dated observation
+  url: https://codereading.club/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:162
+  task: P10.02
+  disposition: competitor_observation
+  supports: Facilitated synchronous human code reading pedagogical exercises.
+  limitation: In-person/group club model; TraceMigo delivers asynchronous individual practice.
+  license: Creative Commons / Educational
+  review_by: Before P10.02
+- id: SRC-115
+  title: CodeReadingClubs/Resources Repository
+  owner: CodeReadingClubs / GitHub
+  publication_date: Dated observation
+  url: https://github.com/CodeReadingClubs/Resources
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:164
+  task: P10.02
+  disposition: discovery_only
+  supports: Sample code snippets and pedagogical exercise formats for code reading.
+  limitation: Community collection; requires individual copyright and licensing audit.
+  license: CC-BY-4.0
+  review_by: Before P10.02
+- id: SRC-116
+  title: Python Tutor Execution Visualization
+  owner: Philip Guo / pythontutor.com
+  publication_date: Dated observation
+  url: https://pythontutor.com/for-ai-assistant
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:166
+  task: P04.02
+  disposition: discovery_only
+  supports: Call-stack and memory diagram visualization references.
+  limitation: Hosted service; licensing restricts commercial redistribution without agreement.
+  license: GPLv3 / Proprietary hosted
+  review_by: Before P04.02
+- id: SRC-117
+  title: coding-interview-university Repository
+  owner: John Washam / GitHub
+  publication_date: Dated observation
+  url: https://github.com/jwasham/coding-interview-university
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:168
+  task: P10.02
+  disposition: discovery_only
+  supports: Curriculum topic sequences in software engineering study plans.
+  limitation: Curated syllabus; not an interactive software product.
+  license: CC-BY-SA-4.0
+  review_by: Before P10.02
+- id: SRC-118
+  title: tech-interview-handbook Repository
+  owner: Yangshun Tay / GitHub
+  publication_date: Dated observation
+  url: https://github.com/yangshun/tech-interview-handbook
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:170
+  task: P10.02
+  disposition: discovery_only
+  supports: Coding interview navigation and behavioral question references.
+  limitation: Guidebook repository; complementary reference material.
+  license: MIT
+  review_by: Before P10.02
+- id: SRC-119
+  title: CodeXGLUE Benchmark Suite
+  owner: Microsoft / GitHub
+  publication_date: Dated reference
+  url: https://github.com/microsoft/CodeXGLUE
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:188
+  task: P02.03
+  disposition: dataset_lead
+  supports: Dataset discovery lead for defect detection and code-to-text benchmark tasks.
+  limitation: Benchmark corpus; per-repository licenses require explicit audit before inclusion.
+  license: MIT / dataset-dependent
+  review_by: Before P02.03
+- id: SRC-120
+  title: CodeXGLUE Defect Detection Dataset Card
+  owner: Google / Hugging Face
+  publication_date: Dated reference
+  url: https://huggingface.co/datasets/google/code_x_glue_cc_defect_detection
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:190
+  task: P02.03
+  disposition: dataset_lead
+  supports: Defect classification dataset (Devign extraction).
+  limitation: Binary classification labels lack explanatory context; must not be copied directly.
+  license: Other / Upstream repository dependent
+  review_by: Before P02.03
+- id: SRC-121
+  title: Project CodeNet Dataset
+  owner: IBM / GitHub
+  publication_date: Dated reference
+  url: https://github.com/IBM/Project_CodeNet
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:192
+  task: P02.03
+  disposition: dataset_lead
+  supports: Large multilingual dataset for competitive programming solution structures.
+  limitation: Competitive programming focus; lacks multi-file repository maintenance contexts.
+  license: Apache-2.0 (tooling) / mixed data terms
+  review_by: Before P02.03
+- id: SRC-122
+  title: SWE-bench Benchmark Repository
+  owner: SWE-bench / GitHub
+  publication_date: Dated reference
+  url: https://github.com/SWE-bench/SWE-bench
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:194
+  task: P02.03
+  disposition: dataset_lead
+  supports: Evaluation harness for resolving real-world GitHub issues in Python repositories.
+  limitation: Benchmark for LLM agents; candidate tasks must be curated and rights-reviewed.
+  license: MIT
+  review_by: Before P02.03
+- id: SRC-123
+  title: SWE-bench Verified Dataset Card
+  owner: Princeton NLP / OpenAI / Hugging Face
+  publication_date: Dated reference
+  url: https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:196
+  task: P02.03
+  disposition: dataset_lead
+  supports: Human-validated subset of SWE-bench bug fixes and unit test oracles.
+  limitation: Evaluation dataset; contamination and upstream open-source license review required.
+  license: MIT
+  review_by: Before P02.03
+- id: SRC-124
+  title: BugSwarm Reproducible Bug Benchmark
+  owner: BugSwarm / UC Davis / GitHub
+  publication_date: Dated reference
+  url: https://github.com/BugSwarm/bugswarm
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:198
+  task: P02.03
+  disposition: dataset_lead
+  supports: Reproducible bug-fix pairs with Dockerized builds for Python/Java.
+  limitation: Heavy container builds; individual case extraction and provenance review needed.
+  license: BSD-3-Clause
+  review_by: Before P02.03
+- id: SRC-125
+  title: Defects4J Database of Reproducible Bugs
+  owner: René Just / GitHub
+  publication_date: Dated reference
+  url: https://github.com/rjust/defects4j
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:200
+  task: P02.03
+  disposition: dataset_lead
+  supports: Java reproducible bug database and trigger tests.
+  limitation: Java language; useful as conceptual oracle architecture reference, not Python code.
+  license: LGPL-2.1 / BSD-like
+  review_by: Before P02.03
+- id: SRC-126
+  title: CodeSearchNet Corpus Repository
+  owner: GitHub / Microsoft
+  publication_date: Dated reference
+  url: https://github.com/github/CodeSearchNet
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:202
+  task: P02.03
+  disposition: dataset_lead
+  supports: Corpus of function docstrings and code for semantic search evaluation.
+  limitation: Derived from open source under various licenses; provenance verification required.
+  license: MIT (tooling)
+  review_by: Before P02.03
+- id: SRC-127
+  title: CodeSearchNet Dataset Card
+  owner: CodeSearchNet / Hugging Face
+  publication_date: Dated reference
+  url: https://huggingface.co/datasets/code-search-net/code_search_net
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:204
+  task: P02.03
+  disposition: dataset_lead
+  supports: Hugging Face dataset viewer and schema card for CodeSearchNet.
+  limitation: Dataset distribution card; check individual subset license fields.
+  license: Other / Open Source
+  review_by: Before P02.03
+- id: SRC-128
+  title: Imbue Code Comprehension Dataset Card
+  owner: Imbue / Hugging Face
+  publication_date: Dated reference
+  url: https://huggingface.co/datasets/imbue/code-comprehension
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/plan.md:206
+  task: P02.03
+  disposition: dataset_lead
+  supports: Synthetic and natural code comprehension benchmark questions.
+  limitation: Model evaluation dataset; must not be copied as proprietary curriculum.
+  license: Apache-2.0
+  review_by: Before P02.03
+- id: SRC-129
+  title: Tree-sitter Parser Generator
+  owner: Tree-sitter / Max Brunsfeld / GitHub
+  publication_date: Dated reference
+  url: https://github.com/tree-sitter/tree-sitter
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:224
+  task: P06.01
+  disposition: tooling_reference
+  supports: Incremental concrete syntax tree parsing for AST diffing and token extraction.
+  limitation: Wasm or native binding required; grammars maintained separately per language.
+  license: MIT
+  review_by: Before P06.01
+- id: SRC-130
+  title: CodeQL Semantic Code Analysis Engine
+  owner: GitHub
+  publication_date: Dated reference
+  url: https://github.com/github/codeql
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:226
+  task: P01.03
+  disposition: tooling_reference
+  supports: Static analysis queries and AST pattern matching.
+  limitation: CodeQL CLI has specific licensing terms for commercial closed-source scanning.
+  license: GitHub CodeQL License Terms
+  review_by: Before P01.03
+- id: SRC-131
+  title: GitHub Code Security Terms and Setup
+  owner: GitHub Docs
+  publication_date: Dated reference
+  url: https://docs.github.com/en/code-security
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:228
+  task: P01.03
+  disposition: official_documentation
+  supports: Dependabot, secret scanning, and code scanning setup in CI.
+  limitation: Enterprise feature availability differs between public and private repositories.
+  license: GitHub Docs License
+  review_by: Before P01.03
+- id: SRC-132
+  title: Semgrep Static Analysis Tool
+  owner: Semgrep / Semgrep Inc. / GitHub
+  publication_date: Dated reference
+  url: https://github.com/semgrep/semgrep
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:230
+  task: P01.03
+  disposition: tooling_reference
+  supports: AST-pattern and taint-tracking rule evaluation for security checks.
+  limitation: Semgrep OSS is LGPL-2.1; proprietary rules require Semgrep Cloud Platform.
+  license: LGPL-2.1
+  review_by: Before P01.03
+- id: SRC-133
+  title: Monaco Editor Web Code Editor
+  owner: Microsoft / GitHub
+  publication_date: Dated reference
+  url: https://github.com/microsoft/monaco-editor
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:232
+  task: P03.02
+  disposition: tooling_reference
+  supports: Browser-based code viewer, syntax highlighting, and read-only decoration engine.
+  limitation: Heavy bundle size; dynamic loading and mobile touch fallbacks required.
+  license: MIT
+  review_by: Before P03.02
+- id: SRC-134
+  title: Language Server Protocol Specification
+  owner: Microsoft
+  publication_date: Dated reference
+  url: https://microsoft.github.io/language-server-protocol/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:234
+  task: P06.01
+  disposition: normative_standard
+  supports: Hover, go-to-definition, and symbol reference protocol contracts.
+  limitation: Protocol specification; requires language-specific server implementations (e.g., Pyright).
+  license: Creative Commons Attribution 4.0
+  review_by: Before P06.01
+- id: SRC-135
+  title: Debug Adapter Protocol Specification
+  owner: Microsoft
+  publication_date: Dated reference
+  url: https://microsoft.github.io/debug-adapter-protocol/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:236
+  task: P06.01
+  disposition: normative_standard
+  supports: Breakpoint, step, and variable evaluation communication protocol.
+  limitation: Protocol specification; execution runner integration requires debugpy.
+  license: Creative Commons Attribution 4.0
+  review_by: Before P06.01
+- id: SRC-136
+  title: Firecracker MicroVM
+  owner: Amazon Web Services / GitHub
+  publication_date: Dated reference
+  url: https://github.com/firecracker-microvm/firecracker
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:248
+  task: P00.05
+  disposition: tooling_reference
+  supports: KVM-based lightweight isolation alternative evaluated in container research.
+  limitation: Requires bare-metal virtualization host access (nested KVM not always available on cloud VMs).
+  license: Apache-2.0
+  review_by: Before P00.05
+- id: SRC-137
+  title: gVisor Application Kernel Architecture Guide
+  owner: Google / gVisor
+  publication_date: Dated reference
+  url: https://gvisor.dev/docs/architecture_guide/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:250
+  task: P00.05
+  disposition: official_documentation
+  supports: Sentry user-space kernel and Gofer filesystem interception isolation architecture.
+  limitation: ptrace vs KVM platform performance varies; compat tests needed for Python debugpy/ptrace.
+  license: Apache-2.0
+  review_by: Before P00.05
+- id: SRC-138
+  title: Go Race Detector Article
+  owner: Go Team / The Go Blog
+  publication_date: Dated reference
+  url: https://go.dev/doc/articles/race_detector
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:262
+  task: P06.01
+  disposition: official_documentation
+  supports: Data race detection and ThreadSanitizer runtime behavior concepts.
+  limitation: Specific to Go runtime; informs concurrency case design in multi-threading modules.
+  license: Creative Commons Attribution 4.0
+  review_by: Before P06.01
+- id: SRC-139
+  title: ThreadSanitizer Data Race Detector Documentation
+  owner: LLVM / Clang
+  publication_date: Dated reference
+  url: https://clang.llvm.org/docs/ThreadSanitizer.html
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:264
+  task: P06.01
+  disposition: official_documentation
+  supports: Compiler-based instrumentation for detecting data races in C/C++ and native libraries.
+  limitation: Memory and CPU overhead (2x–10x slowdown); not directly applicable to pure Python AST.
+  license: Apache-2.0 with LLVM Exceptions
+  review_by: Before P06.01
+- id: SRC-140
+  title: jcstress Java Concurrency Stress Tests
+  owner: Aleksey Shipilëv / OpenJDK / GitHub
+  publication_date: Dated reference
+  url: https://github.com/openjdk/jcstress
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:266
+  task: P06.01
+  disposition: tooling_reference
+  supports: Hardware memory model and concurrency outcome test methodology.
+  limitation: JVM-specific harness; informs test oracle concepts for concurrent cases.
+  license: GPLv2 with Classpath Exception
+  review_by: Before P06.01
+- id: SRC-141
+  title: Loom Concurrency Permutation Testing for Rust
+  owner: Tokio / Carl Lerche / GitHub
+  publication_date: Dated reference
+  url: https://github.com/tokio-rs/loom
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:268
+  task: P06.01
+  disposition: tooling_reference
+  supports: Exhaustive execution-permutation testing for concurrent code.
+  limitation: Rust-specific model checker; conceptual reference for race-condition test cases.
+  license: MIT
+  review_by: Before P06.01
+- id: SRC-142
+  title: Python time Module Documentation
+  owner: Python Software Foundation
+  publication_date: Dated reference
+  url: https://docs.python.org/3/library/time.html
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:280
+  task: P02.04
+  disposition: official_documentation
+  supports: Monotonic vs wall clock semantics (time.monotonic vs time.time) in rate limiters.
+  limitation: Language reference; canonical starter token bucket case must use monotonic time.
+  license: Python Software Foundation License 2.0
+  review_by: Before P02.04
+- id: SRC-143
+  title: OpenAI API Model Catalog
+  owner: OpenAI
+  publication_date: Dated reference
+  url: https://developers.openai.com/api/docs/models
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:292
+  task: P07.01
+  disposition: official_documentation
+  supports: Official context window and capability specifications for GPT models.
+  limitation: Vendor catalog; pricing and latency change across model revisions.
+  license: Proprietary
+  review_by: Before P07.01
+- id: SRC-144
+  title: Qwen2.5-Coder-7B-Instruct Model Card
+  owner: Qwen Team / Alibaba / Hugging Face
+  publication_date: Dated reference
+  url: https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:294
+  task: P07.01
+  disposition: tooling_reference
+  supports: Open-weights candidate model card for local/self-hosted code reasoning.
+  limitation: Compute requirements for 7B self-hosting exceed MVP cost envelope ($1,094/mo).
+  license: Apache-2.0
+  review_by: Before P07.01
+- id: SRC-145
+  title: OpenAI Realtime API WebRTC Guide
+  owner: OpenAI
+  publication_date: Dated reference
+  url: https://developers.openai.com/api/docs/guides/realtime-webrtc
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:306
+  task: P07.04
+  disposition: official_documentation
+  supports: Low-latency bidirectional voice protocol integration with ephemeral session tokens.
+  limitation: Requires server-side ephemeral token exchange; client must never hold master API key.
+  license: Proprietary
+  review_by: Before P07.04
+- id: SRC-146
+  title: Next.js Support Policy
+  owner: Vercel
+  publication_date: Dated reference
+  url: https://nextjs.org/support-policy
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:318
+  task: P01.01
+  disposition: official_documentation
+  supports: Major version lifecycle and maintenance window definitions.
+  limitation: Tracks framework deprecations; requires periodic upgrade checks.
+  license: MIT
+  review_by: Before P01.01
+- id: SRC-147
+  title: Fastify Framework Documentation
+  owner: Fastify
+  publication_date: Dated reference
+  url: https://fastify.dev/docs/latest/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:320
+  task: P01.02
+  disposition: official_documentation
+  supports: Fast, low-overhead Node.js web framework core documentation.
+  limitation: Plugin architecture requires careful scope management.
+  license: MIT
+  review_by: Before P01.02
+- id: SRC-148
+  title: Kysely Type-Safe SQL Query Builder
+  owner: Kysely / Sami Koskimäki
+  publication_date: Dated reference
+  url: https://www.kysely.dev/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:322
+  task: P02.01
+  disposition: tooling_reference
+  supports: Compile-time type safety for SQL queries without runtime code generation.
+  limitation: Requires explicit database interface definitions matching PostgreSQL schemas.
+  license: MIT
+  review_by: Before P02.01
+- id: SRC-149
+  title: pgvector Vector Similarity Search for PostgreSQL
+  owner: pgvector / Andrew Kane / GitHub
+  publication_date: Dated reference
+  url: https://github.com/pgvector/pgvector
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:324
+  task: P02.01
+  disposition: tooling_reference
+  supports: PostgreSQL extension for vector embedding storage and similarity indexing.
+  limitation: Deferred per ADR 0004/0009; initial schema uses exact relational matching.
+  license: PostgreSQL License
+  review_by: Before P02.01
+- id: SRC-150
+  title: E5-base-v2 Text Embedding Model Card
+  owner: Microsoft / Liang Wang / Hugging Face
+  publication_date: Dated reference
+  url: https://huggingface.co/intfloat/e5-base-v2
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:326
+  task: P07.02
+  disposition: tooling_reference
+  supports: 768-dimensional text embedding model card for semantic case retrieval.
+  limitation: 'Requires query: and passage: prefix conventions during inference.'
+  license: MIT
+  review_by: Before P07.02
+- id: SRC-151
+  title: Cloud Run WebSocket Guidance
+  owner: Google Cloud
+  publication_date: Dated reference
+  url: https://docs.cloud.google.com/run/docs/triggering/websockets
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:328
+  task: P00.04
+  disposition: official_documentation
+  supports: WebSocket connection timeout limits (up to 60 minutes) and scaling behavior.
+  limitation: Requires container instances to handle client reconnections gracefully.
+  license: Proprietary vendor documentation
+  review_by: Before P00.04
+- id: SRC-152
+  title: Requests Python HTTP Library
+  owner: Kenneth Reitz / PSF / GitHub
+  publication_date: Dated reference
+  url: https://github.com/psf/requests
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:340
+  task: P02.04
+  disposition: tooling_reference
+  supports: Canonical open-source Python library used as code comprehension starter case candidate.
+  limitation: Source code candidate; licensing and attribution must be verified before curriculum use.
+  license: Apache-2.0
+  review_by: Before P02.04
+- id: SRC-153
+  title: Flask Web Framework
+  owner: Pallets / Armin Ronacher / GitHub
+  publication_date: Dated reference
+  url: https://github.com/pallets/flask
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:342
+  task: P02.04
+  disposition: tooling_reference
+  supports: WSGI application context and request dispatching comprehension case candidate.
+  limitation: Candidate case; requires reviewed oracle and test harness.
+  license: BSD-3-Clause
+  review_by: Before P02.04
+- id: SRC-154
+  title: Express Web Framework
+  owner: Express.js / OpenJS Foundation / GitHub
+  publication_date: Dated reference
+  url: https://github.com/expressjs/express
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:344
+  task: P02.04
+  disposition: tooling_reference
+  supports: Middleware chain and routing reference for cross-language comprehension.
+  limitation: Node.js JavaScript; curriculum priority is Python for initial release.
+  license: MIT
+  review_by: Before P02.04
+- id: SRC-155
+  title: Guava Google Core Libraries for Java
+  owner: Google / GitHub
+  publication_date: Dated reference
+  url: https://github.com/google/guava
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:346
+  task: P02.04
+  disposition: tooling_reference
+  supports: RateLimiter (SmoothBursty / token bucket) reference implementation in Java.
+  limitation: Java source code; algorithm logic informs Python token bucket case design.
+  license: Apache-2.0
+  review_by: Before P02.04
+- id: SRC-156
+  title: golang/time Rate Limiting Package
+  owner: Go Team / GitHub
+  publication_date: Dated reference
+  url: https://github.com/golang/time
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:348
+  task: P02.04
+  disposition: tooling_reference
+  supports: Go x/time/rate token-bucket algorithm implementation reference.
+  limitation: Go source code; informs monotonic clock handling and reservation arithmetic.
+  license: BSD-3-Clause
+  review_by: Before P02.04
+- id: SRC-157
+  title: Tokio Async Runtime for Rust
+  owner: Tokio Contributors / GitHub
+  publication_date: Dated reference
+  url: https://github.com/tokio-rs/tokio
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:350
+  task: P02.04
+  disposition: tooling_reference
+  supports: Asynchronous scheduling and cooperative yield patterns.
+  limitation: Rust language; post-MVP candidate for systems programming track.
+  license: MIT
+  review_by: Before P02.04
+- id: SRC-158
+  title: AGENTS.md Agent Context Specification
+  owner: OpenAI / Learn ChatGPT
+  publication_date: Dated reference
+  url: https://learn.chatgpt.com/docs/agent-context
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:362
+  task: P01.01
+  disposition: normative_standard
+  supports: Standard instructions file specification for AI coding assistants.
+  limitation: Vendor specification; repo-specific policies take precedence.
+  license: OpenAI
+  review_by: Before P01.01
+- id: SRC-159
+  title: Using PLANS.md for Multi-Hour Problem Solving
+  owner: OpenAI Cookbook
+  publication_date: Dated reference
+  url: https://developers.openai.com/cookbook/articles/plans-pattern
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/plan.md:364
+  task: P01.01
+  disposition: official_documentation
+  supports: Structured multi-step task planning and tracking patterns.
+  limitation: Cookbook article; adapted into TraceMigo private planning/ conventions.
+  license: MIT
+  review_by: Before P01.01
+- id: SRC-160
+  title: IP India Official Trade Marks Search Portal
+  owner: Controller General of Patents, Designs and Trade Marks (India)
+  publication_date: Dated reference
+  url: https://ipindia.gov.in/trade-marks-before-applying.htm
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/tasks/P10.03.md:55
+  task: P10.03
+  disposition: legal_trademark
+  supports: Official trade mark search portal and classification guidelines in India.
+  limitation: Government portal; formal search report by registered trademark agent required.
+  license: Government of India
+  review_by: Before P10.03
+- id: SRC-161
+  title: IP India AI/ML Trade Mark Route
+  owner: IP India
+  publication_date: Dated reference
+  url: https://tmsearch.ipindia.gov.in/ords/r/tmr/search/home
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/tasks/P10.03.md:56
+  task: P10.03
+  disposition: legal_trademark
+  supports: Online search interface for word mark similarity in Class 42 and Class 41.
+  limitation: Search session timeout; requires CAPTCHA resolution by human reviewer.
+  license: Government of India
+  review_by: Before P10.03
+- id: SRC-162
+  title: IP India Public Search Route
+  owner: IP India
+  publication_date: Dated reference
+  url: https://tmrsearch.ipindia.gov.in/tmrpublicsearch/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/tasks/P10.03.md:57
+  task: P10.03
+  disposition: legal_trademark
+  supports: Legacy public search database for registered and pending trademarks in India.
+  limitation: Intermittent portal availability; requires professional agent verification.
+  license: Government of India
+  review_by: Before P10.03
+- id: SRC-163
+  title: AmigoHelp AI Search Portal
+  owner: AmigoHelp
+  publication_date: Dated observation
+  url: https://www.amigohelp.ai/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/tasks/P10.03.md:58
+  task: P10.03
+  disposition: discovery_only
+  supports: Observation of 'Amigo' brand elements in AI customer support domain.
+  limitation: Third-party product; customer support category is distinct from developer education.
+  license: Proprietary
+  review_by: Before P10.03
+- id: SRC-164
+  title: USPTO Trademark Search Guide
+  owner: USPTO
+  publication_date: Dated reference
+  url: https://www.uspto.gov/trademarks/search/basics
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/tasks/P10.03.md:59
+  task: P10.03
+  disposition: legal_trademark
+  supports: Official instructions for conducting federal trademark clearance searches.
+  limitation: Procedural guidance; does not constitute legal representation.
+  license: US Government Public Domain
+  review_by: Before P10.03
+- id: SRC-165
+  title: USPTO Trademark Search System (S1)
+  owner: USPTO
+  publication_date: Dated reference
+  url: https://www.uspto.gov/trademarks/search
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/tasks/P10.03.md:60
+  task: P10.03
+  disposition: legal_trademark
+  supports: Federal trademark database portal for wordmark and design searches.
+  limitation: Covers US federal registrations; state and common-law marks require separate checks.
+  license: US Government Public Domain
+  review_by: Before P10.03
+- id: SRC-166
+  title: WIPO Global Brand Database Search (S3)
+  owner: WIPO
+  publication_date: Dated reference
+  url: https://www.wipo.int/en/web/global-brand-database/index
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/tasks/P10.03.md:61
+  task: P10.03
+  disposition: legal_trademark
+  supports: International trademark registration search across multiple national offices.
+  limitation: National office sync latencies can occur.
+  license: WIPO Public Service
+  review_by: Before P10.03
+- id: SRC-167
+  title: Cloudflare Registrar TLD Pricing (S5)
+  owner: Cloudflare
+  publication_date: Dated reference
+  url: https://pricing.registrar.cloudflare.com/
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: C
+  source_location: planning/tasks/P10.03.md:63
+  task: P10.03
+  disposition: infrastructure_pricing
+  supports: At-cost wholesale domain registration pricing model.
+  limitation: Wholesale prices vary with registry fees and currency exchange rates.
+  license: Cloudflare
+  review_by: Before P10.03
+- id: SRC-168
+  title: ICANN Registrant Rights and Responsibilities (S6)
+  owner: ICANN
+  publication_date: Dated reference
+  url: https://www.icann.org/registrants
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/tasks/P10.03.md:64
+  task: P10.03
+  disposition: legal_trademark
+  supports: Registrant legal obligations, WHOIS accuracy, and domain transfer policies.
+  limitation: Policy framework; enforced via accredited registrars.
+  license: ICANN
+  review_by: Before P10.03
+- id: SRC-169
+  title: ICANN Domain Name Renewal and Expiration FAQs (S7)
+  owner: ICANN
+  publication_date: Dated reference
+  url: https://www.icann.org/resources/pages/domain-name-renewal-expiration-faqs-2018-12-07-en
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/tasks/P10.03.md:65
+  task: P10.03
+  disposition: legal_trademark
+  supports: Grace periods, redemption fees, and domain lifecycle compliance.
+  limitation: Registry-specific redemption policies may vary.
+  license: ICANN
+  review_by: Before P10.03
+- id: SRC-170
+  title: GitHub Actions Security Hardening Guide
+  owner: GitHub Docs
+  publication_date: '2026-11-01'
+  url: https://docs.github.com/en/actions/reference/security/secure-use
+  accessed_utc: '2026-11-07T14:30:00Z'
+  evidence_level: A
+  source_location: planning/tracker.md:1
+  task: P01.03
+  disposition: normative_standard
+  supports: Least-privilege permissions, commit SHA pinning, and secretless CI workflow design.
+  limitation: Requires workflow audit to ensure runner scripts do not expose secrets or untrusted PR triggers.
+  license: GitHub Docs License
+  review_by: Before P01.03

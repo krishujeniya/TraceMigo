@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.tracemigo.com/content.review.v1.json",
+  "title": "TraceMigo Content Review Notes",
+  "description": "Structured review notes for peer/curriculum reviews required prior to case publication.",
+  "type": "object",
+  "required": ["schema_version", "data"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "content.review.v1"
+    },
+    "data": {
+      "type": "object",
+      "required": ["summary", "checklist_passed"],
+      "additionalProperties": false,
+      "properties": {
+        "summary": { "type": "string", "maxLength": 4096 },
+        "checklist_passed": { "type": "boolean" },
+        "feedback": { "type": "string", "maxLength": 4096 }
+      }
+    }
+  }
+}

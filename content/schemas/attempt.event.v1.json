@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.tracemigo.com/attempt.event.v1.json",
+  "title": "TraceMigo Attempt Event Envelope",
+  "description": "Immutable learning journey event payload, capturing stage transitions, predictions, trace inspection, and explanations.",
+  "type": "object",
+  "required": ["schema_version", "data"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "attempt.event.v1"
+    },
+    "data": {
+      "type": "object",
+      "required": ["event_type", "timestamp"],
+      "additionalProperties": true,
+      "properties": {
+        "event_type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "stage": {
+          "type": "string",
+          "enum": ["warmup", "predict", "trace", "explain", "mutate", "review"]
+        },
+        "details": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

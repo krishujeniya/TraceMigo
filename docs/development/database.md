@@ -64,7 +64,15 @@ Keep business changes, usage reservation, idempotency and outbox insertion in th
 
 ## Real database tests
 
-Run against an explicitly created **disposable** private Unix-socket cluster:
+To run the full suite of 19 real database integration tests on a clean clone without private planning scripts:
+
+```bash
+pnpm test:db
+```
+
+This runs `tools/db/run-disposable.mjs`, which verifies local PostgreSQL 17 prerequisites (`initdb`, `pg_ctl`), provisions an isolated temporary Unix-socket cluster (`/tmp/tracemigo-pg17-*`) with no TCP listener, executes `node tools/db/integration.test.mjs`, and guarantees fast cluster termination and cleanup on success, failure, or cancellation.
+
+Alternatively, to run against an explicitly pre-created disposable private Unix-socket cluster:
 
 ```bash
 TRACEMIGO_TEST_PG_SOCKET=/tmp/tracemigo-pg17-YOUR_RUN/socket \

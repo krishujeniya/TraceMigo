@@ -1,0 +1,74 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: tracemigo_postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: tracemigo
+      POSTGRES_USER: tracemigo
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-tracemigo_secure_dev_2026}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tracemigo -d tracemigo"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - tracemigo-net
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: tracemigo_api
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - TRACEMIGO_HOST=0.0.0.0
+      - TRACEMIGO_PORT=3001
+      - DATABASE_URL=postgresql://tracemigo:${POSTGRES_PASSWORD:-tracemigo_secure_dev_2026}@postgres:5432/tracemigo
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:3001/v1/health/live"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+    networks:
+      - tracemigo-net
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    container_name: tracemigo_web
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - NEXT_PUBLIC_API_URL=http://api:3001
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:3000/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    networks:
+      - tracemigo-net
+
+volumes:
+  postgres_data:
+
+networks:
+  tracemigo-net:
+    driver: bridge

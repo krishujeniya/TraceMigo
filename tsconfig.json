@@ -17,6 +17,15 @@
       "path": "packages/execution-client"
     },
     {
+      "path": "packages/identity"
+    },
+    {
+      "path": "packages/catalog"
+    },
+    {
+      "path": "packages/learning"
+    },
+    {
       "path": "apps/api"
     },
     {

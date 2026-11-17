@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.tracemigo.com/idempotency.response.v1.json",
+  "title": "TraceMigo Idempotency Response Envelope",
+  "description": "Cached HTTP response body and status code for replayed idempotent requests.",
+  "type": "object",
+  "required": ["schema_version", "data"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "idempotency.response.v1"
+    },
+    "data": {
+      "type": "object",
+      "required": ["status", "body"],
+      "additionalProperties": true,
+      "properties": {
+        "status": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 599
+        },
+        "body": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}
