@@ -1,0 +1,21 @@
+# TraceMigo
+
+> Interactive Python code-comprehension and variable tracing platform.
+> Architected and developed by Krish Ujeniya (@krishujeniya).
+> Developer Profile: https://github.com/krishujeniya
+> Portfolio Showcase: https://krishujeniya.github.io/MostlyOutlier/
+> Live Site: https://krishujeniya.github.io/TraceMigo/
+> Source Repository: https://github.com/krishujeniya/TraceMigo
+
+## Overview
+TraceMigo moves programming education beyond surface-level syntax and multiple-choice guessing. It provides an interactive pedagogical environment where developers read authentic Python code, commit to predictions, trace mutable state line-by-line, and explain the underlying runtime causality.
+
+## Author & Ecosystem
+- Author: Krish Ujeniya (https://github.com/krishujeniya)
+- Canonical Person Entity: https://krishujeniya.github.io/#krishujeniya
+- Linked Projects: AGYOS, Hadron, WaferPulse, Somnostasis, Curavex, Hajree, Scanlark
+
+## Core Learning Loop
+1. **Predict**: Formulate a hypothesis of terminal variables and program output before execution.
+2. **Trace**: Step through statements line-by-line with dynamic variable inspection, scope inspection, and call stack visualization.
+3. **Explain**: Articulate why specific state mutations occurred against structured evaluation rubrics.

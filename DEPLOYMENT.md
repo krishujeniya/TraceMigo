@@ -64,6 +64,32 @@ docker pull ghcr.io/krishujeniya/tracemigo-tracemigo-api:latest
 docker run -d --restart unless-stopped -p 3001:3001 ghcr.io/krishujeniya/tracemigo-tracemigo-api:latest
 ```
 
+### Method C: Vercel Serverless Deployment (CLI)
+
+Serverless API and UI deployment via Vercel CLI:
+```bash
+# Link project and pull environment
+vercel link --yes
+
+# Deploy preview build
+vercel deploy
+
+# Deploy production release
+vercel deploy --prod
+```
+
+### Method D: Cloudflare Free Stack Deployment (CLI)
+
+Edge Gateway Worker with D1 persistence and KV rate limiting:
+```bash
+# Verify shared D1 and KV bindings
+wrangler d1 info shared-production-db
+wrangler kv namespace list
+
+# Deploy Edge Gateway Worker
+wrangler deploy
+```
+
 ---
 
 ## 4. Health Check & Readiness Probes

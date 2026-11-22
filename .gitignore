@@ -19,3 +19,10 @@ __pycache__/
 .server.log
 apps/web/next-env.d.ts
 .vercel
+
+# Cloudflare & Secret Guardrails
+.env.local
+.env.*.local
+.dev.vars
+.wrangler/
+.vercel/
