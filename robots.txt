@@ -17,4 +17,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://krishujeniya.github.io/TraceMigo/sitemap.xml
+Sitemap: https://tracemigo.pages.dev/sitemap.xml
